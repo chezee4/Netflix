@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-device-card {
+  background: linear-gradient(
+      222deg,
+      rgba(229, 0, 0, 0.5) -208.03%,
+      rgba(229, 0, 0, 0) 41.32%
+    ),
+    #0f0f0f;
+}
