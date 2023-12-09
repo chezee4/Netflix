@@ -32,6 +32,7 @@ export const useHttp = () => {
         throw e;
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   );
 
