@@ -11,6 +11,9 @@ const config: Config = {
       backgroundColor: {
         primary: '#141414',
       },
+      backgroundImage: {
+        "bg-cva": "url('../../public/bgCTA.png')",
+      },
       colors: {
         gray: {
           60: '#999999',
@@ -42,6 +45,9 @@ const config: Config = {
           95: '#FFE5E5',
           99: '#FFFAFA',
         },
+      },
+      screens: {
+        xs: "480px",
       },
     },
     plugins: [],

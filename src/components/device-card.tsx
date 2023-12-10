@@ -19,7 +19,7 @@ export default function DeviceCard({ title, description, Icon }: DeviceCardProps
   }
   return (
     <div
-      className=" relative cursor-pointer group max-w-[512px] w-full bg-device-card border-black-15 border rounded-xl p-10 "
+      className=" relative cursor-pointer group w-full bg-device-card border-black-15 border rounded-xl p-[25px_10px_25px_25px] sm:p-10 "
       onMouseMove={handleMouseMove}
     >
       <motion.div
@@ -36,11 +36,11 @@ export default function DeviceCard({ title, description, Icon }: DeviceCardProps
       ></motion.div>
       <div className="flex items-center gap-5 mb-5">
         <div className=" select-none  flex items-center justify-center rounded-xl border-black-8 bg-black-12 p-3 ">
-          <Image src={Icon} alt={title} width={20} className="w-8 h-8" />
+          <Image src={Icon} alt={title} width={20} className=" w-5 h-5 xs:w-8 xs:h-8" />
         </div>
-        <h3 className="text-white text-2xl font-medium">{title}</h3>
+        <h3 className="text-white text-lg xs:text-2xl font-medium">{title}</h3>
       </div>
-      <p className=" text-gray-60 text-lg selection:bg-red-90 selection:text-black-8">{description}</p>
+      <p className=" text-gray-60 text-base xs:text-lg selection:bg-red-90 selection:text-black-8">{description}</p>
     </div>
   )
 }

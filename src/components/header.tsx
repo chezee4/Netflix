@@ -7,7 +7,7 @@ import Navigate from './navigate'
 
 export default function Header() {
   return (
-    <header className="w-full max-w-[1600px] px-3 m-auto">
+    <header className="w-full max-w-[1640px] px-3 md:px-8 m-auto">
       <div className="w-full flex justify-between items-center py-4">
         <div className=" ">
           <Link href="/">

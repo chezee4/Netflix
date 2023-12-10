@@ -10,3 +10,24 @@
     ),
     #0f0f0f;
 }
+
+.eclipse::before {
+  background: linear-gradient(
+    90deg,
+    #0f0f0f 2.42%,
+    rgba(20, 15, 15, 0.965) 45.46%,
+    rgba(67, 1, 4, 0.735) 69.72%,
+    rgba(0, 0, 0, 0) 500.98%
+  );
+}
+@media (max-width: 640px) {
+  .eclipse::before {
+    background: linear-gradient(
+    180deg,
+    #0f0f0f 2.42%,
+    rgba(20, 15, 15, 0.765) 60.46%,
+    rgba(67, 1, 4, 0.735) 104.72%,
+    rgba(0, 0, 0, 0) 73.98%
+  );
+  }
+}
