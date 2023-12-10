@@ -1,9 +1,11 @@
+'use client'
 import Link from 'next/link'
 import Image from 'next/image'
 import logoHeader from '@/../public/Logo.svg'
 import { FiSearch } from 'react-icons/fi'
-import { PiBell } from 'react-icons/pi'
+import { CiLogin } from 'react-icons/ci'
 import Navigate from './navigate'
+import { Button } from './ui/button'
 
 export default function Header() {
   return (
@@ -16,12 +18,12 @@ export default function Header() {
         </div>
         <Navigate />
         <div className=" flex gap-x-2">
-          <button>
-            <FiSearch className="text-white text-lg" />
-          </button>
-          <button>
-            <PiBell className="text-white  text-2xl" />
-          </button>
+          <Button size="icon" variant="link">
+            <FiSearch />
+          </Button>
+          <Button size="icon" variant="link">
+            <CiLogin />
+          </Button>
         </div>
       </div>
     </header>

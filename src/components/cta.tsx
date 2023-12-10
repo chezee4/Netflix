@@ -1,3 +1,5 @@
+import { Button } from './ui/button'
+
 export default function CTA() {
   return (
     <section className=" border-black-15 border sm:border-none relative w-full bg-bg-cva before:content-['_'] bg-cover before:rounded-[11px] before:absolute eclipse before:inset-0 rounded-xl my-20">
@@ -11,11 +13,8 @@ export default function CTA() {
             up for a free trial of StreamVibe.
           </p>
         </div>
-
         <div className="flex justify-center items-center sm:ml-10 ml-0 sm:mt-0 mt-10">
-          <button className=" font-medium text-center sm:text-start text-sm lg:text-[18px] text-white bg-red-45 rounded-lg px-6 py-4">
-            Start a Free Trail
-          </button>
+          <Button>Start a Free Trail</Button>
         </div>
       </div>
     </section>

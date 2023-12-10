@@ -36,6 +36,7 @@ const config: Config = {
           35: '#4C4C4C',
         },
         red: {
+          "hover": "#c10b0b",
           45: '#E50000',
           50: '#FF0000',
           55: '#FF1919',
