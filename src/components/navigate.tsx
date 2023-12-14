@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import Link from 'next/link'
 import { navigateLinks } from '@/config/navigate'
 import { useState } from 'react'

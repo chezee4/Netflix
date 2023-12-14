@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab11_Гецянин</title>
+  </head>
+  <body>
+    <script>
+      function randomDecl(max) {
+        return Math.floor(Math.random() * (max - 1)) + 1
+      }
+
+      // 1. тут буде код встановлення початкових параметрів (оголовшення змінних, "загадування" числа ком`ютером (число 1..20))
+      // 2. ДОДАТКОВЕ ЗАВДАННЯ: створіть ще 2 ф-ції з тим самим кодом як randomDecl (function declaration)
+      //    але з назвами randomExpr (у вигляді функціонального виразу), randomArrow (у вигляді стрілочної ф-ції).
+      //    Виведіть їх результат роботи у консоль щоб впевнитись що всі 3 ф-ції коректно працюють і "загадують" число від 1 до 20 (кожна своє):
+      //    Приклад: використайте цей рядок для виводу 3х чисел: console.log(randomDecl(20), randomExpr(20), randomArrow(20))
+      // Function Declaration
+      function randomDecl(max) {
+        return Math.floor(Math.random() * (max - 1)) + 1
+      }
+
+      // Function Expression
+      const randomExpr = function (max) {
+        return Math.floor(Math.random() * (max - 1)) + 1
+      }
+
+      // Arrow Function
+      const randomArrow = max => {
+        return Math.floor(Math.random() * (max - 1)) + 1
+      }
+
+      console.log(randomDecl(20), randomExpr(20), randomArrow(20))
+
+      const secretNumber = randomDecl(20) // загаданное число
+      let triesCount = 0 // количество попыток
+
+      function detectResult(X) {
+        // Головна ф-ція порівняння - тут треба рлрівняти і вивести alert один з 3х варіантів:
+        // "Невірно. Комп'ютер загадав менше число"
+        // "Невірно. Комп'ютер загадав більше число"
+        // "Вірно! Ви відгадали число!"
+
+        // Крім того, ф-цф повинна повернути true або false в залежності від правильності і це значення ми використаємо у mainLoop()
+        triesCount++
+        if (X < secretNumber) {
+          alert("Невірно. Комп'ютер загадав більше число")
+          return false
+        } else if (X > secretNumber) {
+          alert("Невірно. Комп'ютер загадав менше число")
+          return false
+        } else {
+          alert('Вірно! Ви відгадали число!')
+          return true
+        }
+      }
+
+      function mainLoop() {
+        // це ваша головна функція роботи програми. Створіть нескінченний цикл який
+        // буде робити 2 речі у своєму тілі: 1) просити у користувача ввести якесь число (текст у форматі "Введіть число від 1 до Х",
+        // але замість X ви повинні підставити той MAX який використаний при загадуванні числа на початку програми - тобто використати змінну)
+        // 2) викликати ф-цію detectResult і передавати туди значення що ввів користувач.
+        // При цьому ф-ція detectResult повинна повернути true або false в залежності від того вгадано число чи ні.
+        // Якщо результат вгадано - перервати цикл (при цьому виконається наступний рядок після виклику mainLoop() - вивід "Всього спроб:" і завершення програми)
+        while (true) {
+          let X = parseInt(prompt('Введіть число від 1 до 20'))
+          if (isNaN(X) || X === null) {
+            alert('Invalid input. Please enter a number between 1 and 20.')
+          } else {
+            if (detectResult(X)) {
+              break
+            }
+          }
+        }
+      }
+
+      mainLoop()
+
+      // цей вивід "натякає" вам що треба у програмі також оголосити змінну triesCount і збільшувати її після кожної спроби
+      document.write(`Всього спроб: ${triesCount}`)
+    </script>
+  </body>
+</html>

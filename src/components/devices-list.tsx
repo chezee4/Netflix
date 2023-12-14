@@ -1,6 +1,6 @@
 "use client"
 import { Devices } from '@/config/devices'
-import DeviceCard from './device-card'
+import DeviceCard from './ui/card/device-card'
 
 export default function DevicesList() {
   return (
