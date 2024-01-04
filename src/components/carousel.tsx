@@ -15,11 +15,14 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-export default function Carusel() {
+type CaruselProps = {
+  title: string
+}
+export default function Carusel({title}:CaruselProps) {
   return (
-    <div className=" w-full text-white max-w-[1400px] mb-10 ">
-     <div className='flex justify-between items-center mb-10'>
-      <h2 className='text-white text-3xl leading-[150%] font-bold'>Trending Now</h2>
+    <div className=" w-full text-white max-w-[1450px] mb-16 m-auto ">
+     <div className='flex justify-between items-center mb-8'>
+      <h2 className='text-white text-3xl leading-[150%] font-bold'>{title}</h2>
      <div className='flex items-center gap-3 rounded-xl border-black-12 border bg-black-6 p-4'>
         <button className="prev-slide-button rounded-lg border-black-12 border bg-black-10 text-xl p-3 transition-all duration-200 ease-linear hover:bg-black-15"><FaArrowLeft/></button>
         <div className="swiper-custom-pagination"></div>
@@ -80,7 +83,6 @@ export default function Carusel() {
           )
         })}
       </Swiper>
-      
     </div>
   )
 }
