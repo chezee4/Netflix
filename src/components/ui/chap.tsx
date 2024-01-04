@@ -11,7 +11,7 @@ export default function Chap({
   return (
     <div
       className={cn(
-        'inline-flex items-center rounded-[51px] gap-1 border px-2 py-[2px] text-gray-60 bg-black-8 border-black-15 ',
+        'inline-flex items-center rounded-[51px] gap-1 border px-2 py-[2px] text-sm text-gray-60 bg-black-8 border-black-15 ',
         className,
       )}
     >

@@ -49,6 +49,7 @@ const config: Config = {
         },
       },
       screens: {
+        mm:"400px",
         xs: "480px",
       },
     },

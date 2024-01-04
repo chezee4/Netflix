@@ -6,7 +6,7 @@ type CardLayoutProps = {
 }
 export default function CardLayout({ Cardfooter, Cardbody }: CardLayoutProps) {
   return (
-    <div className="bg-black-10 rounded-lg border border-black-15">
+    <div className="bg-black-10 rounded-lg border border-black-15 max-w-max m-auto">
       <div className='flex flex-col gap-2 p-4'>
         {Cardbody}
         {Cardfooter}

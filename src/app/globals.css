@@ -31,3 +31,16 @@
   );
   }
 }
+
+.swiper-pagination-bullet {
+  background-color: #333 !important;
+  width: 15px !important;
+  height: 4px !important;
+  border-radius: 100px !important;
+  transition: all 0.3s linear !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 20px !important;
+  background-color: #E50000 !important;
+}
