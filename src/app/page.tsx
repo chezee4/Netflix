@@ -1,7 +1,7 @@
 'use client'
-import Carousel from '@/components/carousel'
 import CTA from '@/components/cta'
 import DevicesList from '@/components/devices-list'
+import SupportForm from '@/components/form/support-form'
 import MoviesByCategory from '@/components/movies-by-category'
 
 export default function Home() {
@@ -10,6 +10,7 @@ export default function Home() {
       <DevicesList />
       <CTA />
       <MoviesByCategory />
+      <SupportForm />  
     </main>
   )
 }
