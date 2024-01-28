@@ -44,3 +44,11 @@
   width: 20px !important;
   background-color: #E50000 !important;
 }
+
+.service-pagination{
+  position: absolute !important;
+  bottom: -1rem !important;
+  width: auto !important;
+  left: 50% !important;
+  transform:translateX(-50%) !important;
+}
