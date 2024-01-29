@@ -3,6 +3,7 @@ import { Manrope } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import Header from '@/components/header'
+import Footer from '@/components/footer'
 const manrope = Manrope({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn(manrope.className, ' bg-black-8')}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )

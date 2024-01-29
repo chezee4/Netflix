@@ -11,7 +11,7 @@ export default function Home() {
       <CTA />
       <ServiceList />
       <MoviesByCategory />
-      <SupportForm />
+      {/* <SupportForm /> */}
     </main>
   )
 }
