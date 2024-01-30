@@ -8,8 +8,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'sm:text-start text-sm lg:text-[18px] text-white bg-red-45 hover:bg-red-hover',
-        secondary: ' sm:text-start text-sm lg:text-[18px] border-black-15 border text-white bg-black-8 hover:bg-black-15',
+        default:
+          'sm:text-start text-sm lg:text-[18px] text-white bg-red-45 hover:bg-red-hover',
+        secondary:
+          ' sm:text-start text-sm lg:text-[18px] border-black-15 border text-white bg-black-8 hover:bg-black-15',
         link: ' text-white text-2xl bg-transparent hover:bg-black-15',
         icon: 'border-black-15 border hover:bg-black-6',
       },
@@ -17,6 +19,7 @@ const buttonVariants = cva(
         default: 'rounded-lg px-6 py-4',
         sm: 'rounded-md px-4 py-2',
         icon: 'rounded-md h-8 w-8 ',
+        'full-sercle': 'rounded-full p-4',
       },
     },
     defaultVariants: {
