@@ -4,6 +4,7 @@ import DevicesList from '@/components/devices-list'
 import SupportForm from '@/components/form/support-form'
 import MoviesByCategory from '@/components/movies-by-category'
 import ServiceList from '@/components/services-list'
+import RatingStars from '@/components/ui/rating-stars'
 
 export default function Home() {
   return (
