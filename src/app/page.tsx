@@ -1,10 +1,10 @@
 import CarouselAvatars from '@/components/carousel-avatars'
+import CarouselComment from '@/components/carousel-comment'
 import CTA from '@/components/cta'
 import DevicesList from '@/components/devices-list'
 import SupportForm from '@/components/form/support-form'
 import MoviesByCategory from '@/components/movies-by-category'
 import ServiceList from '@/components/services-list'
-import RatingStars from '@/components/ui/rating-stars'
 
 export default function Home() {
   return (
@@ -12,8 +12,9 @@ export default function Home() {
       <DevicesList />
       <CTA />
       <CarouselAvatars />
-      <ServiceList />
-      <MoviesByCategory />
+      <CarouselComment />
+      {/* <ServiceList />
+      <MoviesByCategory /> */}
       {/* <SupportForm /> */}
     </main>
   )

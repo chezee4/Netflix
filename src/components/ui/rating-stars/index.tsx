@@ -1,7 +1,8 @@
 import { FaStar } from 'react-icons/fa'
 import type { RatingStarsProps } from './types'
+import { cn } from '@/lib/utils'
 
-export default function RatingStars({ rating, size = 20 }: RatingStarsProps) {
+export default function RatingStars({ rating, className }: RatingStarsProps) {
   return (
     <div className="flex gap-1">
       {[...Array(5)].map((_, i) => {
@@ -10,7 +11,7 @@ export default function RatingStars({ rating, size = 20 }: RatingStarsProps) {
           <FaStar
             key={i}
             color={starNumber <= Math.floor(rating) ? 'red' : '#999999'}
-            size={size}
+            className={cn(className)}
           />
         )
       })}
