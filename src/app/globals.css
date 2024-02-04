@@ -40,6 +40,9 @@
   transition: all 0.3s linear !important;
 }
 
+.swiper-slide {
+  height: auto !important;
+}
 .swiper-pagination-bullet-active {
   width: 20px !important;
   background-color: #e50000 !important;
