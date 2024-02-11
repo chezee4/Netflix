@@ -19,6 +19,8 @@ public class Movie {
     private String name;
     @Column(name = "image")
     private String image;
+    @Column(name = "alt")
+    private String alt;
     @Column(name = "video")
     private String video;
 }
