@@ -13,8 +13,8 @@ export default function Home() {
       <CTA />
       <CarouselAvatars />
       <CarouselComment />
-      {/* <ServiceList />
-      <MoviesByCategory /> */}
+      <ServiceList />
+      <MoviesByCategory />
       {/* <SupportForm /> */}
     </main>
   )
