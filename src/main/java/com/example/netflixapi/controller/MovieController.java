@@ -22,10 +22,10 @@ public class MovieController {
     public Optional<Movie> findById(Integer id){ return movieService.findById(id); }
 
     @PostMapping
-    public Movie saveMovie(Movie movie){ return movieService.saveMovie(movie); }
+    public Movie saveMovie(@RequestBody Movie movie){ return movieService.saveMovie(movie); }
 
     @PutMapping
-    public Movie updateMovie(Movie movie){ return movieService.updateMovie(movie); }
+    public Movie updateMovie(@RequestBody Movie movie){ return movieService.updateMovie(movie); }
 
     @DeleteMapping("/{id}")
     public void deleteMovie(Integer id){ movieService.deleteMovie(id); }
