@@ -17,7 +17,7 @@ public class MovieController {
         this.movieService = movieService;
     }
     @GetMapping
-    public List<Movie> findAllMovie(){ return movieService.findAllMovie(); }
+    public String findAllMovie(){ return "hello"; }
 
     @GetMapping("/{id}")
     public Optional<Movie> findById(Integer id){ return movieService.findById(id); }
