@@ -29,4 +29,5 @@ public class MovieController {
 
     @DeleteMapping("/{id}")
     public void deleteMovie(Integer id){ movieService.deleteMovie(id); }
+
 }
