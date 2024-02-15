@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/movies")
 public class MovieController {
@@ -17,7 +16,7 @@ public class MovieController {
         this.movieService = movieService;
     }
     @GetMapping
-    public String findAllMovie(){ return "hello"; }
+    public List<Movie> findAllMovie(){ return movieService.findAllMovie(); }
 
     @GetMapping("/{id}")
     public Optional<Movie> findById(Integer id){ return movieService.findById(id); }
@@ -30,5 +29,4 @@ public class MovieController {
 
     @DeleteMapping("/{id}")
     public void deleteMovie(Integer id){ movieService.deleteMovie(id); }
-
 }
