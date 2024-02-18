@@ -6,6 +6,7 @@ import DevicesList from '@/components/devices-list'
 import SupportForm from '@/components/form/support-form'
 import MoviesByCategory from '@/components/movies-by-category'
 import ServiceList from '@/components/services-list'
+import TableOfServices from '@/components/table-of-services'
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <CarouselComment />
       <AccordionSupport />
       <ServiceList />
+      <TableOfServices />
       <MoviesByCategory />
       {/* <SupportForm /> */}
     </main>
