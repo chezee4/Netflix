@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
-import { messages } from '@/config/messages'
-import { footerLinks } from '@/config/footer-navigation'
+import { messages } from 'src/config/messages'
+import { footerLinks } from 'src/config/footer-navigation'
 
 export default function Footer() {
   return (
@@ -28,7 +28,7 @@ export default function Footer() {
             </div>
           ))}
 
-          <div className='mx-auto md:mx-0 lg:mx-auto'>
+          <div className="mx-auto md:mx-0 lg:mx-auto">
             <h4 className="text-white text-xl font-semibold mb-5">
               Connect With Us
             </h4>

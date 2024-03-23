@@ -1,53 +1,34 @@
-'use client'
-import { Services } from '@/config/services'
+import { Services } from 'src/config/services'
 import ServiceCard from './ui/card/service-card'
-import { Swiper, SwiperSlide } from 'swiper/react'
-
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import { cn } from '@/lib/utils'
+import {
+  Carousel,
+  CarouselItem,
+  CarouselPagination,
+  CarouselContent,
+} from 'src/components/ui/carousel'
 
 export default function ServiceList() {
   return (
-    <div className=" relative w-full flex gap-5 justify-center mb-10">
-      <Swiper
-        modules={[Navigation, Pagination, A11y]}
-        spaceBetween={20}
-        slidesPerView={5}
-        pagination={{
-          el: '.service-pagination',
-          clickable: true,
-        }}
-        breakpoints={{
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          800: {
-            slidesPerView: 2,
-            spaceBetween: 10,
-          },
-
-          1280: {
-            slidesPerView: 3,
-            spaceBetween: 20,
-          },
+    <div className=" max-w-[1500px] w-full mx-auto mb-10 ">
+      <Carousel
+        opts={{
+          align: 'start',
         }}
       >
-        {Services.map(service => (
-          <SwiperSlide key={service.id}>
-            <ServiceCard {...service} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div
-        className={cn(
-          'service-pagination absolute -bottom-5 left-1/2',
-          'flex gap-1',
-        )}
-      ></div>
+        <CarouselContent>
+          {Services.map(service => (
+            <CarouselItem
+              key={service.id}
+              className="basis-full md:basis-1/2 xl:basis-1/3"
+            >
+              <ServiceCard {...service} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className=" flex xl:hidden justify-center">
+          <CarouselPagination />
+        </div>
+      </Carousel>
     </div>
   )
 }

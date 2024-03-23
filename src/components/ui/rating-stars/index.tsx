@@ -1,6 +1,6 @@
 import { FaStar } from 'react-icons/fa'
 import type { RatingStarsProps } from './types'
-import { cn } from '@/lib/utils'
+import { cn } from 'src/lib/utils'
 
 export default function RatingStars({ rating, className }: RatingStarsProps) {
   return (

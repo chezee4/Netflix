@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Image from 'next/image'
-import logoHeader from '@/../public/Logo.svg'
+import logoHeader from 'src/../public/Logo.svg'
 import { FiSearch } from 'react-icons/fi'
 import { CiLogin } from 'react-icons/ci'
 import Navigate from './navigate'

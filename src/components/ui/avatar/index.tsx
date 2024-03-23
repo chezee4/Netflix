@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import type { AvatarProps } from './types'
-import { cn } from '@/lib/utils'
+import { cn } from 'src/lib/utils'
 
 export default function Avatar({ avatar, name, className }: AvatarProps) {
   return (

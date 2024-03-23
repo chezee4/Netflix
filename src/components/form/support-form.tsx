@@ -4,7 +4,7 @@ import { countries } from '../../config/countries'
 import { Icon } from '@iconify/react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { Button } from '../ui/button'
-import { cn } from '@/lib/utils'
+import { cn } from 'src/lib/utils'
 interface IFormInput {
   'First name': string
   'Last name': string
