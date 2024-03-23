@@ -104,27 +104,3 @@
   }
 }
 
-.swiper-pagination-bullet {
-  background-color: #333 !important;
-  width: 15px !important;
-  height: 4px !important;
-  border-radius: 100px !important;
-  transition: all 0.3s linear !important;
-}
-
-.swiper-slide {
-  height: auto !important;
-}
-.swiper-pagination-bullet-active {
-  width: 20px !important;
-  background-color: #e50000 !important;
-}
-
-.service-pagination,
-.actors {
-  position: absolute !important;
-  bottom: -1rem !important;
-  width: auto !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-}

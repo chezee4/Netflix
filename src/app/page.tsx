@@ -14,7 +14,7 @@ export default function Home() {
       <CarouselComments />
       <CarouselAvatars />
       <ServiceList />
-      <MoviesByCategory />
+      {/* <MoviesByCategory /> */}
       {/* <SupportForm /> */}
     </main>
   )
