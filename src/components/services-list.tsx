@@ -1,5 +1,5 @@
 'use client'
-import { Services } from '@/config/services'
+import { Services } from 'src/config/services'
 import ServiceCard from './ui/card/service-card'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
@@ -7,7 +7,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { cn } from '@/lib/utils'
+import { cn } from 'src/lib/utils'
 
 export default function ServiceList() {
   return (

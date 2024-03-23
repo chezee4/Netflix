@@ -1,9 +1,9 @@
 'use client'
-import { list } from '@/config/card-film'
-import CardLayout from '@/components/layouts/card-layout'
-import CardBodyImage from '@/components/ui/card/card-body-image'
-import CardFooter from '@/components/ui/card/card-footer'
-import Chap from '@/components/ui/chap'
+import { list } from 'src/config/card-film'
+import CardLayout from 'src/components/layouts/card-layout'
+import CardBodyImage from 'src/components/ui/card/card-body-image'
+import CardFooter from 'src/components/ui/card/card-footer'
+import Chap from 'src/components/ui/chap'
 
 import { AiFillClockCircle } from 'react-icons/ai'
 import { IoEyeSharp } from 'react-icons/io5'
@@ -14,7 +14,7 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import { cn } from '@/lib/utils'
+import { cn } from 'src/lib/utils'
 
 type CaruselProps = {
   title: string

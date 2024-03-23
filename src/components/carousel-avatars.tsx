@@ -1,12 +1,12 @@
 'use client'
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa6'
-import { cn } from '@/lib/utils'
+import { cn } from 'src/lib/utils'
 
 import Avatar from './ui/avatar'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, A11y } from 'swiper/modules'
 
-import { actors } from '@/config/film/actors'
+import { actors } from 'src/config/film/actors'
 
 import 'swiper/css'
 import 'swiper/css/navigation'

@@ -1,10 +1,10 @@
 'use client'
-import Phone from '@/../public/icons/Phone.svg'
-import Tablet from '@/../public/icons/Tablet.svg'
-import SmartTV from '@/../public/icons/SmartTV.svg'
-import Laptop from '@/../public/icons/Laptop.svg'
-import GameСonsole from '@/../public/icons/Gameconsole.svg'
-import VRHeadsets from '@/../public/icons/Vrheadsets.svg'
+import Phone from 'src/../public/icons/Phone.svg'
+import Tablet from 'src/../public/icons/Tablet.svg'
+import SmartTV from 'src/../public/icons/SmartTV.svg'
+import Laptop from 'src/../public/icons/Laptop.svg'
+import GameСonsole from 'src/../public/icons/Gameconsole.svg'
+import VRHeadsets from 'src/../public/icons/Vrheadsets.svg'
 
 export const Devices = [
   {
