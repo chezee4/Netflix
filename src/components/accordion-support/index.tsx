@@ -1,5 +1,5 @@
 import AccordionItem from './accordion-item'
-import { accordionSupport } from '@/config/accordion-support'
+import { accordionSupport } from 'src/config/accordion-support'
 
 export default function AccordionSupport() {
   return (

@@ -1,6 +1,6 @@
-import Chap from '../ui/chap'
+import Chap from 'src/components/ui/chap'
 
-import { services } from '@/config/table-of-services'
+import { services } from 'src/config/table-of-services'
 
 export default function TableOfServices() {
   return (

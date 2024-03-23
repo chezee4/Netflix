@@ -5,8 +5,8 @@ import SupportForm from 'src/components/form/support-form'
 import MoviesByCategory from 'src/components/movies-by-category'
 import ServiceList from 'src/components/services-list'
 import CarouselComments from 'src/components/carousel-comments'
-import AccordionSupport from '@/components/accordion-support'
-import TableOfServices from '@/components/table-of-services'
+import AccordionSupport from 'src/components/accordion-support'
+import TableOfServices from 'src/components/table-of-services'
 
 export default function Home() {
   return (
