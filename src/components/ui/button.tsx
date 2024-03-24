@@ -14,12 +14,14 @@ const buttonVariants = cva(
           ' sm:text-start text-sm lg:text-[18px] border-black-15 border text-white bg-black-8 hover:bg-black-15',
         link: ' text-white text-2xl bg-transparent hover:bg-black-15',
         icon: 'border-black-15 border hover:bg-black-6',
-        category:'bg-black-10 text-xl hover:bg-black-15'
+        category: 'bg-black-10 text-xl hover:bg-black-15',
+        outline:
+          'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
       },
-      
+
       size: {
         default: 'rounded-lg px-6 py-4',
-        category:'rounded-lg p-3 border-black-12 border',
+        category: 'rounded-lg p-3 border-black-12 border',
         sm: 'rounded-md px-4 py-2',
         icon: 'rounded-md h-8 w-8 ',
         'full-sercle': 'rounded-full p-4',
