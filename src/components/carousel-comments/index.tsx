@@ -13,6 +13,7 @@ import {
   CarouselNext,
   CarouselPagination,
 } from 'src/components/ui/carousel'
+import { FormForAddComments } from '../form-comment'
 
 export default function CarouselComments() {
   return (
@@ -22,14 +23,7 @@ export default function CarouselComments() {
           <h3 className=" text-gray-65 text-sm sm:text-lg leading-[150%] font-bold">
             Reviews
           </h3>
-          <Button
-            variant="secondary"
-            size="default"
-            className="flex items-center gap-1 text-xs sm:text-sm lg:text-sm px-3"
-          >
-            <HiPlus color="text-gray-75" className=" text-base sm:text-xl" />
-            <span>Add Your Review</span>
-          </Button>
+          <FormForAddComments />
         </div>
         <Carousel
           opts={{

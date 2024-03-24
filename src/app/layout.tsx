@@ -5,6 +5,7 @@ import './globals.css'
 import { cn } from 'src/lib/utils'
 import Header from 'src/components/header'
 import Footer from 'src/components/footer'
+import { Toaster } from 'src/components/ui/toaster'
 
 const manrope = Manrope({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           {children}
           <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
