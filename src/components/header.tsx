@@ -6,6 +6,7 @@ import { FiSearch } from 'react-icons/fi'
 import { CiLogin } from 'react-icons/ci'
 import Navigate from './navigate'
 import { Button } from './ui/button'
+import { ModeToggle } from './mode-toggle'
 
 export default function Header() {
   return (
@@ -18,6 +19,7 @@ export default function Header() {
         </div>
         <Navigate />
         <div className=" flex gap-x-2">
+          <ModeToggle />
           <Button size="icon" variant="link">
             <FiSearch />
           </Button>
