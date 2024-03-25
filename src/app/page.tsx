@@ -1,12 +1,12 @@
-import CarouselAvatars from 'src/components/carousel-avatars'
-import CTA from 'src/components/cta'
-import DevicesList from 'src/components/devices-list'
-import SupportForm from 'src/components/form/support-form'
-import MoviesByCategory from 'src/components/movies-by-category'
-import ServiceList from 'src/components/services-list'
-import CarouselComments from 'src/components/carousel-comments'
-import AccordionSupport from 'src/components/accordion-support'
-import TableOfServices from 'src/components/table-of-services'
+import CarouselAvatars from 'src/features/carousel/avatars-carousel'
+import CTA from 'src/features/cta'
+import DevicesList from 'src/features/devices-list'
+import SupportForm from 'src/features/form/support-form'
+import MoviesByCategory from 'src/features/movies-by-category'
+import ServiceList from 'src/features/services-list'
+import CarouselComments from 'src/features/carousel/comments-carousel'
+import AccordionSupport from 'src/features/support-accordion'
+import TableOfServices from 'src/features/table-of-services'
 
 export default function Home() {
   return (
