@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
+
 import { ThemeProvider } from 'src/context/theme-provider'
-import './globals.css'
-import { cn } from 'src/lib/utils'
-import Header from 'src/components/header'
-import Footer from 'src/components/footer'
+import Header from 'src/features/header'
+import Footer from 'src/features/footer'
 import { Toaster } from 'src/components/ui/toaster'
+
+import { cn } from 'src/lib/utils'
+import './globals.css'
 
 const manrope = Manrope({ subsets: ['latin'] })
 
