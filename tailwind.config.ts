@@ -24,7 +24,7 @@ const config = {
         'bg-cva': "url('../../public/bgCTA.png')",
       }),
       backgroundColor: {
-        primary: '#141414',
+        primary: '#fff',
       },
       colors: {
         border: 'hsl(var(--border))',
