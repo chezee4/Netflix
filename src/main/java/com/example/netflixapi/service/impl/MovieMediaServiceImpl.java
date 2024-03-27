@@ -27,7 +27,7 @@ public class MovieMediaServiceImpl implements MovieMediaService {
     public Movie uploadPhoto(Integer movieId, MultipartFile image) {
         Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
         try {
-            String imageUrl = saveFile(image);
+            String imageUrl = saveFile(image, "photo/");
             movie.setImage(imageUrl);
             return movieRepository.save(movie);
         } catch (IOException e) {
@@ -40,7 +40,7 @@ public class MovieMediaServiceImpl implements MovieMediaService {
     public Movie uploadVideo(Integer movieId, MultipartFile video) {
         Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
         try {
-            String videoUrl = saveFile(video);
+            String videoUrl = saveFile(video, "video/");
             movie.setVideo(videoUrl);
             return movieRepository.save(movie);
         } catch (IOException e) {
@@ -49,10 +49,10 @@ public class MovieMediaServiceImpl implements MovieMediaService {
         }
     }
 
-    private String saveFile(MultipartFile file) throws IOException {
+    private String saveFile(MultipartFile file, String keyName) throws IOException {
         String bucketName = "makshon-netflix-api-bucket";
         String fileName = file.getOriginalFilename();
-        String key = "photo/" + fileName;
+        String key = keyName + fileName;
 
         try {
             InputStream inputStream = file.getInputStream();
