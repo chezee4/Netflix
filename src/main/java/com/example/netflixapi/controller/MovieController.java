@@ -19,7 +19,7 @@ public class MovieController {
     public List<Movie> findAllMovie(){ return movieService.findAllMovie(); }
 
     @GetMapping("/{id}")
-    public Optional<Movie> findById(Integer id){ return movieService.findById(id); }
+    public Optional<Movie> findById(@PathVariable String id){ return movieService.findById(id); }
 
     @PostMapping
     public Movie saveMovie(@RequestBody Movie movie){ return movieService.saveMovie(movie); }
@@ -28,5 +28,5 @@ public class MovieController {
     public Movie updateMovie(@RequestBody Movie movie){ return movieService.updateMovie(movie); }
 
     @DeleteMapping("/{id}")
-    public void deleteMovie(Integer id){ movieService.deleteMovie(id); }
+    public void deleteMovie(@PathVariable String id){ movieService.deleteMovie(id); }
 }

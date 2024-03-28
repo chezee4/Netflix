@@ -17,12 +17,12 @@ public class MovieMediaController {
     }
 
     @PostMapping("/photo")
-    public Movie uploadPhoto(@PathVariable Integer movieId, @RequestParam("photo") MultipartFile photo) {
+    public Movie uploadPhoto(@PathVariable String movieId, @RequestParam("photo") MultipartFile photo) {
         return movieMediaService.uploadPhoto(movieId, photo);
     }
 
     @PostMapping("/video")
-    public Movie uploadVideo(@PathVariable Integer movieId, @RequestParam("video") MultipartFile video) {
+    public Movie uploadVideo(@PathVariable String movieId, @RequestParam("video") MultipartFile video) {
         return movieMediaService.uploadVideo(movieId, video);
     }
 }

@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface MovieService {
     List<Movie> findAllMovie();
-    Optional<Movie> findById(Integer id);
+    Optional<Movie> findById(String id);
     Movie saveMovie(Movie movie);
     Movie updateMovie(Movie movie);
-    void deleteMovie(Integer id);
+    void deleteMovie(String id);
 }
