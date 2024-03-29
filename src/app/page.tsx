@@ -8,12 +8,14 @@ import CarouselComments from 'src/features/carousel/comments-carousel'
 import AccordionSupport from 'src/features/support-accordion'
 import TableOfServices from 'src/features/table-of-services'
 import WelcomeSection from 'src/features/welcome-section'
+import VideoPlayer from 'src/features/video-player'
 
 export default function Home() {
   return (
     <main className="min-h-screen w-full m-auto">
       <WelcomeSection />
       <div className="flex h-full flex-col items-center gap-10 justify-between w-full max-w-[1640px] px-3 md:px-8 m-auto">
+        <VideoPlayer />
         <DevicesList />
         <CTA />
         <SupportForm />
