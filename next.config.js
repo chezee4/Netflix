@@ -5,9 +5,9 @@ const { withNextVideo } = require('next-video/process')
 const nextConfig = {}
 
 module.exports = withNextVideo(nextConfig, {
-  provider: 'aws',
+  provider: 'amazon-s3',
   providerConfig: {
-    aws: {
+    'amazon-s3': {
       accessKeyId: 'AKIA2UC3DSKSD4E75R3K',
       secretAccessKey: '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',
       region: 'eu-north-1',
