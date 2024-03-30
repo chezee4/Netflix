@@ -1,0 +1,19 @@
+{
+  "status": "ready",
+  "originalFilePath": "https://makshon-netflix-api-bucket.s3.eu-north-1.amazonaws.com/videos%5CIMG_0088.MP4",
+  "provider": "amazon-s3",
+  "providerMetadata": {
+    "amazon-s3": {
+      "endpoint": "https://s3.eu-north-1.amazonaws.com",
+      "bucket": "makshon-netflix-api-bucket",
+      "key": "videos/IMG_0088.MP4"
+    }
+  },
+  "createdAt": 1711765308878,
+  "updatedAt": 1711765311776,
+  "sources": [
+    {
+      "src": "https://makshon-netflix-api-bucket.s3.eu-north-1.amazonaws.com/videos/IMG_0088.MP4"
+    }
+  ]
+}

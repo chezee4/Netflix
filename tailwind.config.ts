@@ -26,6 +26,9 @@ const config = {
       backgroundColor: {
         primary: '#fff',
       },
+      accentColor: {
+        DEFAULT: '#E50000',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
