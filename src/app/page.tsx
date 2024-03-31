@@ -9,6 +9,7 @@ import AccordionSupport from 'src/features/support-accordion'
 import TableOfServices from 'src/features/table-of-services'
 import WelcomeSection from 'src/features/welcome-section'
 import VideoPlayer from 'src/features/video-player'
+import DescriptionFilm from 'src/features/description-film'
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <VideoPlayer />
         <DevicesList />
         <CTA />
+        <DescriptionFilm />
         <SupportForm />
         <CarouselComments />
         <CarouselAvatars />
