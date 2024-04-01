@@ -5,12 +5,13 @@ import AccordionSupport from 'src/features/support-accordion'
 import ServiceList from 'src/features/services-list'
 import CTA from 'src/features/cta'
 import SectionLayout from 'src/layouts/section-layout'
+import Wrapper from 'src/layouts/wrapper'
 
 export default function HomePage() {
   return (
     <>
       <WelcomeSection />
-      <div className="flex h-full flex-col items-center justify-between w-full max-w-[1640px] px-3 md:px-8 m-auto">
+      <Wrapper>
         <SectionLayout
           title="Explore the wide variety of our films"
           subtitle="Whether you are looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new"
@@ -36,7 +37,7 @@ export default function HomePage() {
           <ServiceList />
         </SectionLayout>
         <CTA />
-      </div>
+      </Wrapper>
     </>
   )
 }

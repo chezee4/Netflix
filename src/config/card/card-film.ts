@@ -4,7 +4,7 @@ import IMG3 from 'src/../public/IMG3.jpg'
 import IMG4 from 'src/../public/IMG4.jpg'
 export const list = [
   {
-    title: 'The Shawshank Redemption',
+    title: 'Shawshank Redemption',
     duration: '45min',
     img: IMG1,
     numberOfViews: '2K',
@@ -28,7 +28,7 @@ export const list = [
     numberOfViews: '860',
   },
   {
-    title: 'Witness for the Prosecution',
+    title: 'Witness for Prosecution',
     duration: '1h 10min',
     img: IMG2,
     numberOfViews: '2.5k',

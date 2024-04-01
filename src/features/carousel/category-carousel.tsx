@@ -24,9 +24,7 @@ type CaruselProps = {
 
 export default function CarouselCategory({ title, text, className }: CaruselProps) {
   return (
-    <div
-      className={cn(' w-full text-white max-w-[1450px] mb-16 m-auto ', className)}
-    >
+    <div className={cn(' w-full text-white max-w-[1450px] m-auto mb-16', className)}>
       <Carousel
         opts={{
           align: 'start',
