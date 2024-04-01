@@ -5,12 +5,12 @@ import { CiCalendar } from 'react-icons/ci'
 import { LuLanguages } from 'react-icons/lu'
 import { CiStar } from 'react-icons/ci'
 import { HiOutlineSquares2X2 } from 'react-icons/hi2'
-import Image from 'next/image'
+import { ContentWrapper } from 'src/layouts/content-wrapper'
 import Avatar from 'src/components/ui/avatar'
 
 export default function DescriptionFilm() {
   return (
-    <aside className="px-5 sm:px-10 pt-10 pb-6 max-w-lg w-full mx-auto bg-black-10 border-black-15 border rounded-xl mb-10">
+    <ContentWrapper as="aside" variant="secondary" className=" max-w-lg">
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mb-4">
         <CiCalendar className=" text-2xl" />
         <span> Released Year</span>
@@ -107,6 +107,6 @@ export default function DescriptionFilm() {
           </p>
         </div>
       </Chap>
-    </aside>
+    </ContentWrapper>
   )
 }

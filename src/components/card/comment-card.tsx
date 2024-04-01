@@ -1,5 +1,6 @@
 import Chap from 'src/components/ui/chap'
 import RatingStars from 'src/components/rating-stars'
+import { ContentWrapper } from 'src/layouts/content-wrapper'
 
 type CommentCardProps = {
   name: string
@@ -15,7 +16,7 @@ export const CommentCard: React.FC<CommentCardProps> = ({
   comment,
 }) => {
   return (
-    <div className=" h-full bg-black-6 border-black-15 border rounded-xl px-6 py-10 lg:p-10">
+    <ContentWrapper variant="card" className=" h-full ">
       <div className="flex justify-between items-center gap-2 mb-6">
         <div>
           <h4 className="text-white text-sm sm:text-xl font-medium line-clamp-1">
@@ -34,6 +35,6 @@ export const CommentCard: React.FC<CommentCardProps> = ({
         </Chap>
       </div>
       <p className="text-gray-60 text-xs sm:text-sm line-clamp-3">{comment}</p>
-    </div>
+    </ContentWrapper>
   )
 }

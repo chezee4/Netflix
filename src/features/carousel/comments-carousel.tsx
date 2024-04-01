@@ -1,9 +1,5 @@
 'use client'
-
-import { HiPlus } from 'react-icons/hi'
 import { comments } from 'src/config/film/comments'
-
-import { Button } from 'src/components/ui/button'
 import { CommentCard } from 'src/components/card/comment-card'
 import {
   Carousel,
@@ -14,10 +10,11 @@ import {
   CarouselPagination,
 } from 'src/components/ui/carousel'
 import { FormForAddComments } from '../form/comment-form'
+import { ContentWrapper } from 'src/layouts/content-wrapper'
 
 export default function CarouselComments() {
   return (
-    <div className="px-2 sm:px-5 md:px-10 pb-5 pt-5 sm:pt-10 max-w-[920px] w-full mx-auto  bg-black-10 border-black-15 border rounded-xl mb-10 ">
+    <ContentWrapper variant="carousel" className="max-w-[920px]">
       <div className=" relative">
         <div className=" flex justify-between items-center mb-5">
           <h3 className=" text-gray-65 text-sm sm:text-lg leading-[150%] font-bold">
@@ -51,6 +48,6 @@ export default function CarouselComments() {
           </div>
         </Carousel>
       </div>
-    </div>
+    </ContentWrapper>
   )
 }
