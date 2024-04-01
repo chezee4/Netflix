@@ -23,7 +23,7 @@ export default function DeviceCard({ title, description, Icon }: DeviceCardProps
   return (
     <ContentWrapper
       variant="card"
-      className=" relative cursor-pointer group bg-device-card p-[25px_10px_25px_25px] sm:p-10"
+      className=" relative cursor-pointer group bg-device-card p-[25px_10px_25px_25px] sm:p-10 mb-0"
       onMouseMove={handleMouseMove}
     >
       <motion.div

@@ -14,15 +14,19 @@ import {
 import { list } from 'src/config/card/card-film'
 import { AiFillClockCircle } from 'react-icons/ai'
 import { IoEyeSharp } from 'react-icons/io5'
+import { cn } from 'src/lib/utils'
 
 type CaruselProps = {
   title: string
   text?: string
+  className?: string
 }
 
-export default function CarouselCategory({ title, text }: CaruselProps) {
+export default function CarouselCategory({ title, text, className }: CaruselProps) {
   return (
-    <div className=" w-full text-white max-w-[1450px] mb-16 m-auto ">
+    <div
+      className={cn(' w-full text-white max-w-[1450px] mb-16 m-auto ', className)}
+    >
       <Carousel
         opts={{
           align: 'start',
@@ -48,14 +52,19 @@ export default function CarouselCategory({ title, text }: CaruselProps) {
                 Cardbody={<CardBodyImage url={item.img} />}
                 Cardfooter={
                   <CardFooter className="justify-between">
-                    <Chap>
-                      <AiFillClockCircle size={15} />
-                      <h4 className="text-xs xs:text-sm">{item.duration}</h4>
-                    </Chap>
-                    <Chap>
-                      <IoEyeSharp size={15} />
-                      <h4 className="text-xs xs:text-sm">{item.numberOfViews}</h4>
-                    </Chap>
+                    <h3 className="text-sm sm:text-xl font-medium line-clamp-1">
+                      {item.title}
+                    </h3>
+                    <div className="flex justify-between ">
+                      <Chap>
+                        <AiFillClockCircle size={15} />
+                        <h4 className="text-xs xs:text-sm">{item.duration}</h4>
+                      </Chap>
+                      <Chap>
+                        <IoEyeSharp size={15} />
+                        <h4 className="text-xs xs:text-sm">{item.numberOfViews}</h4>
+                      </Chap>
+                    </div>
                   </CardFooter>
                 }
               />

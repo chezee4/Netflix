@@ -7,5 +7,5 @@ type CardFooterProps = {
 }
 
 export default function CardFooter({ className, children }: CardFooterProps) {
-  return <div className={cn('w-full flex items-center', className)}>{children}</div>
+  return <div className={cn('w-full flex flex-col gap-3', className)}>{children}</div>
 }

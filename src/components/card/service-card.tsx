@@ -16,7 +16,7 @@ export default function ServiceCard({
   return (
     <ContentWrapper
       variant="card"
-      className="relative cursor-pointer max-w-[500px] bg-black-10"
+      className="relative cursor-pointer max-w-[500px] bg-black-10 mb-0"
     >
       <h3 className="text-white text-2xl font-medium mb-4">{title}</h3>
       <p className=" text-gray-60 text-lg selection:bg-red-90 selection:text-black-8 line-clamp-3">
