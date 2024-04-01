@@ -9,7 +9,7 @@ import {
 
 export default function ServiceList() {
   return (
-    <div className=" max-w-[1500px] w-full mx-auto mb-10 ">
+    <div className="w-full mx-auto mb-10 ">
       <Carousel
         opts={{
           align: 'start',
