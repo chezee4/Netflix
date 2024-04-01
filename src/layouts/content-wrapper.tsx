@@ -27,13 +27,14 @@ export interface ContentWrapperProps
 }
 
 const ContentWrapper = React.forwardRef<HTMLDivElement, ContentWrapperProps>(
-  ({ className, variant, as = 'div', ...props }) => {
+  ({ className, variant, as = 'div', ...props },ref) => {
     const Component = as
 
     return (
       <Component
         className={cn(contentWrapperVariants({ variant, className }))}
         {...props}
+        ref={ref}
       />
     )
   },

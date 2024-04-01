@@ -22,7 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={cn(manrope.className, '')}>
         <ThemeProvider attribute="class" defaultTheme="system">
           <Header />
-          {children}
+          <main className="min-h-screen w-full m-auto">{children}</main>
           <Footer />
           <Toaster />
         </ThemeProvider>
