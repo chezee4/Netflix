@@ -10,10 +10,11 @@ import {
   CarouselNext,
   CarouselPagination,
 } from 'src/components/ui/carousel'
+import { ContentWrapper } from 'src/layouts/content-wrapper'
 
 export default function CarouselAvatars() {
   return (
-    <div className="px-5 sm:px-10 pt-10 pb-6 max-w-[820px] w-full mx-auto  bg-black-10 border-black-15 border rounded-xl mb-10 ">
+    <ContentWrapper variant="carousel" className=" max-w-[820px] ">
       <div className=" relative">
         <Carousel
           opts={{
@@ -44,6 +45,6 @@ export default function CarouselAvatars() {
           </div>
         </Carousel>
       </div>
-    </div>
+    </ContentWrapper>
   )
 }

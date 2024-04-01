@@ -2,6 +2,8 @@
 import Image from 'next/image'
 import { motion, useMotionTemplate, useMotionValue } from 'framer-motion'
 import { MouseEvent } from 'react'
+import { ContentWrapper } from 'src/layouts/content-wrapper'
+
 type DeviceCardProps = {
   title: string
   description: string
@@ -19,8 +21,9 @@ export default function DeviceCard({ title, description, Icon }: DeviceCardProps
     mouseY.set(clientY - top)
   }
   return (
-    <div
-      className=" relative cursor-pointer group w-full bg-device-card border-black-15 border rounded-xl p-[25px_10px_25px_25px] sm:p-10 "
+    <ContentWrapper
+      variant="card"
+      className=" relative cursor-pointer group bg-device-card p-[25px_10px_25px_25px] sm:p-10"
       onMouseMove={handleMouseMove}
     >
       <motion.div
@@ -49,6 +52,6 @@ export default function DeviceCard({ title, description, Icon }: DeviceCardProps
       <p className=" text-gray-60 text-base xs:text-lg selection:bg-red-90 selection:text-black-8">
         {description}
       </p>
-    </div>
+    </ContentWrapper>
   )
 }

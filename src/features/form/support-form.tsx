@@ -22,6 +22,7 @@ import { Label } from 'src/components/ui/label'
 import { countries } from 'src/config/countries'
 import { Icon } from '@iconify/react'
 import { SupportFormSchema, cn } from 'src/lib/utils'
+import { ContentWrapper } from 'src/layouts/content-wrapper'
 
 export default function SupportForm() {
   const form = useForm<z.infer<typeof SupportFormSchema>>({
@@ -51,7 +52,7 @@ export default function SupportForm() {
     setOpenListCountries(!openListCountries)
   }
   return (
-    <div className="max-w-[800px] w-full bg-black-6 border border-black-15 rounded-lg p-8">
+    <ContentWrapper variant="form" className="max-w-[800px]">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] grid-rows-[auto] gap-x-5 gap-y-10 py-4">
@@ -211,6 +212,6 @@ export default function SupportForm() {
           </div>
         </form>
       </Form>
-    </div>
+    </ContentWrapper>
   )
 }
