@@ -10,6 +10,7 @@ import TableOfServices from 'src/features/table-of-services'
 import WelcomeSection from 'src/features/welcome-section'
 import VideoPlayer from 'src/features/video-player'
 import DescriptionFilm from 'src/features/description-film'
+import BannerCarousel from 'src/features/carousel/banner-carousel'
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <div className="flex h-full flex-col items-center gap-10 justify-between w-full max-w-[1640px] px-3 md:px-8 m-auto">
         <VideoPlayer />
         <DevicesList />
+        <BannerCarousel />
         <CTA />
         <DescriptionFilm />
         <SupportForm />
