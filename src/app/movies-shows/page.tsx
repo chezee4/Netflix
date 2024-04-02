@@ -1,19 +1,13 @@
-import React from 'react'
-import Image from 'next/image'
 import MoviesByCategory from 'src/features/movies-by-category'
 import Wrapper from 'src/layouts/wrapper'
-import BgMovies from 'src/../public/BgMovies.jpg'
+import BannerCarousel from 'src/features/carousel/banner-carousel'
 
 export default function MoviesShowsPage() {
   return (
-    <>
-      <Wrapper>
-        <div className="w-full overflow-hidden my-32 rounded-lg">
-          <Image src={BgMovies} alt="Movies" />
-        </div>
-        <MoviesByCategory />
-        <MoviesByCategory />
-      </Wrapper>
-    </>
+    <Wrapper>
+      <BannerCarousel />
+      <MoviesByCategory />
+      <MoviesByCategory />
+    </Wrapper>
   )
 }
