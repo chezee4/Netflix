@@ -1,7 +1,7 @@
 package com.example.netflixapi.model;
 
 import jakarta.persistence.*;
-        import lombok.AllArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,7 +14,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mov_id")
-    private Integer id;
+    private String id;
     @Column(name = "name")
     private String name;
     @Column(name = "image")
