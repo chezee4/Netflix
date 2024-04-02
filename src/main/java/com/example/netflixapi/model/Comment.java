@@ -9,18 +9,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "movie")
-public class Movie {
+@Table(name = "comment")
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "mov_id")
+    @Column(name = "coment_id")
     private String id;
     @Column(name = "name")
     private String name;
-    @Column(name = "image")
-    private String image;
-    @Column(name = "alt")
-    private String alt;
-    @Column(name = "video")
-    private String video;
+    @Column(name = "comment")
+    private String comment;
+    @Column(name = "country")
+    private String country;
+    @Column(name = "rating")
+    private Integer rating;
 }

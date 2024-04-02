@@ -24,7 +24,7 @@ public class MovieMediaServiceImpl implements MovieMediaService {
     }
 
     @Override
-    public Movie uploadPhoto(Integer movieId, MultipartFile image) {
+    public Movie uploadPhoto(String movieId, MultipartFile image) {
         Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
         try {
             String imageUrl = saveFile(image);
@@ -37,7 +37,7 @@ public class MovieMediaServiceImpl implements MovieMediaService {
     }
 
     @Override
-    public Movie uploadVideo(Integer movieId, MultipartFile video) {
+    public Movie uploadVideo(String movieId, MultipartFile video) {
         Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
         try {
             String videoUrl = saveFile(video);

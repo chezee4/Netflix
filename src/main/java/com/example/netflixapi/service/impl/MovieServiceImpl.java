@@ -20,7 +20,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Optional<Movie> findById(Integer id) {
+    public Optional<Movie> findById(String id) {
         return movieRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void deleteMovie(Integer id) {
+    public void deleteMovie(String id) {
         movieRepository.deleteById(id);
     }
 }
