@@ -1,4 +1,5 @@
 import { StaticImageData } from 'next/image'
+import { users } from 'src/config/users'
 
 export type FileDescriptionT = {
   releasedYear: number
@@ -19,3 +20,5 @@ export type FileDescriptionT = {
     avatar: StaticImageData
   }
 }
+
+export  type User = (typeof users)[number]
