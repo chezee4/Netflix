@@ -1,5 +1,4 @@
 'use client'
-import { useState } from 'react'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -14,12 +13,11 @@ import { ModalForUserFrom } from 'src/components/user-modal'
 import { User } from 'src/types'
 import { users } from 'src/config/users'
 
-type DropdownMenuCarProps = {
+type DropdownMenuUserProps = {
   user: User
 }
 
-export const DropdownMenuUser = ({ user }: DropdownMenuCarProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+export const DropdownMenuUser = ({ user }: DropdownMenuUserProps) => {
   const handleDeleteCar = (id: string) => {
     let usersLocalStorage = JSON.parse(localStorage.getItem('users') || '[]')
     if (!usersLocalStorage.length) {

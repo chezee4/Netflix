@@ -1,6 +1,14 @@
 import { StaticImageData } from 'next/image'
 import { users } from 'src/config/users'
 
+export type Film = {
+  title: string
+  duration: string
+  img: StaticImageData
+  numberOfViews: string
+
+}
+
 export type FileDescriptionT = {
   releasedYear: number
   availableLanguages: string[]
