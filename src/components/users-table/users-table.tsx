@@ -26,11 +26,13 @@ import {
   TableHeader,
   TableRow,
 } from 'src/components/ui/table'
+import { ModalForUserFrom } from 'src/components/user-modal'
 import { ChevronDown } from 'lucide-react'
 import { Button } from 'src/components/ui/button'
 
 import { columns } from 'src/components/users-table/columns'
 import { users } from 'src/config/users'
+import { HiPlusSm } from 'react-icons/hi'
 
 export function UsersTable() {
   const [sorting, setSorting] = React.useState<SortingState>([])
@@ -59,7 +61,7 @@ export function UsersTable() {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4">
+      <div className="flex items-center justify-between py-4">
         <Input
           placeholder="Filter emails..."
           value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
@@ -68,30 +70,45 @@ export function UsersTable() {
           }
           className="max-w-sm"
         />
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="secondary" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-3 w-3" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter(column => column.getCanHide())
-              .map(column => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={value => column.toggleVisibility(!!value)}
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                )
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className='flex items-center gap-3'>
+          <ModalForUserFrom
+            trigger={
+              <Button
+                variant="outline"
+                size="default"
+                className="flex items-center gap-1 text-xs sm:text-sm lg:text-sm px-3"
+              >
+                <HiPlusSm color="text-gray-75" className=" text-base sm:text-xl" />
+                <span>Add User</span>
+              </Button>
+            }
+          />
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="secondary" className="ml-auto">
+                Columns <ChevronDown className="ml-2 h-3 w-3" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter(column => column.getCanHide())
+                .map(column => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={value => column.toggleVisibility(!!value)}
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  )
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
       <div className="rounded-md border">
         <Table>
