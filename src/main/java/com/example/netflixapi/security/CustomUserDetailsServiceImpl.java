@@ -1,9 +1,8 @@
-package com.example.netflixapi.service.impl;
+package com.example.netflixapi.security;
 
 import com.example.netflixapi.model.Role;
 import com.example.netflixapi.model.UserEntity;
 import com.example.netflixapi.repository.UserRepository;
-import io.micrometer.observation.annotation.Observed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
