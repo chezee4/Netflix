@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Table(name = "comment")
 public class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "coment_id")
     private String id;
     @Column(name = "name")
