@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.UUID;
 
 @Service
 public class MovieMediaServiceImpl implements MovieMediaService {
@@ -24,7 +25,7 @@ public class MovieMediaServiceImpl implements MovieMediaService {
     }
 
     @Override
-    public Movie uploadPhoto(String movieId, MultipartFile image) {
+    public Movie uploadPhoto(UUID movieId, MultipartFile image) {
         Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
         try {
             String imageUrl = saveFile(image, "photo/");
@@ -37,7 +38,7 @@ public class MovieMediaServiceImpl implements MovieMediaService {
     }
 
     @Override
-    public Movie uploadVideo(String movieId, MultipartFile video) {
+    public Movie uploadVideo(UUID movieId, MultipartFile video) {
         Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
         try {
             String videoUrl = saveFile(video, "video/");

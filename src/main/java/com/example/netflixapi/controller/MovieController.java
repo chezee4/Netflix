@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/movies")
@@ -19,7 +20,7 @@ public class MovieController {
     public List<Movie> findAllMovie(){ return movieService.findAllMovie(); }
 
     @GetMapping("/{id}")
-    public Optional<Movie> findById(@PathVariable String id){ return movieService.findById(id); }
+    public Optional<Movie> findById(@PathVariable UUID id){ return movieService.findById(id); }
 
     @PostMapping
     public Movie saveMovie(@RequestBody Movie movie){ return movieService.saveMovie(movie); }
@@ -28,5 +29,5 @@ public class MovieController {
     public Movie updateMovie(@RequestBody Movie movie){ return movieService.updateMovie(movie); }
 
     @DeleteMapping("/{id}")
-    public void deleteMovie(@PathVariable String id){ movieService.deleteMovie(id); }
+    public void deleteMovie(@PathVariable UUID id){ movieService.deleteMovie(id); }
 }
