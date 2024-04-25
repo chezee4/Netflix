@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -20,7 +21,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Optional<Movie> findById(String id) {
+    public Optional<Movie> findById(UUID id) {
         return movieRepository.findById(id);
     }
 
@@ -35,7 +36,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void deleteMovie(String id) {
+    public void deleteMovie(UUID id) {
         movieRepository.deleteById(id);
     }
 }

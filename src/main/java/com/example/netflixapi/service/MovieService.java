@@ -4,11 +4,12 @@ import com.example.netflixapi.model.Movie;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface MovieService {
     List<Movie> findAllMovie();
-    Optional<Movie> findById(String id);
+    Optional<Movie> findById(UUID id);
     Movie saveMovie(Movie movie);
     Movie updateMovie(Movie movie);
-    void deleteMovie(String id);
+    void deleteMovie(UUID id);
 }

@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/movies/{movieId}/media")
 public class MovieMediaController {
@@ -17,12 +19,12 @@ public class MovieMediaController {
     }
 
     @PostMapping("/photo")
-    public Movie uploadPhoto(@PathVariable String movieId, @RequestParam("photo") MultipartFile photo) {
+    public Movie uploadPhoto(@PathVariable UUID movieId, @RequestParam("photo") MultipartFile photo) {
         return movieMediaService.uploadPhoto(movieId, photo);
     }
 
     @PostMapping("/video")
-    public Movie uploadVideo(@PathVariable String movieId, @RequestParam("video") MultipartFile video) {
+    public Movie uploadVideo(@PathVariable UUID movieId, @RequestParam("video") MultipartFile video) {
         return movieMediaService.uploadVideo(movieId, video);
     }
 }

@@ -5,15 +5,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "comment")
+@Table(name = "comments")
 public class Comment {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "coment_id")
-    private String id;
+    private UUID id;
     @Column(name = "name")
     private String name;
     @Column(name = "comment")
