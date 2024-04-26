@@ -51,7 +51,7 @@ public class MovieMediaServiceImpl implements MovieMediaService {
     }
 
     private String saveFile(MultipartFile file, String keyName) throws IOException {
-        String bucketName = "makshon-netflix-api-bucket";
+        String bucketName = System.getenv("AWS_BUCKET_NAME");
         String fileName = file.getOriginalFilename();
         String key = keyName + fileName;
 

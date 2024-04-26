@@ -1,5 +1,6 @@
 package com.example.netflixapi.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -10,10 +11,14 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 @Configuration
 public class AmazonS3Config {
 
-    String accessKey = "AKIA2UC3DSKSD4E75R3K";
-    String secretKey = "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";
-    String region = "eu-north-1";
-    String bucketName = "makshon-netflix-api-bucket";
+    @Value("${AWS_ACCESS_KEY}")
+    String accessKey;
+    @Value("${AWS_SECRET_KEY}")
+    String secretKey;
+    @Value("${AWS_REGION}")
+    String region;
+    @Value("${AWS_BUCKET_NAME}")
+    String bucketName;
 
     @Bean
     public AmazonS3 amazonS3Client() {
