@@ -4,7 +4,7 @@ import lombok.Data;
 import org.springframework.web.multipart.MultipartFile;
 
 @Data
-public class ActorRequestDto {
+public class ActorRequestDTO {
     private String name;
     private MultipartFile avatar;
 }

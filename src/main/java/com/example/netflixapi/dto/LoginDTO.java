@@ -3,7 +3,7 @@ package com.example.netflixapi.dto;
 import lombok.Data;
 
 @Data
-public class RegisterDto {
+public class LoginDTO {
     private String username;
     private String password;
 }
