@@ -4,6 +4,7 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.example.netflixapi.config.AmazonS3Config;
 import com.example.netflixapi.model.Movie;
+import com.example.netflixapi.model.MovieMedia;
 import com.example.netflixapi.repository.MovieRepository;
 import com.example.netflixapi.service.MovieMediaService;
 import com.example.netflixapi.util.FileUploadUtil;
@@ -31,16 +32,16 @@ public class MovieMediaServiceImpl implements MovieMediaService {
     @Override
     public Movie uploadMedia(UUID movieId, MultipartFile photo, MultipartFile video) {
         Movie movie = movieRepository.findById(movieId).orElseThrow(() -> new RuntimeException("Movie not found"));
-
+        MovieMedia movieMedia = new MovieMedia();
         try {
             if (photo != null && !photo.isEmpty()) {
                 String photoUrl = FileUploadUtil.saveFile(s3Client, amazonS3Config, photo, "photo/");
-                movie.setImageUrl(photoUrl);
+                movieMedia.setImageUrl(photoUrl);
             }
 
             if (video != null && !video.isEmpty()) {
                 String videoUrl = FileUploadUtil.saveFile(s3Client, amazonS3Config, video, "video/");
-                movie.setVideoUrl(videoUrl);
+                movieMedia.setVideoUrl(videoUrl);
             }
 
             return movieRepository.save(movie);

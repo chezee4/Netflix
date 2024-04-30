@@ -38,38 +38,48 @@ public class MovieController {
     public Optional<Movie> findById(@PathVariable UUID id){ return movieService.findById(id); }
 
     @PostMapping("/upload")
-    public Movie uploadMovieWithMedia(@RequestParam("title") String title,
-                                      @RequestParam("alt") String alt,
+    public Movie uploadMovieWithMedia(@RequestBody Movie movie,
                                       @RequestParam("photo") MultipartFile photo,
                                       @RequestParam("video") MultipartFile video,
                                       @RequestParam("actors") Set<ActorRequestDTO> actors,
                                       @RequestParam("director") DirectorRequestDTO directors,
                                       @RequestParam("music_director") MusicDirectorRequestDTO musicDirectors){
+        addActors(actors);
+        addDirector(directors);
+        addMusicDirector(musicDirectors);
+        movie = saveMovie(movie);
+        movie = uploadMedia(movie.getId(), photo, video);
+        return movie;
+    }
+
+    private void addActors(Set<ActorRequestDTO> actors) {
         for (ActorRequestDTO actorRequestDto : actors) {
             String name = actorRequestDto.getName();
             MultipartFile avatar = actorRequestDto.getAvatar();
             actorService.addActor(name, avatar);
         }
+    }
 
+    private void addDirector(DirectorRequestDTO directors) {
         String directorsName = directors.getName();
         String directorsCountry = directors.getCountry();
         MultipartFile directorsAvatar = directors.getAvatar();
         directorService.addDirector(directorsName, directorsAvatar, directorsCountry);
+    }
 
+    private void addMusicDirector(MusicDirectorRequestDTO musicDirectors) {
         String musicDirectorsName = musicDirectors.getName();
         String musicDirectorsCountry = musicDirectors.getCountry();
         MultipartFile musicDirectorsAvatar = musicDirectors.getAvatar();
         musicDirectorService.addMusicDirector(musicDirectorsName, musicDirectorsCountry, musicDirectorsAvatar);
+    }
 
-        Movie movie = new Movie();
-        movie.setTitle(title);
-        movie.setAlt(alt);
+    private Movie saveMovie(Movie movie) {
+        return movieService.saveMovie(movie);
+    }
 
-        movie = movieService.saveMovie(movie);
-
-        movie = movieMediaService.uploadMedia(movie.getId(), photo, video);
-
-        return movie;
+    private Movie uploadMedia(UUID movieId, MultipartFile photo, MultipartFile video) {
+        return movieMediaService.uploadMedia(movieId, photo, video);
     }
 
     @PutMapping

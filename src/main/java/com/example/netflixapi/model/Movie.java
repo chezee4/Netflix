@@ -19,12 +19,26 @@ public class Movie {
     private UUID id;
     @Column(name = "title")
     private String title;
-    @Column(name = "image_url")
-    private String imageUrl;
     @Column(name = "alt")
     private String alt;
-    @Column(name = "video_url")
-    private String videoUrl;
+    @Column(name = "description")
+    private String description;
+    @Column(name = "release_year")
+    private int releaseYear;
+    @Column(name = "duration")
+    private int duration;
+    @Column(name = "rating_imdb")
+    private double ratingIMDb;
+    @Column(name = "rating_streamvibe")
+    private double ratingStreamVibe;
+    @ElementCollection
+    @CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "mov_id"))
+    @Column(name = "genre")
+    private List<String> genres;
+    @ElementCollection
+    @CollectionTable(name = "movie_languages", joinColumns = @JoinColumn(name = "mov_id"))
+    @Column(name = "language")
+    private List<String> availableLanguages;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "movie_actors",
@@ -39,4 +53,11 @@ public class Movie {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "music_director_id")
     private MusicDirector musicDirector;
+
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Set<Comment> comments = new HashSet<>();
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "movie_media_id")
+    private MovieMedia movieMedia;
 }
