@@ -19,10 +19,10 @@ public class Movie {
     private UUID id;
     @Column(name = "name")
     private String name;
-    @Column(name = "image")
-    private String image;
+    @Column(name = "image_url")
+    private String imageUrl;
     @Column(name = "alt")
     private String alt;
-    @Column(name = "video")
-    private String video;
+    @Column(name = "video_url")
+    private String videoUrl;
 }

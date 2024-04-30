@@ -6,6 +6,5 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.UUID;
 
 public interface MovieMediaService {
-    Movie uploadPhoto(UUID movieId, MultipartFile image);
-    Movie uploadVideo(UUID movieId, MultipartFile video);
+    Movie uploadMedia(UUID movieId, MultipartFile photo, MultipartFile video);
 }
