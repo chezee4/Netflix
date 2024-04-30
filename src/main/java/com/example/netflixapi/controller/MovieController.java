@@ -2,11 +2,9 @@ package com.example.netflixapi.controller;
 
 import com.example.netflixapi.dto.ActorRequestDTO;
 import com.example.netflixapi.dto.DirectorRequestDTO;
+import com.example.netflixapi.dto.MusicDirectorRequestDTO;
 import com.example.netflixapi.model.Movie;
-import com.example.netflixapi.service.ActorService;
-import com.example.netflixapi.service.DirectorService;
-import com.example.netflixapi.service.MovieMediaService;
-import com.example.netflixapi.service.MovieService;
+import com.example.netflixapi.service.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,12 +21,15 @@ public class MovieController {
     private final MovieMediaService movieMediaService;
     private final ActorService actorService;
     private final DirectorService directorService;
+    private final MusicDirectorService musicDirectorService;
 
-    public MovieController(MovieService movieService, MovieMediaService movieMediaService, ActorService actorService, DirectorService directorService) {
+    public MovieController(MovieService movieService, MovieMediaService movieMediaService, ActorService actorService,
+                           DirectorService directorService, MusicDirectorService musicDirectorService){
         this.movieMediaService = movieMediaService;
         this.movieService = movieService;
         this.actorService = actorService;
         this.directorService = directorService;
+        this.musicDirectorService = musicDirectorService;
     }
     @GetMapping
     public List<Movie> findAllMovie(){ return movieService.findAllMovie(); }
@@ -42,7 +43,8 @@ public class MovieController {
                                       @RequestParam("photo") MultipartFile photo,
                                       @RequestParam("video") MultipartFile video,
                                       @RequestParam("actors") Set<ActorRequestDTO> actors,
-                                      @RequestParam("director") DirectorRequestDTO directors){
+                                      @RequestParam("director") DirectorRequestDTO directors,
+                                      @RequestParam("music_director") MusicDirectorRequestDTO musicDirectors){
         for (ActorRequestDTO actorRequestDto : actors) {
             String name = actorRequestDto.getName();
             MultipartFile avatar = actorRequestDto.getAvatar();
@@ -53,6 +55,11 @@ public class MovieController {
         String directorsCountry = directors.getCountry();
         MultipartFile directorsAvatar = directors.getAvatar();
         directorService.addDirector(directorsName, directorsAvatar, directorsCountry);
+
+        String musicDirectorsName = musicDirectors.getName();
+        String musicDirectorsCountry = musicDirectors.getCountry();
+        MultipartFile musicDirectorsAvatar = musicDirectors.getAvatar();
+        musicDirectorService.addMusicDirector(musicDirectorsName, musicDirectorsCountry, musicDirectorsAvatar);
 
         Movie movie = new Movie();
         movie.setTitle(title);

@@ -35,4 +35,8 @@ public class Movie {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "director_id")
     private Director director;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "music_director_id")
+    private MusicDirector musicDirector;
 }
