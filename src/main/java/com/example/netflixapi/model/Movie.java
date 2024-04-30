@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -17,12 +17,18 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "mov_id")
     private UUID id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "title")
+    private String title;
     @Column(name = "image_url")
     private String imageUrl;
     @Column(name = "alt")
     private String alt;
     @Column(name = "video_url")
     private String videoUrl;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "movie_actors",
+            joinColumns = @JoinColumn(name = "mov_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    private Set<Actor> actors = new HashSet<>();
 }
