@@ -1,9 +1,10 @@
 package com.example.netflixapi.controller;
 
-import com.example.netflixapi.dto.ActorRequestDto;
-import com.example.netflixapi.model.Actor;
+import com.example.netflixapi.dto.ActorRequestDTO;
+import com.example.netflixapi.dto.DirectorRequestDTO;
 import com.example.netflixapi.model.Movie;
 import com.example.netflixapi.service.ActorService;
+import com.example.netflixapi.service.DirectorService;
 import com.example.netflixapi.service.MovieMediaService;
 import com.example.netflixapi.service.MovieService;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,11 +22,13 @@ public class MovieController {
     private final MovieService movieService;
     private final MovieMediaService movieMediaService;
     private final ActorService actorService;
+    private final DirectorService directorService;
 
-    public MovieController(MovieService movieService, MovieMediaService movieMediaService, @Qualifier("actorService") ActorService actorService) {
+    public MovieController(MovieService movieService, MovieMediaService movieMediaService, ActorService actorService, DirectorService directorService) {
         this.movieMediaService = movieMediaService;
         this.movieService = movieService;
         this.actorService = actorService;
+        this.directorService = directorService;
     }
     @GetMapping
     public List<Movie> findAllMovie(){ return movieService.findAllMovie(); }
@@ -38,7 +41,19 @@ public class MovieController {
                                       @RequestParam("alt") String alt,
                                       @RequestParam("photo") MultipartFile photo,
                                       @RequestParam("video") MultipartFile video,
-                                      @RequestParam("actors") Set<ActorRequestDto> actors){
+                                      @RequestParam("actors") Set<ActorRequestDTO> actors,
+                                      @RequestParam("director") DirectorRequestDTO directors){
+        for (ActorRequestDTO actorRequestDto : actors) {
+            String name = actorRequestDto.getName();
+            MultipartFile avatar = actorRequestDto.getAvatar();
+            actorService.addActor(name, avatar);
+        }
+
+        String directorsName = directors.getName();
+        String directorsCountry = directors.getCountry();
+        MultipartFile directorsAvatar = directors.getAvatar();
+        directorService.addDirector(directorsName, directorsAvatar, directorsCountry);
+
         Movie movie = new Movie();
         movie.setTitle(title);
         movie.setAlt(alt);
@@ -46,12 +61,6 @@ public class MovieController {
         movie = movieService.saveMovie(movie);
 
         movie = movieMediaService.uploadMedia(movie.getId(), photo, video);
-
-        for (ActorRequestDto actorRequestDto : actors) {
-            String name = actorRequestDto.getName();
-            MultipartFile avatar = actorRequestDto.getAvatar();
-            actorService.addActor(name, avatar);
-        }
 
         return movie;
     }

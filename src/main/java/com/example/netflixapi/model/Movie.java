@@ -31,4 +31,8 @@ public class Movie {
             joinColumns = @JoinColumn(name = "mov_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private Set<Actor> actors = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "director_id")
+    private Director director;
 }

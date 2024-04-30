@@ -1,8 +1,8 @@
 package com.example.netflixapi.controller;
 
 import com.example.netflixapi.dto.AuthResponseDTO;
-import com.example.netflixapi.dto.LoginDto;
-import com.example.netflixapi.dto.RegisterDto;
+import com.example.netflixapi.dto.LoginDTO;
+import com.example.netflixapi.dto.RegisterDTO;
 import com.example.netflixapi.model.Role;
 import com.example.netflixapi.model.UserEntity;
 import com.example.netflixapi.repository.RoleRepository;
@@ -45,7 +45,7 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto) {
+    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDTO loginDto) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginDto.getUsername(),
@@ -56,7 +56,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
+    public ResponseEntity<String> register(@RequestBody RegisterDTO registerDto) {
         if(userRepository.existsByUsername(registerDto.getUsername())) {
             return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.BAD_REQUEST);
         }
