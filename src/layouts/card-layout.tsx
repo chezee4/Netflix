@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+'use client'
 import { cn } from 'src/lib/utils'
 
 type CardLayoutProps = {
@@ -16,7 +16,7 @@ export default function CardLayout({
 }: CardLayoutProps) {
   return (
     <div
-      onClick={() => onClick()}
+      onClick={onClick}
       className="bg-black-10 rounded-lg border border-black-15 max-w-max m-auto relative"
     >
       <div className={cn('flex flex-col gap-2 p-4', className)}>

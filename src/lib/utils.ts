@@ -33,3 +33,72 @@ export const SupportFormSchema = z.object({
     .min(6, 'Question must be at least 6 characters long.')
     .max(400, 'Question must be no more than 400 characters long.'),
 })
+
+export const UploadMovieFormSchema = z.object({
+  title: z
+    .string()
+    .min(3, 'Title must be at least 3 characters long.')
+    .max(50, 'Title must be no more than 50 characters long.'),
+  releasedYear: z.number().int().min(1900, 'Year must be at least 1900.'),
+  poster: z.any().refine(val => val.length > 0, 'File is required'),
+  videoUrl: z.any().refine(val => val.length > 0, 'File is required'),
+  description: z
+    .string()
+    .min(10, 'Description must be at least 10 characters long.')
+    .max(400, 'Description must be no more than 400 characters long.'),
+  actors: z.array(
+    z.object({
+      name: z.string(),
+      country: z.string(),
+      avatar: z.any().refine(val => val.length > 0, 'File is required'),
+    }),
+  ),
+  availableLanguages: z.array(z.string()),
+  genres: z.array(z.string()),
+  rating: z.object({
+    IMDb: z.string(),
+    Streamvibe: z.string(),
+  }),
+  director: z.object({
+    name: z.string(),
+    country: z.string(),
+    avatar: z.any().refine(val => val.length > 0, 'File is required'),
+  }),
+  music: z.object({
+    name: z.string(),
+    country: z.string(),
+    avatar: z.any().refine(val => val.length > 0, 'File is required'),
+  }),
+})
+
+export const initialValues = {
+  title: '',
+  releasedYear: '',
+  poster: new FormData(),
+  videoUrl: new FormData(),
+  description: '',
+  actors: [
+    {
+      name: '',
+      country: '',
+      avatar: new FormData(),
+    },
+  ],
+  availableLanguages: [],
+  genres: [],
+  rating: {
+    IMDb: '',
+    Streamvibe: '',
+  },
+  director: {
+    name: '',
+    country: '',
+    avatar: new FormData(),
+  },
+  music: {
+    name: '',
+    country: '',
+    avatar: new FormData(),
+  },
+}
+export type TUpladMovieFormSchema = z.infer<typeof UploadMovieFormSchema>
