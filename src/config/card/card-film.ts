@@ -2,7 +2,10 @@ import IMG1 from 'src/../public/IMG1.jpg'
 import IMG2 from 'src/../public/IMG2.jpg'
 import IMG3 from 'src/../public/IMG3.jpg'
 import IMG4 from 'src/../public/IMG4.jpg'
-export const list = [
+
+import { Film } from 'src/types/index'
+
+export const list: Film[] = [
   {
     title: 'Shawshank Redemption',
     duration: '45min',
@@ -51,4 +54,4 @@ export const list = [
     img: IMG2,
     numberOfViews: '2.3K',
   },
-] as const
+]
