@@ -9,9 +9,9 @@ export default function SupportPage() {
     <Wrapper>
       <SupportSection />
       <SectionLayout
-        title="Frequently Asked Questions"
-        subtitle="Got questions? We have got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe."
-        className='mt-36'
+        title="Часто задавані питання"
+        subtitle="Маєте питання? У нас є відповіді! Перевірте наш розділ ЧАП, щоб знайти відповіді на найпоширеніші питання про StreamVibe."
+        className="mt-36"
       >
         <AccordionSupport />
       </SectionLayout>

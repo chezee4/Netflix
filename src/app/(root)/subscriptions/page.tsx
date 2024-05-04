@@ -8,15 +8,15 @@ export default function SubscriptionsPage() {
   return (
     <Wrapper>
       <SectionLayout
-        title="Choose the plan that is right for you"
-        subtitle="Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!"
+        title="Виберіть план, який вам підходить"
+        subtitle="Приєднуйтесь до StreamVibe та вибирайте з наших гнучких варіантів підписки, які розроблені для задоволення ваших переглядових вподобань. Готуйтесь до безперервних розваг!"
         className="mt-36"
       >
         <ServiceList />
       </SectionLayout>
       <SectionLayout
-        title="Compare our plans and find the right one for you"
-        subtitle="StreamVibe offers three different plans to fit your needs: Basic, Standard, and Premium. Compare the features of each plan and choose the one that's right for you."
+        title="Порівняйте наші плани та знайдіть той, який вам підходить"
+        subtitle="StreamVibe пропонує три різні плани, щоб задовольнити ваші потреби: Базовий, Стандартний та Преміум. Порівняйте особливості кожного плану та виберіть той, який вам підходить."
       >
         <TableOfServices />
       </SectionLayout>

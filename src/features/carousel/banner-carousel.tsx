@@ -49,7 +49,7 @@ export default function BannerCarousel() {
                         )}
                       >
                         <FaPlay />
-                        Play Now
+                        Дивитись зараз
                       </Link>
                       <Button
                         size="icon"

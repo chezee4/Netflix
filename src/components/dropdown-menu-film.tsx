@@ -21,19 +21,19 @@ export const DropdownMenuFilm = ({ film }: DropdownMenuFilmProps) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild > 
+      <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="h-9 w-9 p-0 ">
-          <span className="sr-only">Open menu</span>
+          <span className="sr-only">Відкрити меню</span>
           <MoreHorizontal className="h-5 w-5" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel className="mb-2">Actions</DropdownMenuLabel>
+        <DropdownMenuLabel className="mb-2">Дії</DropdownMenuLabel>
         <DropdownMenuItem onClick={() => navigator.clipboard.writeText(film.title)}>
-          Copy title film
+          Копіювати назву фільму
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => handleDeleteCar(film.title)}>
-          Delete Film
+          Видалити фільм
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -17,7 +17,7 @@ export default function SelectRating({ onValueChange, value }: SelectRatingProps
   return (
     <Select onValueChange={onValueChange} value={value}>
       <SelectTrigger>
-        <SelectValue placeholder="Select a rating" />
+        <SelectValue placeholder="Виберіть рейтинг" />
       </SelectTrigger>
       <SelectContent>
         {ratings.map(rating => (

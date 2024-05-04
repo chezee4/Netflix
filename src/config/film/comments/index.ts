@@ -1,42 +1,42 @@
 export const comments = [
   {
     id: '1',
-    name: 'Aniket Roy',
-    cauntry: 'India',
-    comment: `This movie was recommended to me by a very dear friend who went for the movie by herself.
-         I went to the cinemas to watch but had a houseful board so couldn’t watch it.`,
+    name: 'Анікет Рой',
+    cauntry: 'Індія',
+    comment: `Цей фільм мені порекомендував дуже дорогий друг, який пішов на фільм сама.
+         Я пішов до кінотеатру дивитися, але була повна зала, тому не міг подивитися.`,
     rating: 4,
   },
   {
     id: '2',
-    name: 'Swaraj',
-    cauntry: 'India',
-    comment: `A restless king promises his lands to the local tribals in exchange of a stone
-         (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.`,
+    name: 'Свараж',
+    cauntry: 'Індія',
+    comment: `Не спокійний король обіцяє свої землі місцевим трибалам в обмін на камінь
+         (Панджурлі, божество села Кераді), в якому він знаходить спокій і мир у душі.`,
     rating: 5,
   },
   {
     id: '3',
-    name: 'Aniket Roy',
-    cauntry: 'India',
-    comment: `This movie was recommended to me by a very dear friend who went for the movie by herself.
-             I went to the cinemas to watch but had a houseful board so couldn’t watch it.`,
+    name: 'Анікет Рой',
+    cauntry: 'Індія',
+    comment: `Цей фільм мені порекомендував дуже дорогий друг, який пішов на фільм сама.
+             Я пішов до кінотеатру дивитися, але була повна зала, тому не міг подивитися.`,
     rating: 3,
   },
   {
     id: '6',
-    name: 'Swaraj',
-    cauntry: 'India',
-    comment: `A restless king promises his lands to the local tribals in exchange of a stone
-         (Panjurli, a deity of Keradi Village) wherein he finds solace and peace of mind.`,
+    name: 'Свараж',
+    cauntry: 'Індія',
+    comment: `Не спокійний король обіцяє свої землі місцевим трибалам в обмін на камінь
+         (Панджурлі, божество села Кераді), в якому він знаходить спокій і мир у душі.`,
     rating: 5,
   },
   {
     id: '7',
-    name: 'Aniket Roy',
-    cauntry: 'India',
-    comment: `This movie was recommended to me by a very dear friend who went for the movie by herself.
-             I went to the cinemas to watch but had a houseful board so couldn’t watch it.`,
+    name: 'Анікет Рой',
+    cauntry: 'Індія',
+    comment: `Цей фільм мені порекомендував дуже дорогий друг, який пішов на фільм сама.
+             Я пішов до кінотеатру дивитися, але була повна зала, тому не міг подивитися.`,
     rating: 1,
   },
 ]

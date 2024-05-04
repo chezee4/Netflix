@@ -7,10 +7,12 @@ export default function SupportSection() {
   return (
     <div className="flex justify-between mt-36 w-full">
       <div className="max-w-lg w-full">
-        <h2 className="text-6xl font-bold mb-4">Welcome to our support page!</h2>
+        <h2 className="text-6xl font-bold mb-4">
+          Ласкаво просимо на нашу сторінку підтримки!
+        </h2>
         <h3 className=" text-lg text-gray-60 line-clamp-2 mb-4">
-          We are here to help you with any problems you may be having with our
-          product.
+          Ми тут, щоб допомогти вам з будь-якими проблемами, які у вас можуть
+          виникнути з нашим продуктом.
         </h3>
 
         <div className=" overflow-hidden rounded-lg border-8 max-h-[500px] border-black-10">

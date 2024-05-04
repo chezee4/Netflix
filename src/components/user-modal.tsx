@@ -23,8 +23,12 @@ export function ModalForUserFrom({
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>{id ? 'Edit user' : 'Add user'}</DialogTitle>
-          <DialogDescription>{id ? 'Edit user ' : 'Add user'}</DialogDescription>
+          <DialogTitle>
+            {id ? 'Редагувати користувача' : 'Додати користувача'}
+          </DialogTitle>
+          <DialogDescription>
+            {id ? 'Редагувати користувача' : 'Додати користувача'}
+          </DialogDescription>
         </DialogHeader>
         <UserForm id={id} />
       </DialogContent>

@@ -21,7 +21,7 @@ export default function CardBodyImage({ url, className }: CardBodyImageProps) {
         height={320}
         className="rounded-lg object-bottom-bottom object-cover "
         alt="card"
-      ></Image>
+      />
     </div>
   )
 }

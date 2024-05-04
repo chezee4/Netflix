@@ -1,48 +1,49 @@
 export const accordionSupport = [
   {
     id: '01',
-    title: 'What is StreamVibe?',
+    title: 'Що таке StreamVibe?',
     description:
-      'StreamVibe is a streaming service that allows you to watch movies and shows on demand.',
+      'StreamVibe - це сервіс потокового відтворення, який дозволяє вам дивитися фільми та шоу за запитом.',
   },
   {
     id: '02',
-    title: 'How much does StreamVibe cost?',
+    title: 'Скільки коштує StreamVibe?',
     description:
-      'StreamVibe costs $9.99 per month. There is also a free trial available.',
+      'StreamVibe коштує 299 грн. на місяць. Також доступний безкоштовний пробний період.',
   },
   {
     id: '03',
-    title: 'What content is available on StreamVibe?',
+    title: 'Який контент доступний на StreamVibe?',
     description:
-      'StreamVibe has a wide variety of movies and shows available, including new releases and classics.',
+      'На StreamVibe доступний широкий вибір фільмів та шоу, включаючи нові релізи та класику.',
   },
   {
     id: '04',
-    title: 'How can I watch StreamVibe?',
-    description: 'You can watch StreamVibe on your computer, phone, tablet, or TV.',
+    title: 'Як я можу дивитися StreamVibe?',
+    description:
+      "Ви можете дивитися StreamVibe на своєму комп'ютері, телефоні, планшеті або телевізорі.",
   },
   {
     id: '05',
-    title: 'How do I sign up for StreamVibe?',
+    title: 'Як я можу зареєструватися на StreamVibe?',
     description:
-      'You can sign up for StreamVibe by going to the "Sign Up" page and entering your information.',
+      'Ви можете зареєструватися на StreamVibe, перейшовши на сторінку "Реєстрація" та ввівши свою інформацію.',
   },
   {
     id: '06',
-    title: 'What is the StreamVibe free trial?',
+    title: 'Що таке безкоштовний пробний період StreamVibe?',
     description:
-      'The StreamVibe free trial allows you to try out the service for free for a limited time.',
+      'Безкоштовний пробний період StreamVibe дозволяє вам спробувати сервіс безкоштовно протягом обмеженого часу.',
   },
   {
     id: '07',
-    title: 'How do I contact StreamVibe customer support?',
+    title: "Як я можу зв'язатися з StreamVibe?",
     description:
-      'You can contact StreamVibe customer support by going to the "Contact Us" page and submitting a request.',
+      'Ви можете зв\'язатися зі службою підтримки StreamVibe, перейшовши на сторінку "Зв\'язатися з нами" та надіславши запит.',
   },
   {
     id: '08',
-    title: 'What are the StreamVibe payment methods?',
-    description: 'StreamVibe accepts credit and debit cards, as well as PayPal.',
+    title: 'Які методи оплати приймає StreamVibe?',
+    description: 'StreamVibe приймає кредитні та дебетові картки, а також PayPal.',
   },
 ]

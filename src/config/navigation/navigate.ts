@@ -1,7 +1,7 @@
 export const navigateLinks = [
-  { id: 'home', title: 'Home', path: '/home' },
-  { id: 'movies_shows', title: 'Movies & Shows', path: '/movies-shows' },
-  { id: 'support', title: 'Support', path: '/support' },
-  { id: 'subscriptions', title: 'Subscriptions', path: '/subscriptions' },
-  { id: 'science', title: 'Science', path: '/science' },
+  { id: 'home', title: 'Головна', path: '/home' },
+  { id: 'movies_shows', title: 'Фільми та шоу', path: '/movies-shows' },
+  { id: 'support', title: 'Підтримка', path: '/support' },
+  { id: 'subscriptions', title: 'Підписки', path: '/subscriptions' },
+  { id: 'science', title: 'Наука', path: '/science' },
 ] as const

@@ -24,7 +24,7 @@ export default function ServiceCard({
       </p>
       <p className="text-white text-4xl font-medium my-10 inline-flex gap-1 items-baseline">
         <span>${price[0]}</span>
-        <span className=" text-gray-60 text-sm xs:text-lg ">/month</span>
+        <span className=" text-gray-60 text-sm xs:text-lg ">/місяць</span>
       </p>
       <div className="flex gap-4">
         <Button

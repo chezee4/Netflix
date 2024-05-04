@@ -13,26 +13,29 @@ export default function HomePage() {
       <WelcomeSection />
       <Wrapper>
         <SectionLayout
-          title="Explore the wide variety of our films"
-          subtitle="Whether you are looking for a comedy to make you laugh, a drama to make you think, or a documentary to learn something new"
+          title="Досліджуйте широкий асортимент наших фільмів"
+          subtitle="Чи шукаєте ви комедію, щоб розсмішити вас, драму, щоб змусити вас думати, чи документальний фільм, щоб дізнатися щось нове"
         >
-          <CarouselCategory className=" max-w-none" title="Popular Top 10 Films" />
+          <CarouselCategory
+            className=" max-w-none"
+            title="Популярні Топ 10 Фільмів"
+          />
         </SectionLayout>
         <SectionLayout
-          title="We Provide you streaming experience across various devices."
-          subtitle="With StreamVibe, you can enjoy your favorite movies and TV shows anytime, anywhere. Our platform is designed to be compatible with a wide range of devices, ensuring that you never miss a moment of entertainment."
+          title="Ми надаємо вам досвід перегляду на різних пристроях."
+          subtitle="З StreamVibe ви можете насолоджуватися улюбленими фільмами та телешоу в будь-який час, в будь-якому місці. Наша платформа розроблена для сумісності з широким спектром пристроїв, що гарантує, що ви ніколи не пропустите момент розваги."
         >
           <DevicesList />
         </SectionLayout>
         <SectionLayout
-          title="Frequently Asked Questions"
-          subtitle="Got questions? We have got answers! Check out our FAQ section to find answers to the most common questions about StreamVibe."
+          title="Часто задавані питання"
+          subtitle="Маєте питання? У нас є відповіді! Перевірте наш розділ ЧАП, щоб знайти відповіді на найпоширеніші питання про StreamVibe."
         >
           <AccordionSupport />
         </SectionLayout>
         <SectionLayout
-          title="Choose the plan that is right for you"
-          subtitle="Join StreamVibe and select from our flexible subscription options tailored to suit your viewing preferences. Get ready for non-stop entertainment!"
+          title="Виберіть план, який вам підходить"
+          subtitle="Приєднуйтесь до StreamVibe та вибирайте з наших гнучких варіантів підписки, які розроблені для задоволення ваших переглядових вподобань. Готуйтесь до безперервних розваг!"
         >
           <ServiceList />
         </SectionLayout>
