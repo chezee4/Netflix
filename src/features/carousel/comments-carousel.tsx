@@ -14,9 +14,9 @@ import { ContentWrapper } from 'src/layouts/content-wrapper'
 
 export default function CarouselComments() {
   return (
-    <ContentWrapper variant="carousel" className="max-w-[920px]">
+    <ContentWrapper variant="carousel" className="max-w-[1040px]">
       <div className=" relative">
-        <div className=" flex justify-between items-center mb-5">
+        <div className=" flex justify-between items-center mb-4">
           <h3 className=" text-gray-65 text-sm sm:text-lg leading-[150%] font-bold">
             Відгуки
           </h3>

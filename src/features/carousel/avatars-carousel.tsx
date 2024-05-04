@@ -14,15 +14,15 @@ import { ContentWrapper } from 'src/layouts/content-wrapper'
 
 export default function CarouselAvatars() {
   return (
-    <ContentWrapper variant="carousel" className=" max-w-[820px] ">
+    <ContentWrapper variant="carousel" className=" max-w-[1040px] ">
       <div className=" relative">
         <Carousel
           opts={{
             align: 'start',
           }}
-          className="max-w-[800px]"
+          className="w-full"
         >
-          <div className=" flex justify-between items-center mb-5">
+          <div className=" flex justify-between items-center mb-4">
             <h3 className=" text-gray-65 text-lg leading-[150%] font-bold">
               Актори
             </h3>
@@ -33,7 +33,7 @@ export default function CarouselAvatars() {
           </div>
           <CarouselContent>
             {actors.map((actor, index) => (
-              <CarouselItem key={index} className="basis-auto lg:basis-[12.25%]">
+              <CarouselItem key={index} className="basis-auto lg:basis-[12.20%]">
                 <Avatar
                   avatar={actor.avatar}
                   name={actor.name}

@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from 'src/lib/utils'
 
 const contentWrapperVariants = cva(
-  'w-full border mx-auto rounded-xl mb-10 border-black-15',
+  'w-full border mx-auto rounded-xl border-black-15',
   {
     variants: {
       variant: {
