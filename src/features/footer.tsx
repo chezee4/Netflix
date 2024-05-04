@@ -30,7 +30,7 @@ export default function Footer() {
 
           <div className="mx-auto md:mx-0 lg:mx-auto">
             <h4 className="text-white text-xl font-semibold mb-5">
-              Connect With Us
+              Зв&apos;яжіться з нами
             </h4>
             <ul className="flex flex-row gap-x-1.5 sm:gap-x-4">
               {messages.map(message => (

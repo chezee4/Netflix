@@ -23,7 +23,9 @@ export default function CarouselAvatars() {
           className="max-w-[800px]"
         >
           <div className=" flex justify-between items-center mb-5">
-            <h3 className=" text-gray-65 text-lg leading-[150%] font-bold">Cast</h3>
+            <h3 className=" text-gray-65 text-lg leading-[150%] font-bold">
+              Актори
+            </h3>
             <div className="flex items-center gap-3">
               <CarouselPrevious />
               <CarouselNext />

@@ -9,57 +9,57 @@ import avatar6 from '../../../../public/film/actors/Image-6.png'
 export const actors = [
   {
     id: '1',
-    name: 'Tom Holland',
+    name: 'Том Голланд',
     avatar: avatar,
   },
   {
     id: '2',
-    name: 'Chris Evans',
+    name: 'Кріс Еванс',
     avatar: avatar1,
   },
   {
     id: '3',
-    name: 'Chris Hemsworth',
+    name: 'Кріс Хемсворт',
     avatar: avatar2,
   },
   {
     id: '4',
-    name: 'Robert Downey Jr.',
+    name: 'Роберт Дауні мол.',
     avatar: avatar3,
   },
   {
     id: '5',
-    name: 'Scarlett Johansson',
+    name: 'Скарлетт Йоганссон',
     avatar: avatar4,
   },
   {
     id: '6',
-    name: 'Mark Ruffalo',
+    name: 'Марк Руффало',
     avatar: avatar5,
   },
   {
     id: '7',
-    name: 'Jeremy Renner',
+    name: 'Джеремі Реннер',
     avatar: avatar6,
   },
   {
     id: '8',
-    name: 'Tom Holland',
+    name: 'Том Голланд',
     avatar: avatar,
   },
   {
     id: '9',
-    name: 'Chris Evans',
+    name: 'Кріс Еванс',
     avatar: avatar1,
   },
   {
     id: '10',
-    name: 'Chris Hemsworth',
+    name: 'Кріс Хемсворт',
     avatar: avatar2,
   },
   {
     id: '11',
-    name: 'Robert Downey Jr.',
+    name: 'Роберт Дауні мол.',
     avatar: avatar3,
   },
 ]

@@ -4,30 +4,30 @@ import bannerIMG2 from 'src/../public/Container.jpg'
 export const banners = [
   {
     id: '1',
-    title: 'Avengers : Endgame',
+    title: 'Месники: Завершення',
     subtitle:
-      'With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos іs actions and undo the chaos to the universe, no matter what consequences may be in store, and no matter who they face... Avenge the fallen.',
+      'За допомогою залишихся союзників, Месники повинні зібратися ще раз, щоб скасувати дії Таноса і відновити хаос у всесвіті, незалежно від того, які наслідки можуть бути в запасі, і незалежно від того, з ким вони стикаються... Помстіться за впавших.',
     img: bannerIMG,
   },
   {
     id: '2',
-    title: 'Avengers : Infinity War',
+    title: 'Месники: Війна нескінченності',
     subtitle:
-      'The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.',
+      'Месники та їх союзники повинні бути готові жертвувати всім у спробі відбити могутнього Таноса, перш ніж його блискавичне спустошення та руїна покладуть кінець всесвіту.',
     img: bannerIMG2,
   },
   {
     id: '3',
-    title: 'Avengers : Age of Ultron',
+    title: 'Месники: Ера Альтрона',
     subtitle:
-      'When Tony Stark and Bruce Banner try to jump-start a dormant peacekeeping program called Ultron, things go horribly wrong and it is up to the Avengers to stop the villainous Ultron from enacting his terrible plan.',
+      'Коли Тоні Старк та Брюс Беннер намагаються запустити сплячу програму миротворця під назвою Альтрон, все йде жахливо не так, і Месникам доводиться зупинити зловісного Альтрона від втілення його жахливого плану.',
     img: bannerIMG,
   },
   {
     id: '4',
-    title: 'The Avengers',
+    title: 'Месники',
     subtitle:
-      "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
+      "Наймогутніші герої Землі повинні об'єднатися та навчитися боротися як команда, якщо вони збираються зупинити хитрого Локі та його інопланетну армію від рабства людства.",
     img: bannerIMG2,
   },
 ] as const

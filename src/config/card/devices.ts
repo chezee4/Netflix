@@ -9,44 +9,44 @@ import VRHeadsets from 'src/../public/icons/Vrheadsets.svg'
 export const Devices = [
   {
     id: 1,
-    title: 'Smartphones',
-    description: `StreamVibe is optimized for both Android and iOS smartphones.
-     Download our app from the Google Play Store or the Apple App Store`,
+    title: 'Смартфони',
+    description: `StreamVibe оптимізовано для смартфонів Android та iOS.
+     Завантажте наш додаток з Google Play Store або Apple App Store`,
     Icon: Phone,
   },
   {
     id: 2,
-    title: 'Tablets',
-    description: `StreamVibe is optimized for both Android and iOS smartphones.
-   Download our app from the Google Play Store or the Apple App Store`,
+    title: 'Планшети',
+    description: `StreamVibe оптимізовано для смартфонів Android та iOS.
+   Завантажте наш додаток з Google Play Store або Apple App Store`,
     Icon: Tablet,
   },
   {
     id: 3,
     title: 'Smart TV',
-    description: `StreamVibe is optimized for both Android and iOS smartphones.
-   Download our app from the Google Play Store or the Apple App Store`,
+    description: `StreamVibe оптимізовано для смартфонів Android та iOS.
+   Завантажте наш додаток з Google Play Store або Apple App Store`,
     Icon: SmartTV,
   },
   {
     id: 4,
-    title: 'Laptops',
-    description: `StreamVibe is optimized for both Android and iOS smartphones.
-   Download our app from the Google Play Store or the Apple App Store`,
+    title: 'Ноутбуки',
+    description: `StreamVibe оптимізовано для смартфонів Android та iOS.
+   Завантажте наш додаток з Google Play Store або Apple App Store`,
     Icon: Laptop,
   },
   {
     id: 5,
-    title: 'Game Сonsoles',
-    description: `StreamVibe is optimized for both Android and iOS smartphones.
-   Download our app from the Google Play Store or the Apple App Store`,
+    title: 'Ігрові консолі',
+    description: `StreamVibe оптимізовано для смартфонів Android та iOS.
+   Завантажте наш додаток з Google Play Store або Apple App Store`,
     Icon: GameСonsole,
   },
   {
     id: 6,
-    title: 'VR Headsets',
-    description: `StreamVibe is optimized for both Android and iOS smartphones.
-   Download our app from the Google Play Store or the Apple App Store`,
+    title: 'VR-гарнітури',
+    description: `StreamVibe оптимізовано для смартфонів Android та iOS.
+   Завантажте наш додаток з Google Play Store або Apple App Store`,
     Icon: VRHeadsets,
   },
 ] as const

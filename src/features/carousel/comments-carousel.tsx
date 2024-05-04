@@ -18,7 +18,7 @@ export default function CarouselComments() {
       <div className=" relative">
         <div className=" flex justify-between items-center mb-5">
           <h3 className=" text-gray-65 text-sm sm:text-lg leading-[150%] font-bold">
-            Reviews
+            Відгуки
           </h3>
           <FormForAddComments />
         </div>

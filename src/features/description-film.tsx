@@ -13,13 +13,13 @@ export default function DescriptionFilm() {
     <ContentWrapper as="aside" variant="secondary" className=" max-w-lg">
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mb-4">
         <CiCalendar className=" text-2xl" />
-        <span> Released Year</span>
+        <span> Рік випуску</span>
       </h5>
       <span className=" font-semibold">{filmDescription.releasedYear}</span>
 
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mt-6 mb-4">
         <LuLanguages className=" text-2xl" />
-        <span> Available Languages</span>
+        <span> Доступні мови</span>
       </h5>
       <div className="flex gap-3 flex-wrap">
         {filmDescription.availableLanguages.map((language, index) => (
@@ -33,7 +33,7 @@ export default function DescriptionFilm() {
       </div>
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mt-6 mb-4">
         <CiStar className=" text-2xl" />
-        <span>Rating</span>
+        <span>Рейтинг</span>
       </h5>
       <div className="flex items-center gap-4">
         <Chap className=" flex-col text-white items-start text-base p-5 rounded-lg font-medium">
@@ -63,7 +63,7 @@ export default function DescriptionFilm() {
       </div>
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mt-6 mb-4">
         <HiOutlineSquares2X2 className=" text-2xl" />
-        <span>Genres</span>
+        <span>Жанри</span>
       </h5>
       <div className="flex gap-3 flex-wrap">
         {filmDescription.genres.map((genre, index) => (
@@ -76,7 +76,7 @@ export default function DescriptionFilm() {
         ))}
       </div>
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mt-6 mb-3">
-        Director
+        Режисер
       </h5>
       <Chap className=" w-full gap-3 px-3.5 py-3 rounded-lg font-medium">
         <Avatar
@@ -87,12 +87,12 @@ export default function DescriptionFilm() {
         <div>
           <p className="text-white text-lg">{filmDescription.director.name}</p>
           <p className="text-base">
-            <span>From </span> {filmDescription.director.country}
+            <span>З </span> {filmDescription.director.country}
           </p>
         </div>
       </Chap>
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mt-6 mb-3">
-        Music
+        Музика
       </h5>
       <Chap className=" w-full gap-3 px-3.5 py-3 rounded-lg font-medium">
         <Avatar
@@ -103,7 +103,7 @@ export default function DescriptionFilm() {
         <div>
           <p className="text-white text-lg">{filmDescription.director.name}</p>
           <p className="text-base">
-            <span>From </span> {filmDescription.director.country}
+            <span>З </span> {filmDescription.director.country}
           </p>
         </div>
       </Chap>

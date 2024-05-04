@@ -63,11 +63,11 @@ export default function SupportForm() {
                 <FormItem>
                   <FormControl>
                     <>
-                      <FormLabel>First Name</FormLabel>
+                      <FormLabel>Ім&apos;я</FormLabel>
                       <Input
                         onChange={field.onChange}
                         value={field.value}
-                        placeholder="Enter First Name"
+                        placeholder="Введіть ім'я"
                       />
                     </>
                   </FormControl>
@@ -82,11 +82,11 @@ export default function SupportForm() {
                 <FormItem>
                   <FormControl>
                     <>
-                      <FormLabel>Last Name</FormLabel>
+                      <FormLabel>Прізвище</FormLabel>
                       <Input
                         onChange={field.onChange}
                         value={field.value}
-                        placeholder="Enter Last Name"
+                        placeholder="Введіть прізвище"
                       />
                     </>
                   </FormControl>
@@ -105,7 +105,7 @@ export default function SupportForm() {
                       <Input
                         onChange={field.onChange}
                         value={field.value}
-                        placeholder="Enter Email"
+                        placeholder="Введіть Email"
                       />
                     </>
                   </FormControl>
@@ -114,7 +114,7 @@ export default function SupportForm() {
               )}
             />
             <div className=" relative flex flex-col ">
-              <Label className=" text-sm mb-3">Phone Number</Label>
+              <Label className=" text-sm mb-3">Номер телефону</Label>
               <div className="flex gap-3">
                 <div className=" h-fit  relative bg-black-8 border border-black-15 hover:bg-black-12 cursor-pointer transition-colors duration-200 ease-linear rounded-md p-3 w-fit">
                   <div
@@ -169,7 +169,7 @@ export default function SupportForm() {
                           <Input
                             onChange={field.onChange}
                             value={field.value}
-                            placeholder="Enter Phone"
+                            placeholder="Введіть номер телефону"
                           />
                         </>
                       </FormControl>
@@ -184,7 +184,7 @@ export default function SupportForm() {
               name="question"
               render={({ field }) => (
                 <FormItem className="col-span-2">
-                  <FormLabel>Your question</FormLabel>
+                  <FormLabel>Ваше питання</FormLabel>
                   <Textarea
                     onChange={field.onChange}
                     value={field.value}
@@ -203,11 +203,11 @@ export default function SupportForm() {
                 htmlFor="terms"
                 className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
               >
-                I agree with Terms of Use and Privacy Policy
+                Я згоден з Умовами використання та Політикою конфіденційності
               </Label>
             </div>
             <Button type="submit" variant="default">
-              Send Review
+              Відправити відгук
             </Button>
           </div>
         </form>

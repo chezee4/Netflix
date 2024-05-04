@@ -31,27 +31,27 @@ export const DropdownMenuUser = ({ user }: DropdownMenuUserProps) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="h-8 w-8 p-0">
-          <span className="sr-only">Open menu</span>
+          <span className="sr-only">Відкрити меню</span>
           <MoreHorizontal className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel className="mb-2">Actions</DropdownMenuLabel>
+        <DropdownMenuLabel className="mb-2">Дії</DropdownMenuLabel>
         <DropdownMenuItem onClick={() => navigator.clipboard.writeText(user.email)}>
-          Copy email user
+          Копіювати email користувача
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <ModalForUserFrom
           trigger={
             <div className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none transition-colors hover:bg-gray-300/20 hover:text-accent-foreground">
-              Edit User
+              Редагувати користувача
             </div>
           }
           id={user.id}
         />
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={() => handleDeleteCar(user.id)}>
-          Delete User
+          Видалити користувача
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

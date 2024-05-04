@@ -1,23 +1,23 @@
 export const Services = [
   {
     id: 1,
-    title: 'Basic Plan',
-    description: `Enjoy an extensive library of movies and shows, featuring a 
-    range of content, including recently released titles.`,
+    title: 'Базовий план',
+    description: `Насолоджуйтесь обширною бібліотекою фільмів та шоу, яка включає 
+    різноманітний контент, включаючи недавно випущені титули.`,
     price: [9.99, 99.99],
   },
   {
     id: 2,
-    title: 'Standard Plan',
-    description: `Access to a wider selection of movies and shows, 
-    including most new releases and exclusive content released titles.`,
+    title: 'Стандартний план',
+    description: `Доступ до ширшого вибору фільмів та шоу, 
+    включаючи більшість нових релізів та ексклюзивний контент.`,
     price: [12.99, 120.99],
   },
   {
     id: 3,
-    title: 'Premium Plan',
-    description: `Access to a widest selection of movies and shows, 
-    including all new releases and Offline Viewing released titles.`,
+    title: 'Преміум план',
+    description: `Доступ до найширшого вибору фільмів та шоу, 
+    включаючи всі нові релізи та можливість перегляду в офлайні.`,
     price: [14.99, 140.99],
   },
 ]

@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { useEffect } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -45,7 +45,9 @@ export function UserForm({ id }: { id?: string }) {
   const { toast } = useToast()
 
   useEffect(() => {
-    let usersLocalStorage = JSON.parse(localStorage.getItem('users') || '[]') as User[]
+    let usersLocalStorage = JSON.parse(
+      localStorage.getItem('users') || '[]',
+    ) as User[]
     if (!usersLocalStorage.length) {
       usersLocalStorage = users
     }
@@ -58,7 +60,9 @@ export function UserForm({ id }: { id?: string }) {
   }, [id, form])
 
   const onSubmit = (data: z.infer<typeof UserFormSchrma>) => {
-    let usersLocalStorage = JSON.parse(localStorage.getItem('users') || '[]') as User[]
+    let usersLocalStorage = JSON.parse(
+      localStorage.getItem('users') || '[]',
+    ) as User[]
     if (!usersLocalStorage.length) {
       usersLocalStorage = users
     }
@@ -72,15 +76,15 @@ export function UserForm({ id }: { id?: string }) {
     }
     localStorage.setItem('users', JSON.stringify(usersLocalStorage))
     toast({
-      title: 'Review Added',
-      description: 'Your review has been added successfully.',
+      title: 'Відгук додано',
+      description: 'Ваш відгук було успішно додано.',
     })
     form.reset()
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} >
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="grid gap-4 py-4">
           <FormField
             control={form.control}
@@ -89,11 +93,11 @@ export function UserForm({ id }: { id?: string }) {
               <FormItem>
                 <FormControl>
                   <>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel>Ім&apos;я</FormLabel>
                     <Input
                       onChange={field.onChange}
                       value={field.value}
-                      placeholder="Enter Name"
+                      placeholder="Введіть ім'я"
                     />
                   </>
                 </FormControl>
@@ -112,7 +116,7 @@ export function UserForm({ id }: { id?: string }) {
                     <Input
                       onChange={field.onChange}
                       value={field.value}
-                      placeholder="Enter Email"
+                      placeholder="Введіть Email"
                     />
                   </>
                 </FormControl>
@@ -127,10 +131,10 @@ export function UserForm({ id }: { id?: string }) {
               <FormItem>
                 <FormControl>
                   <>
-                    <FormLabel>Role</FormLabel>
+                    <FormLabel>Роль</FormLabel>
                     <Select onValueChange={field.onChange} value={field.value}>
                       <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Select Role" />
+                        <SelectValue placeholder="Виберіть роль" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
@@ -151,7 +155,7 @@ export function UserForm({ id }: { id?: string }) {
         </div>
         <DialogFooter>
           <Button type="submit" variant="secondary">
-            Add
+            Додати
           </Button>
         </DialogFooter>
       </form>

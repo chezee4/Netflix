@@ -63,14 +63,14 @@ export function UsersTable() {
     <div className="w-full">
       <div className="flex items-center justify-between py-4">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Фільтрувати електронні адреси..."
           value={(table.getColumn('email')?.getFilterValue() as string) ?? ''}
           onChange={event =>
             table.getColumn('email')?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
-        <div className='flex items-center gap-3'>
+        <div className="flex items-center gap-3">
           <ModalForUserFrom
             trigger={
               <Button
@@ -79,7 +79,7 @@ export function UsersTable() {
                 className="flex items-center gap-1 text-xs sm:text-sm lg:text-sm px-3"
               >
                 <HiPlusSm color="text-gray-75" className=" text-base sm:text-xl" />
-                <span>Add User</span>
+                <span>Додати користувача</span>
               </Button>
             }
           />
@@ -87,7 +87,7 @@ export function UsersTable() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" className="ml-auto">
-                Columns <ChevronDown className="ml-2 h-3 w-3" />
+                Стовпці <ChevronDown className="ml-2 h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -147,7 +147,7 @@ export function UsersTable() {
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
+                  Немає результатів.
                 </TableCell>
               </TableRow>
             )}
@@ -156,8 +156,8 @@ export function UsersTable() {
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of{' '}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredSelectedRowModel().rows.length} з{' '}
+          {table.getFilteredRowModel().rows.length} рядків вибрано.
         </div>
         <div className="space-x-2">
           <Button
@@ -166,7 +166,7 @@ export function UsersTable() {
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Попередній
           </Button>
           <Button
             variant="outline"
@@ -174,7 +174,7 @@ export function UsersTable() {
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Наступний
           </Button>
         </div>
       </div>

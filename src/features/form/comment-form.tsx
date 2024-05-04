@@ -40,8 +40,8 @@ export function FormForAddComments() {
       ...data,
     }
     toast({
-      title: 'Review Added',
-      description: 'Your review has been added successfully.',
+      title: 'Відгук додано',
+      description: 'Ваш відгук успішно додано.',
     })
 
     console.log(commentData)
@@ -56,13 +56,15 @@ export function FormForAddComments() {
           className="flex items-center gap-1 text-xs sm:text-sm lg:text-sm px-3"
         >
           <HiPlus color="text-gray-75" className=" text-base sm:text-xl" />
-          <span>Add Your Review</span>
+          <span>Додати свій відгук</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px]">
         <DialogHeader>
-          <DialogTitle>Edd your review</DialogTitle>
-          <DialogDescription>Edit your review for this film here.</DialogDescription>
+          <DialogTitle>Додайте свій відгук</DialogTitle>
+          <DialogDescription>
+            Редагуйте свій відгук для цього фільму тут.
+          </DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="">
@@ -74,14 +76,14 @@ export function FormForAddComments() {
                   <FormItem>
                     <FormControl>
                       <>
-                        <FormLabel>Rating</FormLabel>
+                        <FormLabel>Рейтинг</FormLabel>
                         <SelectRating
                           onValueChange={field.onChange}
                           value={field.value}
                         />
                       </>
                     </FormControl>
-                    <FormDescription>Select a rating for the movie.</FormDescription>
+                    <FormDescription>Виберіть рейтинг для фільму.</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -91,14 +93,14 @@ export function FormForAddComments() {
                 name="comment"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Your Comment</FormLabel>
+                    <FormLabel>Ваш коментар</FormLabel>
                     <Textarea
                       onChange={field.onChange}
                       value={field.value}
                       className="col-span-3"
                     />
                     <FormDescription>
-                      Write your review for the movie here.
+                      Напишіть свій відгук для фільму тут.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -107,7 +109,7 @@ export function FormForAddComments() {
             </div>
             <DialogFooter>
               <Button type="submit" variant="secondary">
-                Send Review
+                Надіслати відгук
               </Button>
             </DialogFooter>
           </form>

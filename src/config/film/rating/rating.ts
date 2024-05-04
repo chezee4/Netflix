@@ -1,7 +1,7 @@
 export const ratings = [
-    { id: '1', text: 'Absolutely detested it' },
-    { id: '2', text: 'Barely tolerable' },
-    { id: '3', text: 'Just average' },
-    { id: '4', text: 'Quite enjoyable' },
-    { id: '5', text: 'Exceedingly delightful' },
-  ] as const
+  { id: '1', text: 'Абсолютно ненавиджу' },
+  { id: '2', text: 'Ледве терплю' },
+  { id: '3', text: 'Просто середнє' },
+  { id: '4', text: 'Цілком приємно' },
+  { id: '5', text: 'Надзвичайно чудово' },
+] as const
