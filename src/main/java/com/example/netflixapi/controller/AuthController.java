@@ -45,7 +45,12 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDTO loginDto) {
+    public ResponseEntity<?> login(@RequestBody LoginDTO loginDto) {
+
+        if (!userRepository.existsByUsername(loginDto.getUsername())) {
+            return new ResponseEntity<>("Error: Username is not found!", HttpStatus.BAD_REQUEST);
+        }
+
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginDto.getUsername(),
@@ -57,11 +62,16 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDTO registerDto) {
-        if(userRepository.existsByUsername(registerDto.getUsername())) {
+        if (userRepository.existsByUsername(registerDto.getUsername())) {
             return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.BAD_REQUEST);
         }
 
+        if (userRepository.existsByEmail(registerDto.getEmail())) {
+            return new ResponseEntity<>("Error: Email is already in use!", HttpStatus.BAD_REQUEST);
+        }
+
         UserEntity user = new UserEntity();
+        user.setEmail(registerDto.getEmail());
         user.setUsername(registerDto.getUsername());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
 

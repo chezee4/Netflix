@@ -22,10 +22,18 @@ public class UserEntity {
     private String username;
     @Column(name = "password")
     private String password;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "bio")
+    private String bio;
+    @Column(name = "tel_number")
+    private String telNumber;
+    @Column(name = "avatar")
+    private String avatar;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
-            joinColumns = @JoinColumn(name = "user_id" , referencedColumnName = "user_id"),
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "role_id"))
     private List<Role> roles = new ArrayList<>();
 
