@@ -3,7 +3,7 @@ import IMG2 from 'src/../public/IMG2.jpg'
 import IMG3 from 'src/../public/IMG3.jpg'
 import IMG4 from 'src/../public/IMG4.jpg'
 
-import { Film } from 'src/types/index'
+import { Film } from 'src/types'
 
 export const list: Film[] = [
   {

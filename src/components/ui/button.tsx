@@ -15,6 +15,8 @@ const buttonVariants = cva(
         link: ' text-white text-2xl bg-transparent hover:bg-black-15',
         icon: 'border-black-15 border hover:bg-black-6',
         category: 'bg-black-10 text-xl hover:bg-black-15',
+        ghost:
+          'hover:bg-accent hover:text-accent-foreground justify-start items-center px-4 py-2 gap-2 rounded-md font-normal',
         outline:
           'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
       },

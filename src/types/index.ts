@@ -1,5 +1,22 @@
+import { ReactElement } from 'react'
 import { StaticImageData } from 'next/image'
 import { users } from 'src/config/users'
+
+export enum ProfileTabsEnum {
+  Profile = 'profile',
+  Favorites = 'favorites',
+  EditProfile = 'edit-profile',
+}
+
+export type ProfileTab = {
+  title: string
+  content: ReactElement
+  icon: ReactElement
+}
+
+export type ProfileTabsData = {
+  [key in ProfileTabsEnum]: ProfileTab
+}
 
 export type Film = {
   title: string
@@ -28,7 +45,28 @@ export type FileDescriptionT = {
   }
 }
 
-export type User = (typeof users)[number]
+export enum Role {
+  USER = 'USER',
+  ADMIN = 'ADMIN',
+}
+export type UserType = {
+  id: string
+  name: string
+  password: string
+  email: string
+  role: Role
+  avatar: string
+  bio?: string
+  phone?: string
+  favorites: Film[]
+}
+
+export type UserFormType = Omit<
+  UserType,
+  'id' | 'password' | 'role' | 'favorites'
+> & {
+  avatar?: string
+}
 
 export type Comment = {
   id: string

@@ -2,10 +2,15 @@
 const { withNextVideo } = require('next-video/process')
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    domains: ['cdn.discordapp.com'],
+  },
+}
 
 module.exports = withNextVideo(nextConfig, {
   provider: 'amazon-s3',
+
   providerConfig: {
     'amazon-s3': {
       accessKeyId: 'AKIA2UC3DSKSD4E75R3K',
