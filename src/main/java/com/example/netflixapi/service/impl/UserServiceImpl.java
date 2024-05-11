@@ -9,7 +9,9 @@ import com.example.netflixapi.repository.RoleRepository;
 import com.example.netflixapi.repository.UserRepository;
 import com.example.netflixapi.service.UserService;
 import com.example.netflixapi.util.FileUploadUtil;
+import com.example.netflixapi.util.UserEntityToUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,14 +28,20 @@ public class UserServiceImpl implements UserService {
     private final AmazonS3Config amazonS3Config;
     private final RoleRepository roleRepository;
     UserRepository userRepository;
+    UserEntityToUserDTO userEntityToUserDTO;
+
+    @Value("${DEFAULT_AVATAR_URL}")
+    private String avatarUrl;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, AmazonS3 s3Client, AmazonS3Config amazonS3Config, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
+    public UserServiceImpl(UserRepository userRepository, AmazonS3 s3Client, AmazonS3Config amazonS3Config,
+                           PasswordEncoder passwordEncoder, RoleRepository roleRepository, UserEntityToUserDTO userEntityToUserDTO) {
         this.userRepository = userRepository;
         this.s3Client = s3Client;
         this.amazonS3Config = amazonS3Config;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
+        this.userEntityToUserDTO = new UserEntityToUserDTO();
     }
 
     @Override
@@ -47,17 +55,41 @@ public class UserServiceImpl implements UserService {
         return user.orElse(null);
     }
 
-    public UserEntity createUser(String username, String password, String email, String role) {
+    @Override
+    public ResponseEntity<?> uploadAvatar(UUID id, MultipartFile avatar) {
+        Optional<UserEntity> userOptional = userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            UserEntity userEntity = userOptional.get();
+            try {
+                String avatarUrl = FileUploadUtil.saveFile(s3Client, amazonS3Config, avatar, "users_avatars/");
+                userEntity.setAvatar(avatarUrl);
+                userRepository.save(userEntity);
+                return ResponseEntity.ok(userEntityToUserDTO.mapToDTO(userEntity));
+            } catch (IOException e) {
+                e.printStackTrace();
+                return ResponseEntity.badRequest().body("Failed to upload avatar");
+            }
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @Override
+    public UserDTO createUser(String username, String password, String email, String role) {
         UserEntity user = new UserEntity();
         user.setUsername(username);
         user.setPassword(passwordEncoder.encode(password));
         user.setEmail(email);
         user.setRoles(Collections.singletonList(roleRepository.findByName(role)));
-        return userRepository.save(user);
+
+        user.setAvatar(avatarUrl);
+
+        UserEntity savedUser = userRepository.save(user);
+        return userEntityToUserDTO.mapToDTO(savedUser);
     }
 
     @Override
-    public ResponseEntity<?> updateUser(UUID id, UserDTO user, MultipartFile avatar) {
+    public ResponseEntity<?> updateUser(UUID id, UserDTO user) {
         Optional<UserEntity> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             UserEntity userEntity = userOptional.get();
@@ -71,20 +103,26 @@ public class UserServiceImpl implements UserService {
                 userEntity.setRoles(Collections.singletonList(roleRepository.findByName(user.getRole())));
             }
 
-            if (avatar != null && !avatar.isEmpty()) {
-                try {
-                    String avatarUrl = FileUploadUtil.saveFile(s3Client, amazonS3Config, avatar, "users_avatars/");
-                    Optional.ofNullable(avatarUrl).ifPresent(userEntity::setAvatar);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    return ResponseEntity.badRequest().body("Failed to upload avatar");
-                }
-            }
-
             userRepository.save(userEntity);
-            return ResponseEntity.ok(userEntity);
+            return ResponseEntity.ok(userEntityToUserDTO.mapToDTO(userEntity));
         } else {
             return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    @Override
+    public String deleteUser(UUID id) {
+        Optional<UserEntity> userOptional = userRepository.findById(id);
+
+        if (userOptional.isPresent()) {
+            UserEntity user = userOptional.get();
+            user.getRoles().clear();
+            userRepository.save(user);
+            userRepository.delete(user);
+            return "User deleted successfully!";
+        } else {
+            return "User not found!";
         }
     }
 }

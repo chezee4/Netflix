@@ -1,12 +1,12 @@
 package com.example.netflixapi.controller;
 
+import com.example.netflixapi.dto.CreateUserDTO;
 import com.example.netflixapi.dto.UserDTO;
 import com.example.netflixapi.model.UserEntity;
 import com.example.netflixapi.service.UserService;
 import com.example.netflixapi.util.UserEntityToUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -45,20 +45,26 @@ public class UserController {
         }
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public ResponseEntity<UserEntity> createUser(@RequestParam String username,
-                                                 @RequestParam String password,
-                                                 @RequestParam String email,
-                                                 @RequestParam String role) {
-        return ResponseEntity.ok(userService.createUser(username, password, email, role));
+    public ResponseEntity<UserDTO> createUser(@RequestBody CreateUserDTO request) {
+        return ResponseEntity.ok(userService.createUser(request.getUsername(), request.getPassword(),
+                request.getEmail(), request.getRole()));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable UUID id, @RequestBody UserDTO user,
-                                        @RequestBody MultipartFile avatar) {
-        return userService.updateUser(id, user, avatar);
+    public ResponseEntity<?> updateUser(@PathVariable UUID id, @RequestBody UserDTO user) {
+        return userService.updateUser(id, user);
     }
 
+    @PutMapping("/{id}/avatar")
+    public ResponseEntity<?> uploadAvatar(@PathVariable UUID id, @RequestParam("avatar") MultipartFile avatar) {
+        return userService.uploadAvatar(id, avatar);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable UUID id) {
+        return ResponseEntity.ok(userService.deleteUser(id));
+    }
 
 }
