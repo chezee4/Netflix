@@ -3,11 +3,13 @@ package com.example.netflixapi.controller;
 import com.example.netflixapi.dto.AuthResponseDTO;
 import com.example.netflixapi.dto.LoginDTO;
 import com.example.netflixapi.dto.RegisterDTO;
+import com.example.netflixapi.dto.UserDTO;
 import com.example.netflixapi.model.Role;
 import com.example.netflixapi.model.UserEntity;
 import com.example.netflixapi.repository.RoleRepository;
 import com.example.netflixapi.repository.UserRepository;
 import com.example.netflixapi.security.JWTGenerator;
+import com.example.netflixapi.util.UserEntityToUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,21 +35,23 @@ public class AuthController {
     private RoleRepository roleRepository;
     private PasswordEncoder passwordEncoder;
     private JWTGenerator jwtGenerator;
+    private UserEntityToUserDTO userEntityToUserDTO;
 
     @Autowired
     public AuthController(AuthenticationManager authenticationManager, UserRepository userRepository,
-                          RoleRepository roleRepository, PasswordEncoder passwordEncoder, JWTGenerator jwtGenerator) {
+                          RoleRepository roleRepository, PasswordEncoder passwordEncoder,
+                          JWTGenerator jwtGenerator, UserEntityToUserDTO userEntityToUserDTO) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtGenerator = jwtGenerator;
+        this.userEntityToUserDTO = userEntityToUserDTO;
     }
 
 
-    @PostMapping("/login")
+    @PostMapping("/signin")
     public ResponseEntity<?> login(@RequestBody LoginDTO loginDto) {
-
         if (!userRepository.existsByUsername(loginDto.getUsername())) {
             return new ResponseEntity<>("Error: Username is not found!", HttpStatus.BAD_REQUEST);
         }
@@ -56,11 +61,18 @@ public class AuthController {
                         loginDto.getUsername(),
                         loginDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = jwtGenerator.generateToken(authentication);
+
+        String username = authentication.getName();
+
+        UserEntity user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+
+        String token = jwtGenerator.generateToken(user);
+
         return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
     }
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public ResponseEntity<String> register(@RequestBody RegisterDTO registerDto) {
         if (userRepository.existsByUsername(registerDto.getUsername())) {
             return new ResponseEntity<>("Error: Username is already taken!", HttpStatus.BAD_REQUEST);
@@ -80,6 +92,7 @@ public class AuthController {
 
         userRepository.save(user);
 
+        UserDTO userDTO = userEntityToUserDTO.mapToDTO(user);
         return new ResponseEntity<>("User registered successfully!", HttpStatus.OK);
     }
 }
