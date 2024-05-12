@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -28,6 +29,20 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Optional<Movie> findById(UUID id) {
         return movieRepository.findById(id);
+    }
+
+    @Override
+    public List<Movie> findMoviesByGenre(String genre) {
+        return movieRepository.findAll().stream()
+                .filter(movie -> movie.getGenres().contains(genre))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Movie> findMoviesByCategory(String category) {
+        return movieRepository.findAll().stream()
+                .filter(movie -> movie.getCategory().contains(category))
+                .collect(Collectors.toList());
     }
 
     @Override

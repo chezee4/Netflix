@@ -2,10 +2,12 @@ package com.example.netflixapi.controller;
 
 import com.example.netflixapi.dto.ActorRequestDTO;
 import com.example.netflixapi.dto.DirectorRequestDTO;
+import com.example.netflixapi.dto.MovieResponseListDTO;
 import com.example.netflixapi.dto.MusicDirectorRequestDTO;
 import com.example.netflixapi.model.Comment;
 import com.example.netflixapi.model.Movie;
 import com.example.netflixapi.service.*;
+import com.example.netflixapi.util.MovieToMovieResponseDTO;
 import com.example.netflixapi.util.UploadMovieForm;
 import jakarta.persistence.Access;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,17 +23,40 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/movies")
 public class MovieController {
-    @Autowired
     private MovieService movieService;
+    private UploadMovieForm uploadMovieForm;
+    private MovieToMovieResponseDTO movieToMovieResponseDTO;
 
     @Autowired
-    private UploadMovieForm uploadMovieForm;
+    public MovieController(MovieService movieService, UploadMovieForm uploadMovieForm,
+                           MovieToMovieResponseDTO movieToMovieResponseDTO) {
+        this.movieService = movieService;
+        this.uploadMovieForm = uploadMovieForm;
+        this.movieToMovieResponseDTO = movieToMovieResponseDTO;
+    }
 
     @GetMapping
-    public List<Movie> findAllMovie(){ return movieService.findAllMovie(); }
+    public List<MovieResponseListDTO> findAllMovie(){
+        List<Movie> movies = movieService.findAllMovie();
+        return movieToMovieResponseDTO.convert(movies);
+    }
 
     @GetMapping("/{id}")
-    public Optional<Movie> findById(@PathVariable UUID id){ return movieService.findById(id); }
+    public Optional<Movie> findById(@PathVariable UUID id){
+        return movieService.findById(id);
+    }
+
+    @GetMapping("/genre/{genre}")
+    public List<MovieResponseListDTO> findMoviesByGenre(@PathVariable String genre) {
+        List<Movie> movies = movieService.findMoviesByGenre(genre);
+        return movieToMovieResponseDTO.convert(movies);
+    }
+
+    @GetMapping("/category/{category}")
+    public List<MovieResponseListDTO> findMoviesByCategory(@PathVariable String category) {
+        List<Movie> movies = movieService.findMoviesByCategory(category);
+        return movieToMovieResponseDTO.convert(movies);
+    }
 
     @PostMapping("/post")
     public Movie postMovieWithUrls(@RequestBody Movie movie){
