@@ -1,5 +1,6 @@
 package com.example.netflixapi.service;
 
+import com.example.netflixapi.model.Comment;
 import com.example.netflixapi.model.Movie;
 
 import java.util.List;
@@ -12,4 +13,5 @@ public interface MovieService {
     Movie saveMovie(Movie movie);
     Movie updateMovie(Movie movie);
     void deleteMovie(UUID id);
+    Movie addComment(UUID id, Comment comment);
 }

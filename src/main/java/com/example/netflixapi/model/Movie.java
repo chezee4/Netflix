@@ -54,7 +54,10 @@ public class Movie {
     @JoinColumn(name = "music_director_id")
     private MusicDirector musicDirector;
 
-    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "movie_comments",
+            joinColumns = @JoinColumn(name = "mov_id"),
+            inverseJoinColumns = @JoinColumn(name = "comment_id"))
     private Set<Comment> comments = new HashSet<>();
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
