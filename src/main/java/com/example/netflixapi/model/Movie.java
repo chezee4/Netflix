@@ -31,6 +31,8 @@ public class Movie {
     private double ratingIMDb;
     @Column(name = "rating_streamvibe")
     private double ratingStreamVibe;
+    @Column(name = "views_number")
+    private int viewsNumber;
     @ElementCollection
     @CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "mov_id"))
     @Column(name = "genre")
@@ -39,6 +41,10 @@ public class Movie {
     @CollectionTable(name = "movie_languages", joinColumns = @JoinColumn(name = "mov_id"))
     @Column(name = "language")
     private List<String> availableLanguages;
+    @ElementCollection
+    @CollectionTable(name = "movie_category", joinColumns = @JoinColumn(name = "mov_id"))
+    @Column(name = "category")
+    private List<String> category;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "movie_actors",
