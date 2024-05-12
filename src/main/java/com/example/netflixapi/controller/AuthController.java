@@ -1,5 +1,7 @@
 package com.example.netflixapi.controller;
 
+import com.example.netflixapi.dto.AuthResponseDTO;
+import com.example.netflixapi.dto.LoginDTO;
 import com.example.netflixapi.dto.RegisterDTO;
 import com.example.netflixapi.dto.UserDTO;
 import com.example.netflixapi.model.Role;
@@ -13,6 +15,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -71,5 +77,27 @@ public class AuthController {
 
         UserDTO userDTO = userEntityToUserDTO.mapToDTO(user);
         return new ResponseEntity<>("User registered successfully!", HttpStatus.OK);
+    }
+
+    @PostMapping("/signin")
+    public ResponseEntity<?> login(@RequestBody LoginDTO loginDto) {
+        if (!userRepository.existsByUsername(loginDto.getUsername())) {
+            return new ResponseEntity<>("Error: Username is not found!", HttpStatus.BAD_REQUEST);
+        }
+
+        Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        loginDto.getUsername(),
+                        loginDto.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        String username = authentication.getName();
+
+        UserEntity user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+
+        String token = jwtGenerator.generateToken(user);
+
+        return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
     }
 }

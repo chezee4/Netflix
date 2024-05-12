@@ -37,6 +37,11 @@ public class MovieController {
     @GetMapping("/{id}")
     public Optional<Movie> findById(@PathVariable UUID id){ return movieService.findById(id); }
 
+    @PostMapping("/post")
+    public Movie postMovieWithUrls(@RequestBody Movie movie){
+        return movieService.saveMovie(movie);
+    }
+
     @PostMapping("/upload")
     public Movie uploadMovieWithMedia(@RequestBody Movie movie,
                                       @RequestParam("photo") MultipartFile photo,

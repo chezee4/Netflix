@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService {
             Optional.ofNullable(user.getBio()).ifPresent(userEntity::setBio);
 
             if(user.getRole() != null && !user.getRole().isEmpty()) {
-                userEntity.setRoles(Collections.singletonList(roleRepository.findByName(user.getRole())));
+                userEntity.getRoles().add(roleRepository.findByName(user.getRole()));
             }
 
             userRepository.save(userEntity);
