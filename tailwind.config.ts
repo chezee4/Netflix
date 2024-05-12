@@ -22,6 +22,7 @@ const config = {
         'gradient-linear':
           'linear-gradient(90deg, rgba(90,9,9,0.15738795518207283) 2%, rgba(172,9,9,0.8548669467787114) 19%, rgba(138,13,13,0.8856792717086834) 42%, rgba(110,11,11,0.36747198879551823) 72%, rgba(110,11,11,0.12097338935574231) 94%)',
         'bg-cva': "url('../../public/bgCTA.png')",
+        'bg-movies': "url('../../public/BgMovies.jpg')",
       }),
       backgroundColor: {
         primary: '#fff',

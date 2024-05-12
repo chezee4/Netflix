@@ -6,9 +6,9 @@ import { Role, UserFormType, UserType } from 'src/types'
 
 type UserStore = {
   user: UserType | null
-  accessToken: string | null
-  getUser: (id: string) => Promise<void>
+  getUser: (id: string) => void
   updateUser: (user: UserFormType) => void
+  setUser: (user: UserType) => void
   deleteUser: () => Promise<void>
   isLoading: boolean
   error: unknown
@@ -29,15 +29,12 @@ export const user: UserType = {
 
 export const useUserStore = create<UserStore>((set, get) => ({
   user,
-  accessToken:
-    typeof window !== 'undefined'
-      ? localStorage.getItem('ACCESS_TOKEN') || null
-      : null,
   getUser: async id => {
     if (!id) return set({ error: 'User ID is required' })
     set({ isLoading: true })
     try {
-      const fetchedUser = await userService.getUser(id)
+      const fetchedUser: UserType = await userService.getUser(id)
+      console.log(fetchedUser)
       set({
         user: {
           ...fetchedUser,
@@ -50,6 +47,7 @@ export const useUserStore = create<UserStore>((set, get) => ({
       set({ error, isLoading: false })
     }
   },
+  setUser: (user) => set((state) => ({ ...state, user })),
   updateUser: data => {
     const currentUser = get().user
     if (!currentUser) return

@@ -23,7 +23,7 @@ import {
 } from 'src/components/ui/select'
 import { DialogFooter } from 'src/components/ui/dialog'
 import { Button } from 'src/components/ui/button'
-import { User } from 'src/types'
+import { UserType } from 'src/types'
 import { users } from 'src/config/users'
 
 const UserFormSchrma = z.object({
@@ -47,12 +47,12 @@ export function UserForm({ id }: { id?: string }) {
   useEffect(() => {
     let usersLocalStorage = JSON.parse(
       localStorage.getItem('users') || '[]',
-    ) as User[]
+    ) as UserType[]
     if (!usersLocalStorage.length) {
-      usersLocalStorage = users
+      usersLocalStorage = [...users]
     }
     if (id) {
-      const user = usersLocalStorage.find((item: User) => item.id === id)
+      const user = usersLocalStorage.find((item: UserType) => item.id === id)
       if (user) {
         form.reset(user)
       }
@@ -62,7 +62,7 @@ export function UserForm({ id }: { id?: string }) {
   const onSubmit = (data: z.infer<typeof UserFormSchrma>) => {
     let usersLocalStorage = JSON.parse(
       localStorage.getItem('users') || '[]',
-    ) as User[]
+    ) as UserType[]
     if (!usersLocalStorage.length) {
       usersLocalStorage = users
     }
