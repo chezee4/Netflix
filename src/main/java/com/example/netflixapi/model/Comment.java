@@ -25,8 +25,4 @@ public class Comment {
     private String country;
     @Column(name = "rating")
     private Integer rating;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "mov_id")
-    private Movie movie;
 }
