@@ -1,6 +1,9 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import { z } from 'zod'
+import { jwtDecode } from 'jwt-decode'
+
+export const getUserIdFromToken = (accessToken: string) => jwtDecode(accessToken)
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))

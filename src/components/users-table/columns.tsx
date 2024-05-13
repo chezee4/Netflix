@@ -1,9 +1,9 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { Checkbox } from 'src/components/ui/checkbox'
 import { DropdownMenuUser } from 'src/components/dropdown-menu-user'
-import { User } from 'src/types'
+import { UserType } from 'src/types'
 
-export const columns: ColumnDef<User>[] = [
+export const columns: ColumnDef<UserType>[] = [
   {
     id: 'select',
     header: ({ table }) => (

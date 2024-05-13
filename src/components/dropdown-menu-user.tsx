@@ -10,11 +10,11 @@ import {
 import { Button } from 'src/components/ui/button'
 import { MoreHorizontal } from 'lucide-react'
 import { ModalForUserFrom } from 'src/components/user-modal'
-import { User } from 'src/types'
+import { UserType } from 'src/types'
 import { users } from 'src/config/users'
 
 type DropdownMenuUserProps = {
-  user: User
+  user: UserType
 }
 
 export const DropdownMenuUser = ({ user }: DropdownMenuUserProps) => {
@@ -23,7 +23,7 @@ export const DropdownMenuUser = ({ user }: DropdownMenuUserProps) => {
     if (!usersLocalStorage.length) {
       usersLocalStorage = users
     }
-    const newUsers = usersLocalStorage.filter((item: User) => item.id !== id)
+    const newUsers = usersLocalStorage.filter((item: UserType) => item.id !== id)
     localStorage.setItem('users', JSON.stringify(newUsers))
   }
 

@@ -49,24 +49,20 @@ export enum Role {
   USER = 'USER',
   ADMIN = 'ADMIN',
 }
+
 export type UserType = {
   id: string
-  name: string
+  username: string
   password: string
   email: string
   role: Role
   avatar: string
-  bio?: string
-  phone?: string
+  bio: string | null
+  telNumber: string | null
   favorites: Film[]
 }
 
-export type UserFormType = Omit<
-  UserType,
-  'id' | 'password' | 'role' | 'favorites'
-> & {
-  avatar?: string
-}
+export type UserFormType = Omit<UserType, 'id' | 'password' | 'role' | 'favorites'>
 
 export type Comment = {
   id: string
