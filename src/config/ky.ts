@@ -4,11 +4,15 @@ export const api = ky.create({
   prefixUrl: process.env.NEXT_PUBLIC_NETFLIX_API_URL,
   hooks: {
     beforeRequest: [
-      request =>
-        request.headers.set(
-          'Authorization',
-          JSON.parse(localStorage.getItem('auth-store') || '').state.accessToken,
-        ),
+      request => {
+        const authStore = localStorage.getItem('auth-store');
+        if (authStore) {
+          const authState = JSON.parse(authStore).state;
+          if (authState && authState.accessToken) {
+            request.headers.set('Authorization', authState.accessToken);
+          }
+        }
+      },
     ],
   },
 })

@@ -1,8 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
-import { cn } from 'src/lib/utils'
+import { cn, getUserIdFromToken } from 'src/lib/utils'
 import { Icons } from 'src/components/ui/icons'
 import { Button } from 'src/components/ui/button'
 import { Input } from 'src/components/ui/input'
@@ -12,23 +13,21 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useToast } from 'src/components/ui/use-toast'
 import { authService } from 'src/services/auth'
-import { getAccessTokenData } from 'src/store/auth-store'
 import {
   AuthSignInValiador,
   type TAuthSignInValiador,
 } from 'src/lib/validators/auth'
+
 import { useUserStore } from 'src/store/user-store'
-import { useToken } from 'src/hooks/useToken'
 import { userService } from 'src/services/user'
-import { authStore } from 'src/store/auth-store'
+
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export default function SignInForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const { getUser } = useUserStore()
+
   const { toast } = useToast()
-  const { accessTokenData } = authStore()
-  console.log(accessTokenData)
+
   const {
     register,
     handleSubmit,
@@ -36,22 +35,31 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
   } = useForm<TAuthSignInValiador>({
     resolver: zodResolver(AuthSignInValiador),
   })
+  const router = useRouter()
+  const { setAccessToken, setAccessTokenData, accessTokenData, setUser } =
+    useUserStore()
 
   useEffect(() => {
-    userService.getUser('8e2ba6a0-7029-4e6e-b0c2-bf3c3d818ad2').then(user => {
-      console.log(user)
-    })
-  }, [])
+    accessTokenData &&
+      userService.getUser(accessTokenData.UserId).then(user => {
+        setUser(user)
+      })
+  }, [accessTokenData])
 
   const onSubmit = (data: TAuthSignInValiador) => {
+    setIsLoading(true)
     authService
       .signIn(data)
-      .then(() => {
+      .then(data => {
+        setAccessToken(data)
+        setAccessTokenData(getUserIdFromToken(data))
         toast({
           title: 'User signed in',
           description: 'User has been signed in successfully.',
         })
-        console.log('User signed in')
+        
+        router.push('/home')
+        
       })
       .catch(error => {
         toast({
@@ -61,11 +69,7 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
 
         console.error(error)
       })
-    setIsLoading(true)
-
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
+      .finally(() => setIsLoading(false))
   }
 
   return (

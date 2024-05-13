@@ -23,19 +23,17 @@ export const authService = {
       json: credentials,
     })
   },
-  signIn: async (credentials: SignIn): Promise<void> => {
+  signIn: async (credentials: SignIn): Promise<string> => {
     const response = await ky.post(
       `${process.env.NEXT_PUBLIC_NETFLIX_API_URL}auth/signin`,
       {
         json: credentials,
       },
     )
-    const { setAccessToken } = getActions()
-
     if (!response.ok) {
       throw new Error('Failed to sign in')
     }
     const data: SignInResponse = await response.json()
-    setAccessToken(data.accessToken)
+    return data.accessToken
   },
 }
