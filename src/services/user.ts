@@ -1,7 +1,7 @@
 import { api } from 'src/config/ky'
 import { Requests } from 'src/constants/requests-urls'
 
-import { UserType } from 'src/types'
+import { UserType, UserFormType } from 'src/types'
 import { createUrlPath } from 'src/lib/utils'
 
 export const userService = {
@@ -18,10 +18,17 @@ export const userService = {
       })
       .json()
   },
-  updateUser: (data: UserType): Promise<UserType> => {
+  updateUser: (id: string, data: UserFormType): Promise<UserType> => {
     return api
-      .put(createUrlPath(Requests.USERS, data.id), {
+      .patch(createUrlPath(Requests.USERS, id), {
         json: data,
+      })
+      .json()
+  },
+  updateAvatar: (id: string, avatar: FormData): Promise<UserType> => {
+    return api
+      .put(createUrlPath(Requests.USERS, `${id}/avatar`), {
+        body: avatar,
       })
       .json()
   },

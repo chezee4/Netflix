@@ -59,10 +59,10 @@ export type UserType = {
   avatar: string
   bio: string | null
   telNumber: string | null
-  favorites: Film[]
+  // favorites: Film[] | null
 }
 
-export type UserFormType = Omit<UserType, 'id' | 'password' | 'role' | 'favorites'>
+export type UserFormType = Omit<UserType, 'id' | 'password' | 'role' | 'avatar'>
 
 export type Comment = {
   id: string

@@ -12,6 +12,7 @@ type UserStore = {
   setAccessTokenData: (accessTokenData: any) => void
   getUser: (id: string) => void
   updateUser: (user: UserFormType) => void
+  updateAvatar: (avatar: FormData) => void
   setUser: (user: UserType) => void
   deleteUser: () => Promise<void>
   isLoading: boolean
@@ -44,11 +45,29 @@ export const useUserStore = create<UserStore>()(
         }
       },
       setUser: user => set(state => ({ ...state, user })),
-      updateUser: data => {
-        const currentUser = get().user
-        if (!currentUser) return
-        const newUser = { ...currentUser, ...data, avatar: data.avatar }
-        set({ user: newUser })
+      updateUser: async data => {
+        set({ isLoading: true })
+        try {
+          const user = get().user
+          if (user) {
+            const updatedUser = await userService.updateUser(user.id, data)
+            set({ user: updatedUser, isLoading: false })
+          }
+        } catch (error) {
+          set({ error, isLoading: false })
+        }
+      },
+      updateAvatar: async avatar => {
+        set({ isLoading: true })
+        try {
+          const user = get().user
+          if (user) {
+            const updatedUser = await userService.updateAvatar(user.id, avatar)
+            set({ user: updatedUser, isLoading: false })
+          }
+        } catch (error) {
+          set({ error, isLoading: false })
+        }
       },
       deleteUser: async () => {
         set({ isLoading: true })
