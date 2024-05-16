@@ -3,8 +3,11 @@ package com.example.netflixapi.service.impl;
 import com.amazonaws.services.s3.AmazonS3;
 import com.example.netflixapi.config.AmazonS3Config;
 import com.example.netflixapi.dto.UserDTO;
+import com.example.netflixapi.dto.UserRequestDTO;
+import com.example.netflixapi.model.Movie;
 import com.example.netflixapi.model.Role;
 import com.example.netflixapi.model.UserEntity;
+import com.example.netflixapi.repository.MovieRepository;
 import com.example.netflixapi.repository.RoleRepository;
 import com.example.netflixapi.repository.UserRepository;
 import com.example.netflixapi.service.UserService;
@@ -18,7 +21,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -29,19 +35,22 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     UserRepository userRepository;
     UserEntityToUserDTO userEntityToUserDTO;
+    MovieRepository movieRepository;
 
     @Value("${DEFAULT_AVATAR_URL}")
     private String avatarUrl;
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, AmazonS3 s3Client, AmazonS3Config amazonS3Config,
-                           PasswordEncoder passwordEncoder, RoleRepository roleRepository, UserEntityToUserDTO userEntityToUserDTO) {
+                           PasswordEncoder passwordEncoder, RoleRepository roleRepository,
+                           UserEntityToUserDTO userEntityToUserDTO, MovieRepository movieRepository) {
         this.userRepository = userRepository;
         this.s3Client = s3Client;
         this.amazonS3Config = amazonS3Config;
         this.passwordEncoder = passwordEncoder;
         this.roleRepository = roleRepository;
-        this.userEntityToUserDTO = new UserEntityToUserDTO();
+        this.userEntityToUserDTO = userEntityToUserDTO;
+        this.movieRepository = movieRepository;
     }
 
     @Override
@@ -89,7 +98,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public ResponseEntity<?> updateUser(UUID id, UserDTO user) {
+    public ResponseEntity<?> updateUser(UUID id, UserRequestDTO user) {
         Optional<UserEntity> userOptional = userRepository.findById(id);
         if (userOptional.isPresent()) {
             UserEntity userEntity = userOptional.get();
@@ -99,8 +108,28 @@ public class UserServiceImpl implements UserService {
             Optional.ofNullable(user.getEmail()).ifPresent(userEntity::setEmail);
             Optional.ofNullable(user.getBio()).ifPresent(userEntity::setBio);
 
-            if(user.getRole() != null && !user.getRole().isEmpty()) {
-                userEntity.getRoles().add(roleRepository.findByName(user.getRole()));
+            if(user.getFavoriteMovieId() != null) {
+                Optional<Movie> movieOptional = movieRepository.findById(user.getFavoriteMovieId());
+                if (movieOptional.isPresent()) {
+                    Movie movie = movieOptional.get();
+                    if (userEntity.getFavoriteMovies().contains(movie)) {
+                        userEntity.getFavoriteMovies().remove(movie);
+                    } else {
+                        userEntity.getFavoriteMovies().add(movie);
+                    }
+                } else {
+                    return ResponseEntity.badRequest().body("Movie not found");
+                }
+            }
+
+            if(user.getRole() != null) {
+                Role newRole = roleRepository.findByName(user.getRole());
+                if(newRole != null) {
+                    userEntity.getRoles().clear();
+                    userEntity.getRoles().add(newRole);
+                } else {
+                    return ResponseEntity.badRequest().body("Role not found");
+                }
             }
 
             userRepository.save(userEntity);
