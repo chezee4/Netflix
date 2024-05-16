@@ -1,6 +1,7 @@
 package com.example.netflixapi.service;
 
 import com.example.netflixapi.dto.UserDTO;
+import com.example.netflixapi.dto.UserRequestDTO;
 import com.example.netflixapi.model.UserEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,6 +14,6 @@ public interface UserService {
     UserEntity findUserById(UUID id);
     ResponseEntity<?> uploadAvatar(UUID id, MultipartFile avatar);
     UserDTO createUser(String username, String password, String email, String role);
-    ResponseEntity<?> updateUser(UUID id, UserDTO user);
+    ResponseEntity<?> updateUser(UUID id, UserRequestDTO user);
     String deleteUser(UUID id);
 }

@@ -2,6 +2,7 @@ package com.example.netflixapi.controller;
 
 import com.example.netflixapi.dto.CreateUserDTO;
 import com.example.netflixapi.dto.UserDTO;
+import com.example.netflixapi.dto.UserRequestDTO;
 import com.example.netflixapi.model.UserEntity;
 import com.example.netflixapi.service.UserService;
 import com.example.netflixapi.util.UserEntityToUserDTO;
@@ -52,7 +53,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<?> updateUser(@PathVariable UUID id, @RequestBody UserDTO user) {
+    public ResponseEntity<?> updateUser(@PathVariable UUID id, @RequestBody UserRequestDTO user) {
         return userService.updateUser(id, user);
     }
 
@@ -61,10 +62,8 @@ public class UserController {
         return userService.uploadAvatar(id, avatar);
     }
 
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable UUID id) {
         return ResponseEntity.ok(userService.deleteUser(id));
     }
-
 }
