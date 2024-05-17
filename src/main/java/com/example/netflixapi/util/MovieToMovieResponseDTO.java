@@ -14,9 +14,9 @@ public class MovieToMovieResponseDTO {
         movieResponseListDTO.setId(movie.getId());
         movieResponseListDTO.setTitle(movie.getTitle());
         movieResponseListDTO.setAlt(movie.getAlt());
-        movieResponseListDTO.setPhoto(movie.getMovieMedia().getImageUrl());
+        movieResponseListDTO.setBanner(movie.getMovieMedia().getBannerUrl());
         movieResponseListDTO.setDuration(movie.getDuration());
-        movieResponseListDTO.setVeiwsNumber(movie.getViewsNumber());
+        movieResponseListDTO.setViewsNumber(movie.getViewsNumber());
         return movieResponseListDTO;
     }
 

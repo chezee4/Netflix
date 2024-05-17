@@ -17,4 +17,6 @@ public class MovieMedia {
     private String imageUrl;
     @Column(name = "video_url")
     private String videoUrl;
+    @Column(name = "banner_url")
+    private String bannerUrl;
 }

@@ -9,7 +9,7 @@ public class MovieResponseListDTO {
     private UUID id;
     private String title;
     private String alt;
-    private String photo;
+    private String banner;
     private int duration;
-    private int veiwsNumber;
+    private int viewsNumber;
 }
