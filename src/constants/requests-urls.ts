@@ -4,5 +4,6 @@ export const Requests = {
   SIGN_OUT: 'auth/sign-out',
   USERS: 'users',
   MOVIES: 'movies',
-  GET_MOVIES_BY_ID: 'movies',
+  MOVIES_GENRE: 'movies/genre',
+  MOVIES_CATEGORY: 'movies/category',
 }

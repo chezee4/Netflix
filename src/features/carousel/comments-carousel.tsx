@@ -1,5 +1,5 @@
 'use client'
-import { comments } from 'src/config/film/comments'
+
 import { CommentCard } from 'src/components/card/comment-card'
 import {
   Carousel,
@@ -12,7 +12,12 @@ import {
 import { FormForAddComments } from '../form/comment-form'
 import { ContentWrapper } from 'src/layouts/content-wrapper'
 
-export default function CarouselComments() {
+import type { Comment } from 'src/types'
+
+type CarouselCommentsProps = {
+  comments: Comment[]
+}
+export default function CarouselComments({ comments }: CarouselCommentsProps) {
   return (
     <ContentWrapper variant="carousel" className="max-w-[1040px]">
       <div className=" relative">
@@ -28,11 +33,11 @@ export default function CarouselComments() {
           }}
         >
           <CarouselContent>
-            {comments.map((comment, index) => (
-              <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/2">
+            {comments.map(comment => (
+              <CarouselItem key={comment.id} className="sm:basis-1/2 lg:basis-1/2">
                 <CommentCard
                   name={comment.name}
-                  cauntry={comment.cauntry}
+                  cauntry={comment.country}
                   rating={comment.rating}
                   comment={comment.comment}
                 />

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { cn } from 'src/lib/utils'
 
 type AvatarProps = {
-  avatar: StaticImageData
+  avatar: StaticImageData | string
   name: string
   className?: string
 }
@@ -17,7 +17,7 @@ export default function Avatar({ avatar, name, className }: AvatarProps) {
       )}
       title={name}
     >
-      <Image src={avatar} alt={name} />
+      <Image src={avatar} width={85} height={88} alt={name} />
     </div>
   )
 }

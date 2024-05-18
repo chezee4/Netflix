@@ -25,20 +25,33 @@ import { Textarea } from 'src/components/ui/textarea'
 import { Button } from 'src/components/ui/button'
 import SelectRating from 'src/components/rating-select'
 import { HiPlus } from 'react-icons/hi'
+import { useUserStore } from 'src/store/user-store'
+import { useMovieStore } from 'src/store/movie-store'
 
 export function FormForAddComments() {
+  const user = useUserStore(state => state.user)
+  const addCommentForMovie = useMovieStore(state => state.addCommentForMovie)
+
   const form = useForm<z.infer<typeof FormCommentSchema>>({
     resolver: zodResolver(FormCommentSchema),
   })
   const { toast } = useToast()
 
   const onSubmit = (data: z.infer<typeof FormCommentSchema>) => {
-    const commentData = {
-      id: Math.random().toString(36),
-      name: 'Swaraj',
-      country: 'India',
-      ...data,
+    if (!user) {
+      toast({
+        title: 'Помилка',
+        description: 'Ви повинні увійти в систему, щоб залишити відгук.',
+      })
+      return
     }
+    const commentData = {
+      name: user.username,
+      country: 'Ukraine',
+      rating: +data.rating,
+      comment: data.comment,
+    }
+    addCommentForMovie(commentData)
     toast({
       title: 'Відгук додано',
       description: 'Ваш відгук успішно додано.',

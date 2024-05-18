@@ -25,11 +25,11 @@ import { Label } from 'src/components/ui/label'
 import { Textarea } from 'src/components/ui/textarea'
 import ProfileAvatarWrapper from 'src/layouts/profile-avatar-wrapper'
 
-import { UserFormType } from 'src/types'
+import { UserProfileFormType } from 'src/types'
 
 export default function ProfilEditForm() {
-  const updateUser = useUserStore(state => state.updateUser)
-  const updateAvatar = useUserStore(state => state.updateAvatar)
+  const updateProfileUser = useUserStore(state => state.updateProfileUser)
+  const updateProfileAvatar = useUserStore(state => state.updateProfileAvatar)
   const user = useUserStore(state => state.user)!
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [avatar, setAvatar] = useState<string>(user.avatar || ' ')
@@ -50,7 +50,7 @@ export default function ProfilEditForm() {
         const formData = new FormData()
         formData.append('avatar', file)
 
-        updateAvatar(formData)
+        updateProfileAvatar(formData)
 
         const reader: FileReader = new FileReader()
         reader.onloadend = () => {
@@ -68,8 +68,8 @@ export default function ProfilEditForm() {
     }
   }
 
-  const onSubmit = (data: UserFormType) => {
-    updateUser(data)
+  const onSubmit = (data: UserProfileFormType) => {
+    updateProfileUser(data)
   }
 
   return (
