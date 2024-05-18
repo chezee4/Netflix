@@ -64,10 +64,9 @@ export type UserType = {
   favoriteMovies: Film[] | null
 }
 
-export type UserProfileFormType = Omit<
-  UserType,
-  'id' | 'password' | 'role' | 'avatar' | 'favoriteMovies'
->
+export type UserProfileFormType = Partial<UserType> & {
+  favoriteMovieId?: string
+}
 
 export type UserAdminFormType = {
   username: string

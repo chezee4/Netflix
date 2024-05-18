@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { FormCommentSchema } from 'src/lib/utils'
@@ -29,6 +30,7 @@ import { useUserStore } from 'src/store/user-store'
 import { useMovieStore } from 'src/store/movie-store'
 
 export function FormForAddComments() {
+  const [isOpen, setIsOpen] = useState(false)
   const user = useUserStore(state => state.user)
   const addCommentForMovie = useMovieStore(state => state.addCommentForMovie)
 
@@ -52,16 +54,15 @@ export function FormForAddComments() {
       comment: data.comment,
     }
     addCommentForMovie(commentData)
+    setIsOpen(false)
     toast({
       title: 'Відгук додано',
       description: 'Ваш відгук успішно додано.',
     })
-
-    console.log(commentData)
   }
 
   return (
-    <Dialog>
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
           variant="outline"

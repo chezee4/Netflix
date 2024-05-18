@@ -18,6 +18,7 @@ export default function HomePage() {
         >
           <CarouselCategory
             className=" max-w-none"
+            category="Топ тижня"
             title="Популярні Топ 10 Фільмів"
           />
         </SectionLayout>

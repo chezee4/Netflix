@@ -6,4 +6,5 @@ export const Requests = {
   MOVIES: 'movies',
   MOVIES_GENRE: 'movies/genre',
   MOVIES_CATEGORY: 'movies/category',
+  SUPPORT_MESSAGE: 'support/message',
 }

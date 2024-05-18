@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { cn } from 'src/lib/utils'
@@ -15,8 +16,22 @@ import { FaPlay } from 'react-icons/fa6'
 import { FaPlus } from 'react-icons/fa6'
 import { AiOutlineLike } from 'react-icons/ai'
 import { HiOutlineSpeakerWave } from 'react-icons/hi2'
+import { useToast } from 'src/components/ui/use-toast'
+import { useUserStore } from 'src/store/user-store'
 
 export default function BannerCarousel() {
+  const updateProfileUser = useUserStore(state => state.updateProfileUser)
+  const { toast } = useToast()
+
+  const handleClick = (id: string) => {
+    updateProfileUser({
+      favoriteMovieId: id,
+    })
+    toast({
+      title: 'Фільм видалено!',
+      description: 'Фільм було успішно видалено із списку улюблених.',
+    })
+  }
   return (
     <div className="w-full overflow-hidden my-28 rounded-2xl">
       <div className=" relative">
@@ -54,6 +69,7 @@ export default function BannerCarousel() {
                       <Button
                         size="icon"
                         variant="link"
+                        onClick={() => handleClick(banner.id)}
                         className=" bg-black-6 border-2 border-black-10 box-content p-2"
                       >
                         <FaPlus className="text-2xl" />

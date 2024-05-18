@@ -9,10 +9,10 @@ export default function MoviesByCategory() {
         Фільми
       </Chap>
       <div className="mt-14">
-        <CarouselCategory title="Тренди зараз" />
-        <CarouselCategory title="Наші жанри" />
-        <CarouselCategory title="Нові релізи" />
-        <CarouselCategory title="Фільми, які варто подивитися" />
+        <CarouselCategory title="Тренди зараз" category="Популярні" />
+        <CarouselCategory title="Наші жанри"  category='Легенди'/>
+        <CarouselCategory title="Нові релізи" category='Топ тижня' />
+        <CarouselCategory title="Фільми, які варто подивитися"  category='Популярні'/>
       </div>
     </ContentWrapper>
   )

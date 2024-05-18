@@ -32,7 +32,12 @@ const UserFormSchrma = z.object({
   password: z.string().min(6, 'Пароль повинен бути не менше 6 символів'),
   role: z.nativeEnum(Role),
 })
-export function UserForm({ id }: { id?: string }) {
+
+type UserFormProps = {
+  id?: string
+  setIsOpen: (isOpen: boolean) => void
+}
+export function UserForm({ id, setIsOpen }: UserFormProps) {
   const createUser = useUserStore(state => state.createUser)
   const updateUser = useUserStore(state => state.updatedUser)
   const users = useUserStore(state => state.users)
@@ -68,6 +73,7 @@ export function UserForm({ id }: { id?: string }) {
         description: `Користувач ${data.username} успішно створений`,
       })
     }
+    setIsOpen(false)
     form.reset()
   }
 
