@@ -30,7 +30,7 @@ export function ModalForUserFrom({
             {id ? 'Редагувати користувача' : 'Додати користувача'}
           </DialogDescription>
         </DialogHeader>
-        <UserForm id={id} />
+        <UserForm id={id} setIsOpen={setIsOpen} />
       </DialogContent>
     </Dialog>
   )

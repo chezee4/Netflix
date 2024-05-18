@@ -1,6 +1,5 @@
 import RatingStars from 'src/components/rating-stars'
 import Chap from 'src/components/ui/chap'
-import { filmDescription } from 'src/config/film'
 import { CiCalendar } from 'react-icons/ci'
 import { LuLanguages } from 'react-icons/lu'
 import { CiStar } from 'react-icons/ci'
@@ -8,21 +7,26 @@ import { HiOutlineSquares2X2 } from 'react-icons/hi2'
 import { ContentWrapper } from 'src/layouts/content-wrapper'
 import Avatar from 'src/components/ui/avatar'
 
-export default function DescriptionFilm() {
+import type { Movie } from 'src/types'
+
+type DescriptionFilmProps = {
+  movie: Movie
+}
+export default function DescriptionFilm({ movie }: DescriptionFilmProps) {
   return (
     <ContentWrapper as="aside" variant="secondary" className=" max-w-lg">
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mb-4">
         <CiCalendar className=" text-2xl" />
         <span> Рік випуску</span>
       </h5>
-      <span className=" font-semibold">{filmDescription.releasedYear}</span>
+      <span className=" font-semibold">{movie.releasedYear}</span>
 
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mt-6 mb-4">
         <LuLanguages className=" text-2xl" />
         <span> Доступні мови</span>
       </h5>
       <div className="flex gap-3 flex-wrap">
-        {filmDescription.availableLanguages.map((language, index) => (
+        {movie.availableLanguages.map((language, index) => (
           <Chap
             key={index}
             className=" text-white text-base px-3.5 py-2 rounded-lg font-medium"
@@ -40,24 +44,20 @@ export default function DescriptionFilm() {
           <span className=" text-lg font-medium">IMDb</span>
           <div className="flex items-center gap-3">
             <RatingStars
-              rating={+filmDescription.rating.IMDb}
+              rating={movie.ratingIMDb}
               className=" text-xs xs:text-base sm:text-xs md:text-2xl"
             />
-            <span className=" text-base md:text-lg ">
-              {filmDescription.rating.IMDb}
-            </span>
+            <span className=" text-base md:text-lg ">{movie.ratingIMDb}</span>
           </div>
         </Chap>
         <Chap className=" flex-col text-white text-base items-start p-5 rounded-lg font-medium">
           <span className=" text-lg font-medium">Streamvibe</span>
           <div className="flex items-center gap-3">
             <RatingStars
-              rating={+filmDescription.rating.Streamvibe}
+              rating={movie.ratingStreamVibe}
               className=" text-xs xs:text-base sm:text-xs md:text-2xl"
             />
-            <span className=" text-base md:text-lg">
-              {filmDescription.rating.Streamvibe}
-            </span>
+            <span className=" text-base md:text-lg">{movie.ratingStreamVibe}</span>
           </div>
         </Chap>
       </div>
@@ -66,7 +66,7 @@ export default function DescriptionFilm() {
         <span>Жанри</span>
       </h5>
       <div className="flex gap-3 flex-wrap">
-        {filmDescription.genres.map((genre, index) => (
+        {movie.genres.map((genre, index) => (
           <Chap
             key={index}
             className=" text-white text-base px-3.5 py-2 rounded-lg font-medium"
@@ -80,14 +80,14 @@ export default function DescriptionFilm() {
       </h5>
       <Chap className=" w-full gap-3 px-3.5 py-3 rounded-lg font-medium">
         <Avatar
-          avatar={filmDescription.director.avatar}
-          name={filmDescription.director.name}
+          avatar={movie.director.avatar}
+          name={movie.director.name}
           className="mm:h-16 mm:w-16"
         />
         <div>
-          <p className="text-white text-lg">{filmDescription.director.name}</p>
+          <p className="text-white text-lg">{movie.director.name}</p>
           <p className="text-base">
-            <span>З </span> {filmDescription.director.country}
+            <span>З </span> {movie.director.country}
           </p>
         </div>
       </Chap>
@@ -96,14 +96,14 @@ export default function DescriptionFilm() {
       </h5>
       <Chap className=" w-full gap-3 px-3.5 py-3 rounded-lg font-medium">
         <Avatar
-          avatar={filmDescription.director.avatar}
-          name={filmDescription.director.name}
+          avatar={movie.musicDirector.avatar}
+          name={movie.musicDirector.name}
           className="mm:h-16 mm:w-16"
         />
         <div>
-          <p className="text-white text-lg">{filmDescription.director.name}</p>
+          <p className="text-white text-lg">{movie.musicDirector.name}</p>
           <p className="text-base">
-            <span>З </span> {filmDescription.director.country}
+            <span>З </span> {movie.musicDirector.country}
           </p>
         </div>
       </Chap>

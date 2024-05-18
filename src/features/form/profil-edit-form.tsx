@@ -25,15 +25,21 @@ import { Label } from 'src/components/ui/label'
 import { Textarea } from 'src/components/ui/textarea'
 import ProfileAvatarWrapper from 'src/layouts/profile-avatar-wrapper'
 
-import { UserFormType } from 'src/types'
+import { UserProfileFormType } from 'src/types'
 
 export default function ProfilEditForm() {
-  const updateUser = useUserStore(state => state.updateUser)
-  const user = useUserStore(state => state.user!)
+  const updateProfileUser = useUserStore(state => state.updateProfileUser)
+  const updateProfileAvatar = useUserStore(state => state.updateProfileAvatar)
+  const user = useUserStore(state => state.user)!
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [avatar, setAvatar] = useState<string>(user.avatar || ' ')
   const form = useForm<TProfileEditValiador>({
-    defaultValues: user,
+    defaultValues: {
+      username: user.username,
+      email: user.email,
+      bio: user.bio || '',
+      telNumber: user.telNumber || '',
+    },
     resolver: zodResolver(ProfileEditValiador),
   })
 
@@ -41,6 +47,11 @@ export default function ProfilEditForm() {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0]
       if (file) {
+        const formData = new FormData()
+        formData.append('avatar', file)
+
+        updateProfileAvatar(formData)
+
         const reader: FileReader = new FileReader()
         reader.onloadend = () => {
           const base64Image = reader.result as string
@@ -57,9 +68,8 @@ export default function ProfilEditForm() {
     }
   }
 
-  const onSubmit = (data: UserFormType) => {
-    const updatedData = { ...data, avatar }
-    updateUser(updatedData)
+  const onSubmit = (data: UserProfileFormType) => {
+    updateProfileUser(data)
   }
 
   return (
@@ -69,7 +79,7 @@ export default function ProfilEditForm() {
           <ProfileAvatarWrapper
             avatar={avatar}
             className="cursor-pointer hover:brightness-75 transition"
-            name={user.name}
+            name={user.username}
             onClick={handleImageClick}
           />
           <div className="flex w-full max-w-sm items-center gap-1.5">
@@ -86,7 +96,7 @@ export default function ProfilEditForm() {
 
           <FormField
             control={form.control}
-            name="name"
+            name="username"
             render={({ field }) => (
               <FormItem className="max-w-xl w-full text-lg">
                 <FormLabel>Ім&apos;я та прізвище</FormLabel>
@@ -120,7 +130,7 @@ export default function ProfilEditForm() {
 
             <FormField
               control={form.control}
-              name="phone"
+              name="telNumber"
               render={({ field }) => (
                 <FormItem className="flex-1 text-lg">
                   <FormLabel>Телефон</FormLabel>

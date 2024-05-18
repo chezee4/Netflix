@@ -1,6 +1,5 @@
 'use client'
 
-import { actors } from 'src/config/film/actors'
 import Avatar from 'src/components/ui/avatar'
 import {
   Carousel,
@@ -12,7 +11,12 @@ import {
 } from 'src/components/ui/carousel'
 import { ContentWrapper } from 'src/layouts/content-wrapper'
 
-export default function CarouselAvatars() {
+import type { Actor } from 'src/types'
+
+type CarouselAvatarsProps = {
+  actors: Actor[]
+}
+export default function CarouselAvatars({ actors }: CarouselAvatarsProps) {
   return (
     <ContentWrapper variant="carousel" className=" max-w-[1040px] ">
       <div className=" relative">
@@ -32,8 +36,11 @@ export default function CarouselAvatars() {
             </div>
           </div>
           <CarouselContent>
-            {actors.map((actor, index) => (
-              <CarouselItem key={index} className="basis-auto lg:basis-[12.20%]">
+            {actors.map(actor => (
+              <CarouselItem
+                key={actor.actor_id}
+                className="basis-auto lg:basis-[12.20%]"
+              >
                 <Avatar
                   avatar={actor.avatar}
                   name={actor.name}

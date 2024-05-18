@@ -15,7 +15,7 @@ export default function Navigate() {
   }, [pathname])
 
   return (
-    <nav className="w-full max-w-[580px] rounded-xl border-black-12 border-4 bg-black-6 hidden lg:block">
+    <nav className="w-full max-w-[450px] rounded-xl border-black-12 border-4 bg-black-6 hidden lg:block">
       <ul className="flex justify-between items-stretch">
         {navigateLinks.map(link => (
           <motion.li

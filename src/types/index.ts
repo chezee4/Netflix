@@ -19,10 +19,12 @@ export type ProfileTabsData = {
 }
 
 export type Film = {
+  id: string
   title: string
-  duration: string
-  img: StaticImageData
-  numberOfViews: string
+  alt: string
+  duration: number
+  banner: StaticImageData
+  viewsNumber: number
 }
 
 export type FileDescriptionT = {
@@ -59,55 +61,73 @@ export type UserType = {
   avatar: string
   bio: string | null
   telNumber: string | null
-  favorites: Film[]
+  favoriteMovies: Film[] | null
 }
 
-export type UserFormType = Omit<UserType, 'id' | 'password' | 'role' | 'favorites'>
+export type UserProfileFormType = Partial<UserType> & {
+  favoriteMovieId?: string
+}
+
+export type UserAdminFormType = {
+  username: string
+  email: string
+  password: string
+  role: Role
+}
 
 export type Comment = {
   id: string
   name: string
-  country: string
   comment: string
+  country: string
   rating: number
 }
 
-export type Actor = {
-  id: string
-  name: string
-  country: string
-  avatar: string
-}
+export type CommentFormType = Omit<Comment, 'id'>
 
-export type Rating = {
-  IMDb: string
-  Streamvibe: string
+export type Actor = {
+  actor_id: string
+  name: string
+  avatar: string
 }
 
 export type Director = {
+  id: string
   name: string
-  country: string
   avatar: string
+  country: string
 }
 
 export type Music = {
+  id: string
   name: string
-  country: string
   avatar: string
+  country: string
+}
+
+export type MovieMedia = {
+  id: string
+  imageUrl: string
+  videoUrl: string
+  bannerUrl: string
 }
 
 export type Movie = {
   id: string
   title: string
-  releasedYear: number
-  poster: string
-  videoUrl: string
+  alt: string
   description: string
-  comments: Comment[]
-  actors: Actor[]
-  availableLanguages: string[]
+  releasedYear: number
+  duration: number
+  ratingIMDb: number
+  ratingStreamVibe: number
+  viewsNumber: number
   genres: string[]
-  rating: Rating
+  availableLanguages: string[]
+  category: string[]
+  actors: Actor[]
   director: Director
-  music: Music
+  musicDirector: Music
+  comments: Comment[]
+  movieMedia: MovieMedia
 }

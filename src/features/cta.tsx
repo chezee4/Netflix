@@ -1,4 +1,5 @@
-import { Button } from 'src/components/ui/button'
+import Link from 'next/link'
+import { buttonVariants } from 'src/components/ui/button'
 
 export default function CTA() {
   return (
@@ -14,7 +15,9 @@ export default function CTA() {
           </p>
         </div>
         <div className="flex justify-center items-center sm:ml-10 ml-0 sm:mt-0 mt-10">
-          <Button>Розпочати пробний період</Button>
+          <Link href={'/subscriptions'} className={buttonVariants()}>
+            Розпочати пробний період
+          </Link>
         </div>
       </div>
     </section>

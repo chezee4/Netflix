@@ -1,13 +1,13 @@
 import { z } from 'zod'
 
 export const ProfileEditValiador = z.object({
-  name: z
+  username: z
     .string()
     .min(5, {
-      message: "Ім'я та прізвище повинно містити принаймні 2 символи.",
+      message: "Ім'я та прізвище повинно містити принаймні 5 символів.",
     })
-    .max(35, {
-      message: "Ім'я та прізвище не повинно бути довшим за 30 символів.",
+    .max(45, {
+      message: "Ім'я та прізвище не повинно бути довшим за 45 символів.",
     }),
   email: z
     .string()
@@ -15,10 +15,9 @@ export const ProfileEditValiador = z.object({
   bio: z.string({
     required_error: 'Будь ласка, введіть свою біографію.',
   }),
-  phone: z.string().min(10, {
+  telNumber: z.string().min(10, {
     message: 'Будь ласка, введіть дійсний номер телефону.',
-  }),
-  avatar: z.string().optional(),
+  })
 })
 
 export type TProfileEditValiador = z.infer<typeof ProfileEditValiador>

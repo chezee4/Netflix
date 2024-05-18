@@ -21,17 +21,19 @@ import { useToast } from 'src/components/ui/use-toast'
 import { Label } from 'src/components/ui/label'
 import { countries } from 'src/config/countries'
 import { Icon } from '@iconify/react'
-import { SupportFormSchema, cn } from 'src/lib/utils'
+import { cn } from 'src/lib/utils'
+import { supportService } from 'src/services/support'
+import { TSupportFormSchema, SupportFormSchema } from 'src/lib/validators/support'
 import { ContentWrapper } from 'src/layouts/content-wrapper'
 
 export default function SupportForm() {
-  const form = useForm<z.infer<typeof SupportFormSchema>>({
+  const form = useForm<TSupportFormSchema>({
     defaultValues: {
       firstName: '',
       lastName: '',
       email: '',
-      phone: '',
-      question: '',
+      phoneNumber: '',
+      message: '',
     },
     resolver: zodResolver(SupportFormSchema),
   })
@@ -44,7 +46,8 @@ export default function SupportForm() {
       title: 'Review Added',
       description: 'Your review has been added successfully.',
     })
-
+    supportService.sendSupportMessage(data)
+    form.reset()
     console.log(data)
   }
   const handleSelect = (country: { code: string; phone: number; name: string }) => {
@@ -161,7 +164,7 @@ export default function SupportForm() {
 
                 <FormField
                   control={form.control}
-                  name="phone"
+                  name="phoneNumber"
                   render={({ field }) => (
                     <FormItem className=" space-y-0 w-full">
                       <FormControl>
@@ -181,14 +184,14 @@ export default function SupportForm() {
             </div>
             <FormField
               control={form.control}
-              name="question"
+              name="message"
               render={({ field }) => (
                 <FormItem className="col-span-2">
                   <FormLabel>Ваше питання</FormLabel>
                   <Textarea
                     onChange={field.onChange}
                     value={field.value}
-                    className="col-span-2 min-h-[200px] max-h-[350px]"
+                    className="col-span-2 min-h-[400px] max-h-[400px]"
                   />
                   <FormMessage />
                 </FormItem>
