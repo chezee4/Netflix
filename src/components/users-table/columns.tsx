@@ -27,14 +27,19 @@ export const columns: ColumnDef<UserType>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: 'name',
+    accessorKey: 'username',
     header: 'Name',
-    cell: ({ row }) => <div className="capitalize">{row.getValue('name')}</div>,
+    cell: ({ row }) => <div className="capitalize">{row.getValue('username')}</div>,
   },
   {
     accessorKey: 'email',
     header: 'Email',
     cell: ({ row }) => <div className="capitalize">{row.getValue('email')}</div>,
+  },
+  {
+    accessorKey: 'password',
+    header: 'Password',
+    cell: ({ row }) => <div className="capitalize">{row.getValue('password')}</div>,
   },
   {
     accessorKey: 'role',

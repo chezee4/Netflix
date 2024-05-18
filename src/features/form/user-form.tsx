@@ -23,62 +23,51 @@ import {
 } from 'src/components/ui/select'
 import { DialogFooter } from 'src/components/ui/dialog'
 import { Button } from 'src/components/ui/button'
-import { UserType } from 'src/types'
-import { users } from 'src/config/users'
+import { UserType, Role } from 'src/types'
+import { useUserStore } from 'src/store/user-store'
 
 const UserFormSchrma = z.object({
-  id: z.string(),
-  name: z.string(),
-  email: z.string().email(),
-  role: z.string(),
+  username: z.string(),
+  email: z.string().email('Введіть коректний Email'),
+  password: z.string().min(6, 'Пароль повинен бути не менше 6 символів'),
+  role: z.nativeEnum(Role),
 })
 export function UserForm({ id }: { id?: string }) {
+  const createUser = useUserStore(state => state.createUser)
+  const updateUser = useUserStore(state => state.updatedUser)
+  const users = useUserStore(state => state.users)
   const form = useForm<z.infer<typeof UserFormSchrma>>({
     resolver: zodResolver(UserFormSchrma),
     defaultValues: {
-      id: id || '',
-      name: '',
+      username: '',
+      password: '',
       email: '',
-      role: '',
+      role: Role.USER,
     },
   })
   const { toast } = useToast()
 
   useEffect(() => {
-    let usersLocalStorage = JSON.parse(
-      localStorage.getItem('users') || '[]',
-    ) as UserType[]
-    if (!usersLocalStorage.length) {
-      usersLocalStorage = [...users]
-    }
     if (id) {
-      const user = usersLocalStorage.find((item: UserType) => item.id === id)
-      if (user) {
-        form.reset(user)
-      }
+      const user = users.find((item: UserType) => item.id === id)
+      form.reset(user)
     }
-  }, [id, form])
+  }, [id, form, users])
 
   const onSubmit = (data: z.infer<typeof UserFormSchrma>) => {
-    let usersLocalStorage = JSON.parse(
-      localStorage.getItem('users') || '[]',
-    ) as UserType[]
-    if (!usersLocalStorage.length) {
-      usersLocalStorage = users
-    }
-
     if (id) {
-      usersLocalStorage = usersLocalStorage.map((item: any) =>
-        item.id === id ? { ...item, ...data } : item,
-      )
+      updateUser(id, data)
+      toast({
+        title: 'Користувач успішно оновлений',
+        description: `Користувач ${data.username} успішно оновлений`,
+      })
     } else {
-      usersLocalStorage.push(data)
+      createUser(data)
+      toast({
+        title: 'Користувач успішно створений',
+        description: `Користувач ${data.username} успішно створений`,
+      })
     }
-    localStorage.setItem('users', JSON.stringify(usersLocalStorage))
-    toast({
-      title: 'Відгук додано',
-      description: 'Ваш відгук було успішно додано.',
-    })
     form.reset()
   }
 
@@ -88,7 +77,7 @@ export function UserForm({ id }: { id?: string }) {
         <div className="grid gap-4 py-4">
           <FormField
             control={form.control}
-            name="name"
+            name="username"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
@@ -97,7 +86,7 @@ export function UserForm({ id }: { id?: string }) {
                     <Input
                       onChange={field.onChange}
                       value={field.value}
-                      placeholder="Введіть ім'я"
+                      placeholder="Введіть ім'я та прізвище"
                     />
                   </>
                 </FormControl>
@@ -126,6 +115,25 @@ export function UserForm({ id }: { id?: string }) {
           />
           <FormField
             control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormControl>
+                  <>
+                    <FormLabel>Password</FormLabel>
+                    <Input
+                      onChange={field.onChange}
+                      value={field.value}
+                      placeholder="Введіть пароль"
+                    />
+                  </>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="role"
             render={({ field }) => (
               <FormItem>
@@ -138,7 +146,7 @@ export function UserForm({ id }: { id?: string }) {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
-                          {['Admin', 'User'].map(role => (
+                          {['ADMIN', 'USER'].map(role => (
                             <SelectItem key={role} value={role}>
                               {role}
                             </SelectItem>

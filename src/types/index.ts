@@ -19,10 +19,12 @@ export type ProfileTabsData = {
 }
 
 export type Film = {
+  id: string
   title: string
-  duration: string
-  img: StaticImageData
-  numberOfViews: string
+  alt: string
+  duration: number
+  banner: StaticImageData
+  viewsNumber: number
 }
 
 export type FileDescriptionT = {
@@ -59,10 +61,20 @@ export type UserType = {
   avatar: string
   bio: string | null
   telNumber: string | null
-  // favorites: Film[] | null
+  favorites: Film[] | null
 }
 
-export type UserFormType = Omit<UserType, 'id' | 'password' | 'role' | 'avatar'>
+export type UserProfileFormType = Omit<
+  UserType,
+  'id' | 'password' | 'role' | 'avatar' | 'favorites'
+>
+
+export type UserAdminFormType = {
+  username: string
+  email: string
+  password: string
+  role: Role
+}
 
 export type Comment = {
   id: string

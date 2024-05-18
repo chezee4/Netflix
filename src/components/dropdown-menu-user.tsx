@@ -11,20 +11,16 @@ import { Button } from 'src/components/ui/button'
 import { MoreHorizontal } from 'lucide-react'
 import { ModalForUserFrom } from 'src/components/user-modal'
 import { UserType } from 'src/types'
-import { users } from 'src/config/users'
+import { useUserStore } from 'src/store/user-store'
 
 type DropdownMenuUserProps = {
   user: UserType
 }
 
 export const DropdownMenuUser = ({ user }: DropdownMenuUserProps) => {
+  const deleteUser = useUserStore(state => state.deleteUser)
   const handleDeleteCar = (id: string) => {
-    let usersLocalStorage = JSON.parse(localStorage.getItem('users') || '[]')
-    if (!usersLocalStorage.length) {
-      usersLocalStorage = users
-    }
-    const newUsers = usersLocalStorage.filter((item: UserType) => item.id !== id)
-    localStorage.setItem('users', JSON.stringify(newUsers))
+    deleteUser(id)
   }
 
   return (

@@ -1,5 +1,5 @@
 'use client'
-import * as React from 'react'
+import { useEffect, useState } from 'react'
 import {
   ColumnFiltersState,
   SortingState,
@@ -31,14 +31,21 @@ import { ChevronDown } from 'lucide-react'
 import { Button } from 'src/components/ui/button'
 
 import { columns } from 'src/components/users-table/columns'
-import { users } from 'src/config/users'
 import { HiPlusSm } from 'react-icons/hi'
 
+import { useUserStore } from 'src/store/user-store'
+
 export function UsersTable() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+  const [sorting, setSorting] = useState<SortingState>([])
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({})
+  const [rowSelection, setRowSelection] = useState({})
+  const getAllUsers = useUserStore(state => state.getAllUsers)
+  const users = useUserStore(state => state.users)
+
+  useEffect(() => {
+    getAllUsers()
+  }, [])
 
   const table = useReactTable({
     data: users,

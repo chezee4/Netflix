@@ -18,7 +18,7 @@ export const AuthSignInValiador = z.object({
     .min(3, { message: 'Username must be at least 3 characters long' }),
   password: z
     .string()
-    .min(8, { message: 'Password must be at least 8 characters long' }),
+    .min(3, { message: 'Password must be at least 3 characters long' }),
 })
 
 export type TAuthSignInValiador = z.infer<typeof AuthSignInValiador>
