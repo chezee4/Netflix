@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(manrope.className, '')}>
+      <body className={cn(manrope.className, 'flex flex-col min-h-screen')}>
         <ThemeProvider attribute="class" defaultTheme="system">
           {children}
           <Toaster />

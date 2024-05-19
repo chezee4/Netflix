@@ -1,6 +1,6 @@
 'use client'
 
-import Avatar from 'src/components/ui/avatar'
+import Avatar from 'src/components/ui/avatar-actore'
 import {
   Carousel,
   CarouselContent,

@@ -26,7 +26,7 @@ export default function UserFavoritesMovies() {
       description: 'Фільм було успішно видалено із списку улюблених.',
     })
   }
-  const requestsList = user.favoriteMovies?.map(item => (
+  const requestsList = user?.favoriteMovies?.map(item => (
     <Link href={`/movies-shows/${item.id}`} key={item.id}>
       <CardLayout
         Cardbody={

@@ -1,7 +1,8 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { FC, useEffect, useState } from 'react'
+import { FC, Suspense, useEffect, useState } from 'react'
+import Loading from 'src/app/loading'
 import { userService } from 'src/services/user'
 import { useUserStore } from 'src/store/user-store'
 
@@ -20,7 +21,7 @@ const UserWrapper: FC<UserWrapperProps> = ({ children }) => {
       return
     }
     getUser(accessTokenData.id)
-    console.log('user', user)
+
     if (user?.role !== 'ADMIN' && user?.role !== 'USER') {
       router.push('/auth/sign-in')
     }
@@ -28,7 +29,7 @@ const UserWrapper: FC<UserWrapperProps> = ({ children }) => {
   }, [accessTokenData])
 
   if (loading) {
-    return <div>Loading...</div> // TODO: think about suspense
+    return <Loading />
   }
 
   return <>{children}</>

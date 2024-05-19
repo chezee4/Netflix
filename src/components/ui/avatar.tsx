@@ -1,23 +1,50 @@
-import type { StaticImageData } from 'next/image'
-import Image from 'next/image'
+'use client'
+
+import * as React from 'react'
+import * as AvatarPrimitive from '@radix-ui/react-avatar'
+
 import { cn } from 'src/lib/utils'
 
-type AvatarProps = {
-  avatar: StaticImageData | string
-  name: string
-  className?: string
-}
+const Avatar = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Root
+    ref={ref}
+    className={cn(
+      'relative flex h-11 w-11 shrink-0 overflow-hidden rounded-full',
+      className,
+    )}
+    {...props}
+  />
+))
+Avatar.displayName = AvatarPrimitive.Root.displayName
 
-export default function Avatar({ avatar, name, className }: AvatarProps) {
-  return (
-    <div
-      className={cn(
-        ' w-[75px] h-[78px] mm:w-[85px] mm:h-[88px] rounded-xl overflow-hidden cursor-pointer',
-        className,
-      )}
-      title={name}
-    >
-      <Image src={avatar} width={85} height={88} alt={name} />
-    </div>
-  )
-}
+const AvatarImage = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Image>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Image
+    ref={ref}
+    className={cn('aspect-square h-full w-full', className)}
+    {...props}
+  />
+))
+AvatarImage.displayName = AvatarPrimitive.Image.displayName
+
+const AvatarFallback = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Fallback>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Fallback
+    ref={ref}
+    className={cn(
+      'flex h-full w-full items-center justify-center rounded-full bg-muted',
+      className,
+    )}
+    {...props}
+  />
+))
+AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
+
+export { Avatar, AvatarImage, AvatarFallback }

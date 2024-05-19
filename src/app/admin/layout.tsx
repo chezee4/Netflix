@@ -1,4 +1,5 @@
-"use client"
+'use client'
+import { useEffect, useState } from 'react'
 
 import Link from 'next/link'
 import Image from 'next/image'
@@ -7,10 +8,20 @@ import AdminNavigation from 'src/components/navigation-admin'
 import Wrapper from 'src/layouts/wrapper'
 
 import logoHeader from 'public/Logo.svg'
-import { FaRegUser } from 'react-icons/fa6'
+import { useUserStore } from 'src/store/user-store'
 import AdminWrapper from 'src/features/admin-wrapper'
+import UserAccountNav from 'src/components/user-account-nav'
+import { buttonVariants } from 'src/components/ui/button'
+import { CiLogin } from 'react-icons/ci'
 
 export default function SecondLayout({ children }: { children: React.ReactNode }) {
+  const user = useUserStore(state => state.user)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
   return (
     <AdminWrapper>
       <Wrapper>
@@ -35,7 +46,32 @@ export default function SecondLayout({ children }: { children: React.ReactNode }
               >
                 <Image src={logoHeader} alt="logo" width={150} height={75} />
               </Link>
-              <FaRegUser className="h-6 w-6" />
+              {user && isClient && (
+                <Link
+                  href="/"
+                  className={buttonVariants({
+                    variant: 'outline',
+                    className: ' border-0',
+                  })}
+                >
+                  Головна
+                </Link>
+              )}
+              {user && isClient ? (
+                <UserAccountNav />
+              ) : (
+                <Link
+                  href="/auth/sign-in"
+                  className={buttonVariants({
+                    variant: 'outline',
+                    size: 'icon',
+                    className: ' border-0',
+                  })}
+                >
+                  <CiLogin />
+                  <span>Увійти</span>
+                </Link>
+              )}
             </header>
             {children}
           </div>
