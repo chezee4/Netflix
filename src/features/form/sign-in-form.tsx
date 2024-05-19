@@ -58,7 +58,7 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
           description: 'User has been signed in successfully.',
         })
         
-        router.push('/home')
+        router.push('/')
         
       })
       .catch(error => {

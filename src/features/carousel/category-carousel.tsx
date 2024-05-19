@@ -16,10 +16,16 @@ import {
 
 import { cn } from 'src/lib/utils'
 import { useMovieStore } from 'src/store/movie-store'
+import { useUserStore } from 'src/store/user-store'
+import { useToast } from 'src/components/ui/use-toast'
 
 import { Film } from 'src/types'
 import { AiFillClockCircle } from 'react-icons/ai'
 import { IoEyeSharp } from 'react-icons/io5'
+import { SkeletonCardFilm } from 'src/components/skeleton-card-film'
+import { Button } from 'src/components/ui/button'
+
+import { FaStar } from 'react-icons/fa'
 
 type CaruselProps = {
   title: string
@@ -34,6 +40,10 @@ export default function CarouselCategory({
 }: CaruselProps) {
   const [movies, setMovies] = useState<Film[]>([])
   const getMoviesByCategory = useMovieStore(state => state.getMoviesByCategory)
+  const isLoading = useMovieStore(state => state.isLoading)
+  const user = useUserStore(state => state.user)
+  const updateProfileUser = useUserStore(state => state.updateProfileUser)
+  const { toast } = useToast()
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -44,6 +54,21 @@ export default function CarouselCategory({
     fetchMovies()
   }, [category, getMoviesByCategory])
 
+  const addFavoriteMovie = (id: string) => {
+    if (!user)
+      return toast({
+        title: 'Помилка!',
+        description: 'Спочатку увійдіть в акаунт або зареєструйтесь.',
+      })
+
+    updateProfileUser({
+      favoriteMovieId: id,
+    })
+    toast({
+      title: 'Фільм додано!',
+      description: 'Фільм було успішно додано до списку улюблених.',
+    })
+  }
   return (
     <div className={cn(' w-full text-white max-w-[1450px] m-auto mb-16', className)}>
       <Carousel
@@ -62,35 +87,56 @@ export default function CarouselCategory({
           </div>
         </div>
         <CarouselContent>
-          {movies.map(movie => (
-            <CarouselItem
-              key={movie.id}
-              className="xs:basis-1/2 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5"
-            >
-              <Link href={`/movies-shows/${movie.id}`}>
-                <CardLayout
-                  Cardbody={<CardBodyImage url={movie.banner} />}
-                  Cardfooter={
-                    <CardFooter className="justify-between">
-                      <h3 className="text-sm sm:text-xl font-medium line-clamp-1">
-                        {movie.title}
-                      </h3>
-                      <div className="flex justify-between ">
-                        <Chap>
-                          <AiFillClockCircle size={15} />
-                          <h4 className="text-xs xs:text-sm">{movie.duration}</h4>
-                        </Chap>
-                        <Chap>
-                          <IoEyeSharp size={15} />
-                          <h4 className="text-xs xs:text-sm">{movie.viewsNumber}</h4>
-                        </Chap>
-                      </div>
-                    </CardFooter>
-                  }
-                />
-              </Link>
-            </CarouselItem>
-          ))}
+          {isLoading
+            ? Array.from({ length: 10 }).map((_, index) => (
+                <CarouselItem
+                  key={index}
+                  className="xs:basis-1/2 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5 "
+                >
+                  <SkeletonCardFilm />
+                </CarouselItem>
+              ))
+            : movies.map(movie => (
+                <CarouselItem
+                  key={movie.id}
+                  className="xs:basis-1/2 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5 relative"
+                >
+                  <Button
+                    className="absolute top-0 right-0 z-10 h-10 w-10"
+                    variant="outline"
+                    size="icon"
+                    onClick={() => addFavoriteMovie(movie.id)}
+                  >
+                    <FaStar size={20} />
+                  </Button>
+                  <Link href={`/movies-shows/${movie.id}`}>
+                    <CardLayout
+                      Cardbody={<CardBodyImage url={movie.banner} />}
+                      Cardfooter={
+                        <CardFooter className="justify-between">
+                          <h3 className="text-sm sm:text-xl font-medium line-clamp-1">
+                            {movie.title}
+                          </h3>
+                          <div className="flex justify-between ">
+                            <Chap>
+                              <AiFillClockCircle size={15} />
+                              <h4 className="text-xs xs:text-sm">
+                                {movie.duration}
+                              </h4>
+                            </Chap>
+                            <Chap>
+                              <IoEyeSharp size={15} />
+                              <h4 className="text-xs xs:text-sm">
+                                {movie.viewsNumber}
+                              </h4>
+                            </Chap>
+                          </div>
+                        </CardFooter>
+                      }
+                    />
+                  </Link>
+                </CarouselItem>
+              ))}
         </CarouselContent>
       </Carousel>
     </div>

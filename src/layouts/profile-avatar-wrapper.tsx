@@ -22,7 +22,14 @@ export default function ProfileAvatarWrapper({
       )}
       onClick={onClick}
     >
-      <Image alt={name} className=" block w-full h-full object-cover" src={avatar}  width={320} height={320}/>
+      <Image
+        alt={name}
+        className=" block w-full h-full object-cover"
+        src={avatar || 'https://via.placeholder.com/320'}
+        width={320}
+        height={320}
+        priority
+      />
     </div>
   )
 }

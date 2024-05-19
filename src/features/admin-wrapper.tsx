@@ -1,8 +1,8 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { FC, useEffect, useState } from 'react'
-import { userService } from 'src/services/user'
 import { useUserStore } from 'src/store/user-store'
+import Loading from 'src/app/loading'
 
 type AdminWrapperProps = {
   children: React.ReactNode
@@ -35,7 +35,7 @@ const AdminWrapper: FC<AdminWrapperProps> = ({ children }) => {
   }, [accessTokenData])
 
   if (loading) {
-    return <div>Loading...</div> // TODO: think about suspense
+    return <Loading />
   }
 
   return <>{children}</>

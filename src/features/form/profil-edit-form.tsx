@@ -1,5 +1,6 @@
 'use client'
 import React, { useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -26,12 +27,15 @@ import { Textarea } from 'src/components/ui/textarea'
 import ProfileAvatarWrapper from 'src/layouts/profile-avatar-wrapper'
 
 import { UserProfileFormType } from 'src/types'
+import { useToast } from 'src/components/ui/use-toast'
 
 export default function ProfilEditForm() {
   const updateProfileUser = useUserStore(state => state.updateProfileUser)
   const updateProfileAvatar = useUserStore(state => state.updateProfileAvatar)
   const user = useUserStore(state => state.user)!
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const { toast } = useToast()
+  const router = useRouter()
   const [avatar, setAvatar] = useState<string>(user.avatar || ' ')
   const form = useForm<TProfileEditValiador>({
     defaultValues: {
@@ -70,6 +74,11 @@ export default function ProfilEditForm() {
 
   const onSubmit = (data: UserProfileFormType) => {
     updateProfileUser(data)
+    toast({
+      title: 'Профіль оновлено!',
+      description: 'Ваш профіль було успішно оновлено.',
+    })
+    router.push('/profile?tab=profile')
   }
 
   return (

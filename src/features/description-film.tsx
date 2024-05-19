@@ -5,7 +5,7 @@ import { LuLanguages } from 'react-icons/lu'
 import { CiStar } from 'react-icons/ci'
 import { HiOutlineSquares2X2 } from 'react-icons/hi2'
 import { ContentWrapper } from 'src/layouts/content-wrapper'
-import Avatar from 'src/components/ui/avatar'
+import Avatar from 'src/components/ui/avatar-actore'
 
 import type { Movie } from 'src/types'
 
