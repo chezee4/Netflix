@@ -12,7 +12,7 @@ export default function MoviesByCategory() {
         <CarouselCategory title="Тренди зараз" category="Популярні" />
         <CarouselCategory title="Наші жанри"  category='Легенди'/>
         <CarouselCategory title="Нові релізи" category='Топ тижня' />
-        <CarouselCategory title="Фільми, які варто подивитися"  category='Популярні'/>
+        <CarouselCategory title="Фільми, які варто подивитися"  category='Нові'/>
       </div>
     </ContentWrapper>
   )

@@ -24,7 +24,7 @@ export const DropdownMenuUser = ({ user }: DropdownMenuUserProps) => {
   }
 
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" className="h-8 w-8 p-0">
           <span className="sr-only">Відкрити меню</span>

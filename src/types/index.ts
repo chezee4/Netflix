@@ -117,7 +117,7 @@ export type Movie = {
   title: string
   alt: string
   description: string
-  releasedYear: number
+  releaseYear: number
   duration: number
   ratingIMDb: number
   ratingStreamVibe: number

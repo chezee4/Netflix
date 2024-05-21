@@ -13,6 +13,7 @@ import AdminWrapper from 'src/features/admin-wrapper'
 import UserAccountNav from 'src/components/user-account-nav'
 import { buttonVariants } from 'src/components/ui/button'
 import { CiLogin } from 'react-icons/ci'
+import { ModeToggle } from 'src/components/toggle-mode'
 
 export default function SecondLayout({ children }: { children: React.ReactNode }) {
   const user = useUserStore(state => state.user)
@@ -46,6 +47,7 @@ export default function SecondLayout({ children }: { children: React.ReactNode }
               >
                 <Image src={logoHeader} alt="logo" width={150} height={75} />
               </Link>
+              {/* <ModeToggle /> */}
               {user && isClient && (
                 <Link
                   href="/"

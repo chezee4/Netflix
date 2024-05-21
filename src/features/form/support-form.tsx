@@ -48,7 +48,6 @@ export default function SupportForm() {
     })
     supportService.sendSupportMessage(data)
     form.reset()
-    console.log(data)
   }
   const handleSelect = (country: { code: string; phone: number; name: string }) => {
     setCountry(country)

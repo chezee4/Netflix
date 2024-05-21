@@ -15,9 +15,9 @@ export const ProfileEditValiador = z.object({
   bio: z.string({
     required_error: 'Будь ласка, введіть свою біографію.',
   }),
-  telNumber: z.string().min(10, {
-    message: 'Будь ласка, введіть дійсний номер телефону.',
-  })
+  telNumber: z
+    .string()
+    .regex(/^(\+\d{1,3}[- ]?)?\d{10}$/, 'Недійсний номер телефону.'),
 })
 
 export type TProfileEditValiador = z.infer<typeof ProfileEditValiador>

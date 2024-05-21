@@ -68,7 +68,7 @@ export default function SignUpForm({ className, ...props }: UserAuthFormProps) {
             <Input
               {...register('username')}
               id="user"
-              placeholder="chezee4"
+              placeholder="username"
               type="text"
               autoCapitalize="none"
               autoComplete="user"
@@ -81,7 +81,7 @@ export default function SignUpForm({ className, ...props }: UserAuthFormProps) {
             <Input
               {...register('email')}
               id="email"
-              placeholder="xuyzna@gmail.com"
+              placeholder="example@gmail.com"
               type="email"
               autoCapitalize="none"
               autoComplete="email"
@@ -94,7 +94,7 @@ export default function SignUpForm({ className, ...props }: UserAuthFormProps) {
             <Input
               {...register('password')}
               id="password"
-              placeholder="123456789"
+              placeholder="password"
               type="text"
               autoCapitalize="none"
               autoComplete="password"

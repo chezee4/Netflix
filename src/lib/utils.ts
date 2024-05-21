@@ -11,15 +11,15 @@ export function cn(...inputs: ClassValue[]) {
 
 export const FormCommentSchema = z.object({
   rating: z.string({
-    required_error: 'Please select a rating.',
+    required_error: 'Будь ласка, вкажіть рейтинг.',
   }),
   comment: z
     .string({
-      required_error: 'Please enter a comment.',
+      required_error: 'Будь ласка, залиште коментар.',
     })
-    .min(10, 'Comment must be at least 10 characters long.'),
+    .min(10, 'Коментар повинен містити принаймні 10 символів.')
+    .max(200, 'Коментар не повинен бути довшим за 200 символів.'),
 })
-
 
 export const UploadMovieFormSchema = z.object({
   title: z
@@ -110,4 +110,23 @@ export const createUrlPath = (
   const paramsString = params ? `/${params}` : ''
 
   return `${URL}${paramsString}${queryParamsString}`
+}
+
+export const formatViewsNumber = (number: number) => {
+  if (number >= 1000) {
+    const formattedNumber = (number / 1000).toFixed(1)
+    return parseFloat(formattedNumber) + 'k'
+  } else {
+    return number
+  }
+}
+
+export const formatDuration = (minutes: number) => {
+  const hours = Math.floor(minutes / 60)
+  const remainingMinutes = minutes % 60
+  if (hours > 0) {
+    return `${hours}год. ${remainingMinutes > 0 ? remainingMinutes + 'хв' : ''}`
+  } else {
+    return `${minutes}хв`
+  }
 }
