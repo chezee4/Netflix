@@ -45,7 +45,7 @@ export function UsersTable() {
 
   useEffect(() => {
     getAllUsers()
-  }, [])
+  }, [getAllUsers])
 
   const table = useReactTable({
     data: users,

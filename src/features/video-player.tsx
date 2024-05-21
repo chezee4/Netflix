@@ -5,7 +5,6 @@ type VideoPlayerProps = {
   imageUrl: string
 }
 export default function VideoPlayer({ videoUrl, imageUrl }: VideoPlayerProps) {
-  console.log('videoUrl', videoUrl)
   return (
     <section className="w-full mt-[95px] mb-6">
       <video

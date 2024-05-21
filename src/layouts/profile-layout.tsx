@@ -8,7 +8,7 @@ import {
 
 import SidebarNav from 'src/features/sidebar-nav'
 
-import UserWrapper from 'src/features/user-wrapper'
+import UserWrapper from 'src/layouts/user-wrapper'
 import Wrapper from 'src/layouts/wrapper'
 
 type ProfileLayoutProps = {

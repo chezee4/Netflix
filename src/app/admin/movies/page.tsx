@@ -20,7 +20,7 @@ export default function MoviesPage() {
 
   useEffect(() => {
     getAllMovies()
-  }, [])
+  }, [getAllMovies])
 
   const handleDelete = (id: string) => {
     deleteMovie(id)

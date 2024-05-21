@@ -9,7 +9,7 @@ import Wrapper from 'src/layouts/wrapper'
 
 import logoHeader from 'public/Logo.svg'
 import { useUserStore } from 'src/store/user-store'
-import AdminWrapper from 'src/features/admin-wrapper'
+import AdminWrapper from 'src/layouts/admin-wrapper'
 import UserAccountNav from 'src/components/user-account-nav'
 import { buttonVariants } from 'src/components/ui/button'
 import { CiLogin } from 'react-icons/ci'

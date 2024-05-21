@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { FormCommentSchema } from 'src/lib/utils'
-import { z } from 'zod'
+import { FormCommentSchema, TFormCommentSchema } from 'src/lib/validators/comments'
 import {
   Dialog,
   DialogContent,
@@ -25,21 +24,23 @@ import { useToast } from 'src/components/ui/use-toast'
 import { Textarea } from 'src/components/ui/textarea'
 import { Button } from 'src/components/ui/button'
 import SelectRating from 'src/components/rating-select'
-import { HiPlus } from 'react-icons/hi'
+
 import { useUserStore } from 'src/store/user-store'
 import { useMovieStore } from 'src/store/movie-store'
+
+import { HiPlus } from 'react-icons/hi'
 
 export function FormForAddComments() {
   const [isOpen, setIsOpen] = useState(false)
   const user = useUserStore(state => state.user)
   const addCommentForMovie = useMovieStore(state => state.addCommentForMovie)
 
-  const form = useForm<z.infer<typeof FormCommentSchema>>({
+  const form = useForm<TFormCommentSchema>({
     resolver: zodResolver(FormCommentSchema),
   })
   const { toast } = useToast()
 
-  const onSubmit = (data: z.infer<typeof FormCommentSchema>) => {
+  const onSubmit = (data: TFormCommentSchema) => {
     if (!user) {
       toast({
         title: 'Помилка',
@@ -50,7 +51,7 @@ export function FormForAddComments() {
     const commentData = {
       name: user.username,
       country: 'Ukraine',
-      rating: +data.rating,
+      rating: Number(data.rating),
       comment: data.comment,
     }
     addCommentForMovie(commentData)

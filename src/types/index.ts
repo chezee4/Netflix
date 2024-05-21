@@ -1,6 +1,5 @@
 import { ReactElement } from 'react'
 import { StaticImageData } from 'next/image'
-import { users } from 'src/config/users'
 
 export enum ProfileTabsEnum {
   Profile = 'profile',
@@ -25,26 +24,6 @@ export type Film = {
   duration: number
   banner: StaticImageData
   viewsNumber: number
-}
-
-export type FileDescriptionT = {
-  releasedYear: number
-  availableLanguages: string[]
-  genres: string[]
-  rating: {
-    IMDb: string
-    Streamvibe: string
-  }
-  director: {
-    name: string
-    country: string
-    avatar: StaticImageData
-  }
-  music: {
-    name: string
-    country: string
-    avatar: StaticImageData
-  }
 }
 
 export enum Role {
@@ -75,6 +54,8 @@ export type UserAdminFormType = {
   role: Role
 }
 
+export type CommentFormType = Omit<Comment, 'id'>
+
 export type Comment = {
   id: string
   name: string
@@ -82,8 +63,6 @@ export type Comment = {
   country: string
   rating: number
 }
-
-export type CommentFormType = Omit<Comment, 'id'>
 
 export type Actor = {
   actor_id: string
