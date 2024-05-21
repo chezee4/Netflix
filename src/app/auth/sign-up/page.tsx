@@ -9,7 +9,7 @@ export default function AuthenticationPage() {
         <div className="flex flex-col space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">Створіть акаунт</h1>
           <p className="text-sm text-muted-foreground">
-            Введіть свій user name та password для реєстрації
+            Введіть свій user name, email та password для реєстрації
           </p>
         </div>
         <SignUpForm />

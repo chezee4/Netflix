@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+
 import {
   Form,
   FormControl,
@@ -41,7 +41,7 @@ export default function SupportForm() {
   const [country, setCountry] = useState({ code: 'ua', phone: 380, name: 'Ukraine' })
   const [openListCountries, setOpenListCountries] = useState(false)
 
-  const onSubmit = (data: z.infer<typeof SupportFormSchema>) => {
+  const onSubmit = (data: TSupportFormSchema) => {
     toast({
       title: 'Review Added',
       description: 'Your review has been added successfully.',

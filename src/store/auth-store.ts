@@ -1,15 +1,8 @@
-// auth-store.ts
 import { create } from 'zustand'
 import { useStore } from 'zustand'
 import { jwtDecode } from 'jwt-decode'
-import { devtools, persist, createJSONStorage } from 'zustand/middleware'
-import { z } from 'zod'
-
-const TokenDataSchema = z.object({
-  UserId: z.string(),
-})
-
-type TokenData = z.infer<typeof TokenDataSchema>
+import { persist, createJSONStorage } from 'zustand/middleware'
+import { TokenData, TokenDataSchema } from 'src/lib/validators/token'
 
 type AuthStore = {
   accessToken: string | undefined
@@ -33,8 +26,6 @@ export const authStore = create<AuthStore>()(
       actions: {
         setAccessToken: (accessToken: string | undefined) => {
           const accessTokenData = (() => {
-            console.log(accessToken)
-
             try {
               return accessToken ? decodeAccessToken(accessToken) : undefined
             } catch (error) {
@@ -42,7 +33,7 @@ export const authStore = create<AuthStore>()(
               return undefined
             }
           })()
-         
+
           set({
             accessToken,
             accessTokenData,

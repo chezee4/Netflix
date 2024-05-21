@@ -44,7 +44,7 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
       userService.getUser(accessTokenData.UserId).then(user => {
         setUser(user)
       })
-  }, [accessTokenData])
+  }, [accessTokenData, setUser])
 
   const onSubmit = (data: TAuthSignInValiador) => {
     setIsLoading(true)
@@ -57,9 +57,8 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
           title: 'Успішний вхід в систему',
           description: `Користувач успішно увійшов в систему.`,
         })
-        
+
         router.push('/')
-        
       })
       .catch(error => {
         toast({
@@ -97,7 +96,7 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
               {...register('password')}
               id="password"
               placeholder="password"
-              type="text"
+              type="password"
               autoCapitalize="none"
               autoComplete="password"
               autoCorrect="off"

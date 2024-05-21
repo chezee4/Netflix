@@ -1,7 +1,6 @@
 'use client'
 import { useEffect } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { Input } from 'src/components/ui/input'
 import {
@@ -12,7 +11,6 @@ import {
   FormLabel,
   FormMessage,
 } from 'src/components/ui/form'
-import { useToast } from 'src/components/ui/use-toast'
 import {
   Select,
   SelectContent,
@@ -23,25 +21,24 @@ import {
 } from 'src/components/ui/select'
 import { DialogFooter } from 'src/components/ui/dialog'
 import { Button } from 'src/components/ui/button'
-import { UserType, Role } from 'src/types'
-import { useUserStore } from 'src/store/user-store'
+import { useToast } from 'src/components/ui/use-toast'
 
-const UserFormSchrma = z.object({
-  username: z.string(),
-  email: z.string().email('Введіть коректний Email'),
-  password: z.string().min(6, 'Пароль повинен бути не менше 6 символів'),
-  role: z.nativeEnum(Role),
-})
+import { useUserStore } from 'src/store/user-store'
+import { UserFormSchrma, TUserFormSchema } from 'src/lib/validators/create-user'
+
+import { UserType, Role } from 'src/types'
 
 type UserFormProps = {
   id?: string
   setIsOpen: (isOpen: boolean) => void
 }
 export function UserForm({ id, setIsOpen }: UserFormProps) {
+  const { toast } = useToast()
   const createUser = useUserStore(state => state.createUser)
   const updateUser = useUserStore(state => state.updatedUser)
   const users = useUserStore(state => state.users)
-  const form = useForm<z.infer<typeof UserFormSchrma>>({
+
+  const form = useForm<TUserFormSchema>({
     resolver: zodResolver(UserFormSchrma),
     defaultValues: {
       username: '',
@@ -50,7 +47,6 @@ export function UserForm({ id, setIsOpen }: UserFormProps) {
       role: Role.USER,
     },
   })
-  const { toast } = useToast()
 
   useEffect(() => {
     if (id) {
@@ -59,7 +55,7 @@ export function UserForm({ id, setIsOpen }: UserFormProps) {
     }
   }, [id, form, users])
 
-  const onSubmit = (data: z.infer<typeof UserFormSchrma>) => {
+  const onSubmit = (data: TUserFormSchema) => {
     if (id) {
       updateUser(id, data)
       toast({

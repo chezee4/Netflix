@@ -1,25 +1,27 @@
 'use client'
-
 import * as React from 'react'
-
-import { cn } from 'src/lib/utils'
-import { Icons } from 'src/components/ui/icons'
+import { useRouter } from 'next/navigation'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from 'src/components/ui/button'
 import { Input } from 'src/components/ui/input'
 import { Label } from 'src/components/ui/label'
-
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { authService } from 'src/services/auth'
 import { useToast } from 'src/components/ui/use-toast'
+
+import { authService } from 'src/services/auth'
+import { cn } from 'src/lib/utils'
+
 import {
   AuthSignUpValiador,
   type TAuthSignUpValiador,
 } from 'src/lib/validators/auth'
 
+import { Icons } from 'src/components/ui/icons'
+
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export default function SignUpForm({ className, ...props }: UserAuthFormProps) {
+  const router = useRouter()
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const { toast } = useToast()
   const {
@@ -29,10 +31,9 @@ export default function SignUpForm({ className, ...props }: UserAuthFormProps) {
   } = useForm<TAuthSignUpValiador>({
     resolver: zodResolver(AuthSignUpValiador),
   })
-  console.log(process.env.NETFLIX_API_URL)
+
   const onSubmit = (data: TAuthSignUpValiador) => {
-    console.log(data)
-   
+    setIsLoading(true)
     authService
       .signUp(data)
       .then(() => {
@@ -40,17 +41,14 @@ export default function SignUpForm({ className, ...props }: UserAuthFormProps) {
           title: 'User signed up',
           description: 'User has been signed up successfully.',
         })
-        console.log('User signed up')
+        router.push('/auth/sign-in')
       })
       .catch(error => {
         toast({
           title: 'Failed to sign up',
           description: 'Failed to sign up user.',
         })
-
-        console.error(error)
       })
-    setIsLoading(true)
 
     setTimeout(() => {
       setIsLoading(false)
@@ -71,7 +69,7 @@ export default function SignUpForm({ className, ...props }: UserAuthFormProps) {
               placeholder="username"
               type="text"
               autoCapitalize="none"
-              autoComplete="user"
+              autoComplete="username"
               autoCorrect="off"
               disabled={isLoading}
             />
@@ -95,7 +93,7 @@ export default function SignUpForm({ className, ...props }: UserAuthFormProps) {
               {...register('password')}
               id="password"
               placeholder="password"
-              type="text"
+              type="password"
               autoCapitalize="none"
               autoComplete="password"
               autoCorrect="off"
