@@ -10,6 +10,7 @@ import { DropdownMenuFilm } from 'src/components/dropdown-menu-film'
 import { useMovieStore } from 'src/store/movie-store'
 import { useToast } from 'src/components/ui/use-toast'
 import Link from 'next/link'
+import { formatDuration, formatViewsNumber } from 'src/lib/utils'
 
 export default function MoviesPage() {
   const { toast } = useToast()
@@ -35,37 +36,38 @@ export default function MoviesPage() {
       </div>
       <div className="flex gap-6 items-center flex-wrap w-full">
         {mavies.map((movie, index) => (
-          <Link href={`/movies-shows/${movie.id}`} key={index}>
-            <CardLayout
-              key={index}
-              className="cursor-pointer"
-              Cardbody={
-                <>
-                  <div className=" absolute top-0 right-0">
-                    <DropdownMenuFilm movie={movie} deleteFilm={handleDelete} />
-                  </div>
-                  <CardBodyImage url={movie.banner} />
-                </>
-              }
-              Cardfooter={
-                <CardFooter className="justify-between">
-                  <h3 className="text-sm sm:text-xl font-medium line-clamp-1">
-                    {movie.title}
-                  </h3>
-                  <div className="flex justify-between ">
-                    <Chap>
-                      <AiFillClockCircle size={15} />
-                      <h4 className="text-xs xs:text-sm">{movie.duration}</h4>
-                    </Chap>
-                    <Chap>
-                      <IoEyeSharp size={15} />
-                      <h4 className="text-xs xs:text-sm">{movie.viewsNumber}</h4>
-                    </Chap>
-                  </div>
-                </CardFooter>
-              }
-            />
-          </Link>
+          <div key={index} className=" relative">
+            <div className=" absolute top-0 right-0 z-10">
+              <DropdownMenuFilm movie={movie} deleteFilm={handleDelete} />
+            </div>
+            <Link href={`/movies-shows/${movie.id}`}>
+              <CardLayout
+                className="cursor-pointer"
+                Cardbody={<CardBodyImage url={movie.banner} />}
+                Cardfooter={
+                  <CardFooter className="justify-between">
+                    <h3 className="text-sm sm:text-xl font-medium line-clamp-1">
+                      {movie.title}
+                    </h3>
+                    <div className="flex justify-between ">
+                      <Chap>
+                        <AiFillClockCircle size={15} />
+                        <h4 className="text-xs xs:text-sm">
+                          {formatDuration(movie.duration)}
+                        </h4>
+                      </Chap>
+                      <Chap>
+                        <IoEyeSharp size={15} />
+                        <h4 className="text-xs xs:text-sm">
+                          {formatViewsNumber(movie.viewsNumber)}
+                        </h4>
+                      </Chap>
+                    </div>
+                  </CardFooter>
+                }
+              />
+            </Link>
+          </div>
         ))}
       </div>
     </main>

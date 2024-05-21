@@ -68,7 +68,7 @@ export const useUserStore = create<UserStore>()(
         try {
           const users = get().users
           const user = await userService.createUser(data)
-          set({ users: [...users, user], isLoading: false })
+          set({ users: [user, ...users], isLoading: false })
         } catch (error) {
           set({ error, isLoading: false })
         }

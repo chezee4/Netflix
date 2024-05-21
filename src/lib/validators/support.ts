@@ -16,7 +16,7 @@ export const SupportFormSchema = z.object({
   message: z
     .string()
     .min(6, 'Question must be at least 6 characters long.')
-    .max(400, 'Question must be no more than 400 characters long.'),
+    .max(200, 'Question must be no more than 400 characters long.'),
 })
 
 export type TSupportFormSchema = z.infer<typeof SupportFormSchema>

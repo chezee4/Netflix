@@ -22,7 +22,7 @@ const UserAccountNav = () => {
   }
   if (!user) return <div>fwfwfwfwffw</div>
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild className="overflow-visible">
         <Avatar className=" overflow-hidden cursor-pointer">
           <AvatarImage src={user.avatar} alt={user.username} />

@@ -14,7 +14,7 @@ import {
   CarouselPagination,
 } from 'src/components/ui/carousel'
 
-import { cn } from 'src/lib/utils'
+import { cn, formatDuration, formatViewsNumber } from 'src/lib/utils'
 import { useMovieStore } from 'src/store/movie-store'
 import { useUserStore } from 'src/store/user-store'
 import { useToast } from 'src/components/ui/use-toast'
@@ -88,7 +88,7 @@ export default function CarouselCategory({
         </div>
         <CarouselContent>
           {isLoading
-            ? Array.from({ length: 10 }).map((_, index) => (
+            ? Array.from({ length: 8 }).map((_, index) => (
                 <CarouselItem
                   key={index}
                   className="xs:basis-1/2 sm:basis-1/3 lg:basis-1/4 xl:basis-1/5 "
@@ -121,13 +121,13 @@ export default function CarouselCategory({
                             <Chap>
                               <AiFillClockCircle size={15} />
                               <h4 className="text-xs xs:text-sm">
-                                {movie.duration}
+                                {formatDuration(movie.duration)}
                               </h4>
                             </Chap>
                             <Chap>
                               <IoEyeSharp size={15} />
                               <h4 className="text-xs xs:text-sm">
-                                {movie.viewsNumber}
+                                {formatViewsNumber(movie.viewsNumber)}
                               </h4>
                             </Chap>
                           </div>

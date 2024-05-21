@@ -19,7 +19,7 @@ export default function DescriptionFilm({ movie }: DescriptionFilmProps) {
         <CiCalendar className=" text-2xl" />
         <span> Рік випуску</span>
       </h5>
-      <span className=" font-semibold">{movie.releasedYear}</span>
+      <span className=" font-semibold">{movie.releaseYear}</span>
 
       <h5 className=" flex gap-2 items-center text-lg text-gray-60 mt-6 mb-4">
         <LuLanguages className=" text-2xl" />

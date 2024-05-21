@@ -30,7 +30,7 @@ export default function Header() {
         </div>
         <Navigate />
         <div className=" flex items-center gap-x-2">
-          <ModeToggle />
+          {/* <ModeToggle /> */}
           {user?.role === 'ADMIN' && isClient && (
             <Link
               href="/admin/users"
@@ -49,12 +49,11 @@ export default function Header() {
               href="/auth/sign-in"
               className={buttonVariants({
                 variant: 'outline',
-                size: 'icon',
-                className: ' border-0',
+                className: ' border-0 gap-2',
               })}
             >
-              <CiLogin />
-              <span>Увійти</span>
+              <CiLogin size={20} />
+              <span className=" font-medium text-base">Увійти</span>
             </Link>
           )}
         </div>

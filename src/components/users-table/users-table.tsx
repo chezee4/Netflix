@@ -91,7 +91,7 @@ export function UsersTable() {
             }
           />
 
-          <DropdownMenu>
+          <DropdownMenu modal={false}>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" className="ml-auto">
                 Стовпці <ChevronDown className="ml-2 h-3 w-3" />

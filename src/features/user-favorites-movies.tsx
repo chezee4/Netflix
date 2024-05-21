@@ -11,6 +11,7 @@ import { useUserStore } from 'src/store/user-store'
 
 import { AiFillClockCircle } from 'react-icons/ai'
 import { IoEyeSharp } from 'react-icons/io5'
+import { formatDuration, formatViewsNumber } from 'src/lib/utils'
 
 export default function UserFavoritesMovies() {
   const user = useUserStore(state => state.user!)
@@ -27,35 +28,37 @@ export default function UserFavoritesMovies() {
     })
   }
   const requestsList = user?.favoriteMovies?.map(item => (
-    <Link href={`/movies-shows/${item.id}`} key={item.id}>
-      <CardLayout
-        Cardbody={
-          <>
-            <div className=" absolute top-0 right-0">
-              <DropdownMenuFilm movie={item} deleteFilm={handleDelete} />
-            </div>
-            <CardBodyImage url={item.banner} />
-          </>
-        }
-        Cardfooter={
-          <CardFooter className="justify-between">
-            <h3 className="text-sm sm:text-xl font-medium line-clamp-1">
-              {item.title}
-            </h3>
-            <div className="flex justify-between ">
-              <Chap>
-                <AiFillClockCircle size={15} />
-                <h4 className="text-xs xs:text-sm">{item.duration}</h4>
-              </Chap>
-              <Chap>
-                <IoEyeSharp size={15} />
-                <h4 className="text-xs xs:text-sm">{item.viewsNumber}</h4>
-              </Chap>
-            </div>
-          </CardFooter>
-        }
-      />
-    </Link>
+    <div key={item.id} className=" relative">
+      <div className=" absolute top-0 right-0 z-10">
+        <DropdownMenuFilm movie={item} deleteFilm={handleDelete} />
+      </div>
+      <Link href={`/movies-shows/${item.id}`}>
+        <CardLayout
+          Cardbody={<CardBodyImage url={item.banner} />}
+          Cardfooter={
+            <CardFooter className="justify-between">
+              <h3 className="text-sm sm:text-xl font-medium line-clamp-1">
+                {item.title}
+              </h3>
+              <div className="flex justify-between ">
+                <Chap>
+                  <AiFillClockCircle size={15} />
+                  <h4 className="text-xs xs:text-sm">
+                    {formatDuration(item.duration)}
+                  </h4>
+                </Chap>
+                <Chap>
+                  <IoEyeSharp size={15} />
+                  <h4 className="text-xs xs:text-sm">
+                    {formatViewsNumber(item.viewsNumber)}
+                  </h4>
+                </Chap>
+              </div>
+            </CardFooter>
+          }
+        />
+      </Link>
+    </div>
   ))
 
   return (

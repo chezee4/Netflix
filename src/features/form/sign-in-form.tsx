@@ -54,8 +54,8 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
         setAccessToken(data)
         setAccessTokenData(getUserIdFromToken(data))
         toast({
-          title: 'User signed in',
-          description: 'User has been signed in successfully.',
+          title: 'Успішний вхід в систему',
+          description: `Користувач успішно увійшов в систему.`,
         })
         
         router.push('/')
@@ -63,8 +63,8 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
       })
       .catch(error => {
         toast({
-          title: 'Failed to sign in',
-          description: 'Failed to sign in user.',
+          title: 'Помилка входу в систему',
+          description: 'Не вдалося увійти в систему.',
         })
 
         console.error(error)
@@ -83,7 +83,7 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
             <Input
               {...register('username')}
               id="user"
-              placeholder="chezee4"
+              placeholder="username"
               type="text"
               autoCapitalize="none"
               autoComplete="text"
@@ -96,7 +96,7 @@ export default function SignInForm({ className, ...props }: UserAuthFormProps) {
             <Input
               {...register('password')}
               id="password"
-              placeholder="123456789"
+              placeholder="password"
               type="text"
               autoCapitalize="none"
               autoComplete="password"
