@@ -51,7 +51,7 @@ export default function AuthenticationLayout({
               Ми раді вітати вас на нашому сайті. Зареєструйтеся або увійдіть в
               акаунт, щоб скористатися всіма можливостями.
             </p>
-            <footer className="text-sm">Дуфинець Вадим</footer>
+            <footer className="text-sm">Дуфинець Вадим та Баран Максим</footer>
           </blockquote>
         </div>
       </div>

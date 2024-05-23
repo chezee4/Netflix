@@ -18,10 +18,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(manrope.className, 'flex flex-col min-h-screen')}>
-        {/* <ThemeProvider attribute="class" defaultTheme="dark"> */}
+        <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
           <Toaster />
-        {/* </ThemeProvider> */}
+        </ThemeProvider>
       </body>
     </html>
   )
