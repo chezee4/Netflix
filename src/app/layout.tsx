@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Manrope } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 
 import { ThemeProvider } from 'src/context/theme-provider'
 import { Toaster } from 'src/components/ui/toaster'
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute="class" defaultTheme="dark">
           {children}
           <Toaster />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
